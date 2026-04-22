@@ -1,111 +1,84 @@
 import os
-import re
-import json
-import asyncio
-from playwright.async_api import async_playwright
-from .common import parse_cookie_blob, now_iso, within_last_24h
+from apify_client import ApifyClient
+from .common import now_iso, within_last_24h
 
-IG_DOMAIN = ".instagram.com"
+IG_COMMENT_ACTOR = "apify/instagram-comment-scraper"
+IG_POST_ACTOR    = "apify/instagram-post-scraper"
+
+TIMEOUT_SECS = 600
+MAX_COMMENTS = 500
 
 
-async def _get_recent_post_urls(page, profile_url, limit=12):
-    await page.goto(profile_url, wait_until="domcontentloaded")
-    await page.wait_for_timeout(3000)
-    # Grid links to /p/<shortcode>/ or /reel/<shortcode>/
-    hrefs = await page.eval_on_selector_all(
-        "a[href*='/p/'], a[href*='/reel/']",
-        "els => Array.from(new Set(els.map(e => e.href)))"
+def _client():
+    return ApifyClient(os.environ["APIFY_TOKEN"])
+
+
+def _recent_post_urls(client, profile_url, limit=12):
+    """Use the post scraper to list recent posts for the profile, then
+    filter to last 24h. Returns list of post URLs."""
+    username = profile_url.rstrip("/").split("/")[-1]
+    run_input = {
+        "username": [username],
+        "resultsLimit": limit,
+        "resultsType": "posts",
+    }
+    run = client.actor(IG_POST_ACTOR).call(
+        run_input=run_input, timeout_secs=TIMEOUT_SECS
     )
-    return hrefs[:limit]
+    if not run or not run.get("defaultDatasetId"):
+        return []
+    urls = []
+    for item in client.dataset(run["defaultDatasetId"]).iterate_items():
+        ts = item.get("timestamp") or item.get("taken_at") or ""
+        url = item.get("url") or item.get("postUrl")
+        if url and within_last_24h(ts):
+            urls.append(url)
+    return urls[:limit]
 
 
-async def _scrape_post_comments(page, post_url):
-    await page.goto(post_url, wait_until="domcontentloaded")
-    await page.wait_for_timeout(2500)
+def _scrape_comments_for_posts(client, post_urls, handle):
+    if not post_urls:
+        return []
+    run_input = {
+        "directUrls": post_urls,
+        "resultsLimit": MAX_COMMENTS,
+    }
+    run = client.actor(IG_COMMENT_ACTOR).call(
+        run_input=run_input, timeout_secs=TIMEOUT_SECS
+    )
+    if not run or not run.get("defaultDatasetId"):
+        return []
 
-    # Attempt to click "View more comments" repeatedly
-    for _ in range(8):
-        try:
-            btn = await page.query_selector("button:has-text('View more comments'), button[aria-label='Load more comments']")
-            if not btn:
-                break
-            await btn.click()
-            await page.wait_for_timeout(1500)
-        except Exception:
+    out = []
+    for it in client.dataset(run["defaultDatasetId"]).iterate_items():
+        native_id = str(it.get("id") or it.get("commentId") or "")
+        text = (it.get("text") or "").strip()
+        if not text or not native_id:
+            continue
+        out.append({
+            "id": f"ig_{native_id}",
+            "platform": "instagram",
+            "handle": handle,
+            "post_url": it.get("postUrl") or it.get("url") or "",
+            "parent_comment_id": it.get("replyToId") or it.get("parentId") or None,
+            "author": (it.get("ownerUsername") or it.get("username") or "").lstrip("@"),
+            "text": text,
+            "language": "unknown",
+            "like_count": int(it.get("likesCount") or it.get("likeCount") or 0),
+            "reply_count": int(it.get("repliesCount") or 0),
+            "captured_at": now_iso(),
+            "posted_at": it.get("timestamp") or it.get("createdAt") or now_iso(),
+        })
+        if len(out) >= MAX_COMMENTS:
             break
-
-    # Extract JSON-LD / embedded JSON if available, else parse DOM
-    items = []
-    try:
-        data = await page.evaluate("""
-            () => {
-                const nodes = document.querySelectorAll('ul ul li, article ul li');
-                const out = [];
-                nodes.forEach(n => {
-                    const user = n.querySelector('a[role="link"]');
-                    const text = n.querySelector('span');
-                    if (user && text) {
-                        out.push({
-                            author: (user.innerText||'').trim().replace(/^@/, ''),
-                            text: (text.innerText||'').trim()
-                        });
-                    }
-                });
-                return out;
-            }
-        """)
-        for i, it in enumerate(data):
-            if not it["text"]:
-                continue
-            items.append({
-                "id": f"ig_{abs(hash(post_url+it['author']+it['text']))}",
-                "platform": "instagram",
-                "handle": "@azafashions",
-                "post_url": post_url,
-                "parent_comment_id": None,
-                "author": it["author"],
-                "text": it["text"],
-                "language": "unknown",
-                "like_count": 0,
-                "reply_count": 0,
-                "captured_at": now_iso(),
-                "posted_at": now_iso(),
-            })
-    except Exception:
-        pass
-    return items
+    return out
 
 
-async def scrape(profile_url: str, cookie_blob: str):
-    cookies = parse_cookie_blob(cookie_blob, IG_DOMAIN)
-    async with async_playwright() as pw:
-        browser = await pw.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
-        ctx = await browser.new_context(
-            user_agent=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                        "AppleWebKit/537.36 (KHTML, like Gecko) "
-                        "Chrome/124.0.0.0 Safari/537.36"),
-            locale="en-US",
-            viewport={"width": 1280, "height": 900},
-        )
-        if cookies:
-            await ctx.add_cookies(cookies)
-        page = await ctx.new_page()
-
-        all_items = []
-        try:
-            posts = await _get_recent_post_urls(page, profile_url)
-            for url in posts:
-                try:
-                    items = await _scrape_post_comments(page, url)
-                    all_items.extend(items)
-                except Exception as e:
-                    print(f"[ig] post failed {url}: {e}")
-        finally:
-            await browser.close()
-        # Keep only last-24h posts' comments; IG doesn't easily expose per-comment timestamp,
-        # so we rely on post recency (grid is chronological).
-        return all_items
-
-
-def run_sync(profile_url: str, cookie_blob: str):
-    return asyncio.run(scrape(profile_url, cookie_blob))
+def run_sync(profile_url: str, _unused_cookie=None):
+    client = _client()
+    handle = "@" + profile_url.rstrip("/").split("/")[-1]
+    urls = _recent_post_urls(client, profile_url)
+    print(f"[ig] recent posts last 24h: {len(urls)}")
+    if not urls:
+        return []
+    return _scrape_comments_for_posts(client, urls, handle)
