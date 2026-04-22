@@ -25,18 +25,13 @@ def load_config():
     return handles, topics["buckets"]
 
 
-def run_platform(name, runner, url, cookie_env, buckets):
-    cookie = os.environ.get(cookie_env, "")
-    if not cookie:
-        log(f"{name}: missing {cookie_env}; skipping")
-        return
+def run_platform(name, runner, url, buckets):
     try:
-        log(f"{name}: scraping {url}")
-        items = runner(url, cookie)
+        log(f"{name}: scraping {url} via Apify")
+        items = runner(url)
         log(f"{name}: scraped {len(items)} items")
         if not items:
             return
-        # Only classify new/changed items (store.merge will preserve prior)
         merged_preview = store.load_day(name, datetime.now(timezone.utc).strftime("%Y-%m-%d"))
         prev_by_id = {it["id"]: it for it in merged_preview}
         needs_class = [
@@ -51,9 +46,16 @@ def run_platform(name, runner, url, cookie_env, buckets):
 
 
 def main():
+    if not os.environ.get("APIFY_TOKEN"):
+        log("APIFY_TOKEN missing; aborting run")
+        return
+    if not os.environ.get("GEMINI_API_KEY"):
+        log("GEMINI_API_KEY missing; aborting run")
+        return
+
     handles, buckets = load_config()
-    run_platform("instagram", instagram.run_sync, handles["instagram"], "IG_SESSION_COOKIE", buckets)
-    run_platform("facebook",  facebook.run_sync,  handles["facebook"],  "FB_SESSION_COOKIE", buckets)
+    run_platform("instagram", instagram.run_sync, handles["instagram"], buckets)
+    run_platform("facebook",  facebook.run_sync,  handles["facebook"],  buckets)
     try:
         aggregate.build()
         log("aggregate: index.json written")
