@@ -1,56 +1,71 @@
 import os
 import json
 import time
-from anthropic import Anthropic
+from google import genai
+from google.genai import types
 
-MODEL = "claude-3-5-sonnet-latest"
-BATCH_SIZE = 20
+MODEL = "gemini-2.5-flash"
+BATCH_SIZE = 25  # Gemini Flash is cheap + fast; larger batches are fine
 
 
 def _client():
-    return Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    return genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+
+
+# JSON schema returned by the model for each comment
+ITEM_SCHEMA = {
+    "type": "object",
+    "properties": {
+        "language":         {"type": "string", "enum": ["english", "non-english"]},
+        "sentiment":        {"type": "string", "enum": ["positive", "negative", "neutral", "none"]},
+        "topic_predefined": {"type": "string"},
+        "topic_auto":       {"type": "string"},
+    },
+    "required": ["language", "sentiment", "topic_predefined", "topic_auto"],
+}
+
+RESPONSE_SCHEMA = {"type": "array", "items": ITEM_SCHEMA}
 
 
 def _build_prompt(items, buckets):
     bucket_lines = "\n".join(f"- {b['id']}: {b['description']}" for b in buckets)
+    bucket_ids = [b["id"] for b in buckets]
     item_lines = "\n".join(f"{i}. {json.dumps(it['text'])}" for i, it in enumerate(items))
-    return f"""You are classifying social media comments for a fashion brand.
+    return f"""You are classifying social media comments for a fashion brand (Aza Fashions).
 
-For EACH numbered comment below, return a JSON object with:
+For EACH numbered comment, return an object with:
 - "language": "english" or "non-english"
-- "sentiment": "positive", "negative", or "neutral"  (only if english; else null)
-- "topic_predefined": one of [{", ".join(b['id'] for b in buckets)}] or null
-- "topic_auto": a short 2-4 word free-form theme label (english only; else null)
+- "sentiment": "positive" | "negative" | "neutral" for english comments; "none" for non-english
+- "topic_predefined": exactly one of [{", ".join(bucket_ids)}] — or the string "none" if nothing fits
+- "topic_auto": a short 2-4 word free-form theme label (english only); "none" for non-english
 
 Predefined buckets:
 {bucket_lines}
 
-Return ONLY a JSON array of length {len(items)}, in order. No prose.
+Return a JSON array of length {len(items)}, in the SAME order as the input.
+Do not include any prose. Comments:
 
-Comments:
 {item_lines}
 """
 
 
-def _parse_response(text, n):
-    # Strip code fences if present
-    t = text.strip()
-    if t.startswith("```"):
-        t = t.strip("`")
-        if t.lower().startswith("json"):
-            t = t[4:]
-    start = t.find("[")
-    end = t.rfind("]")
-    if start == -1 or end == -1:
-        return [{} for _ in range(n)]
-    try:
-        arr = json.loads(t[start:end + 1])
-    except Exception:
-        return [{} for _ in range(n)]
-    if len(arr) != n:
-        # pad/truncate
-        arr = (arr + [{}] * n)[:n]
-    return arr
+def _normalize(p):
+    """Map 'none' strings to Python None and guard against missing fields."""
+    out = {
+        "language": p.get("language") or "unknown",
+        "sentiment": p.get("sentiment"),
+        "topic_predefined": p.get("topic_predefined"),
+        "topic_auto": p.get("topic_auto"),
+    }
+    if out["language"] != "english":
+        out["sentiment"] = None
+    if out["sentiment"] == "none":
+        out["sentiment"] = None
+    if out["topic_predefined"] in ("none", "", None):
+        out["topic_predefined"] = None
+    if out["topic_auto"] in ("none", "", None):
+        out["topic_auto"] = None
+    return out
 
 
 def classify(items, buckets):
@@ -58,35 +73,49 @@ def classify(items, buckets):
     if not items:
         return items
     client = _client()
+
     for start in range(0, len(items), BATCH_SIZE):
         batch = items[start:start + BATCH_SIZE]
         prompt = _build_prompt(batch, buckets)
+
+        parsed = None
         for attempt in range(3):
             try:
-                resp = client.messages.create(
+                resp = client.models.generate_content(
                     model=MODEL,
-                    max_tokens=1500,
-                    messages=[{"role": "user", "content": prompt}],
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        response_mime_type="application/json",
+                        response_schema=RESPONSE_SCHEMA,
+                        temperature=0.2,
+                        max_output_tokens=4096,
+                    ),
                 )
-                text = resp.content.text
-                parsed = _parse_response(text, len(batch))
-                for it, p in zip(batch, parsed):
-                    it["language"] = p.get("language") or "unknown"
-                    if it["language"] == "english":
-                        it["sentiment"] = p.get("sentiment") or "neutral"
-                    else:
-                        it["sentiment"] = None
-                    it["topic_predefined"] = p.get("topic_predefined")
-                    it["topic_auto"] = p.get("topic_auto")
+                text = (resp.text or "").strip()
+                parsed = json.loads(text)
+                if not isinstance(parsed, list):
+                    raise ValueError("Model did not return a JSON array")
+                # Pad / truncate to batch length
+                parsed = (parsed + [{}] * len(batch))[:len(batch)]
                 break
             except Exception as e:
                 print(f"[classify] attempt {attempt+1} failed: {e}")
                 time.sleep(2 ** attempt)
-        else:
-            # Give up for this batch; mark unknown
+
+        if parsed is None:
+            # Give up for this batch; mark unknown but keep pipeline moving
             for it in batch:
-                it.setdefault("language", "unknown")
-                it.setdefault("sentiment", None)
-                it.setdefault("topic_predefined", None)
-                it.setdefault("topic_auto", None)
+                it["language"] = "unknown"
+                it["sentiment"] = None
+                it["topic_predefined"] = None
+                it["topic_auto"] = None
+            continue
+
+        for it, p in zip(batch, parsed):
+            norm = _normalize(p)
+            it["language"] = norm["language"]
+            it["sentiment"] = norm["sentiment"]
+            it["topic_predefined"] = norm["topic_predefined"]
+            it["topic_auto"] = norm["topic_auto"]
+
     return items
