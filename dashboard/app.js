@@ -1,4 +1,4 @@
-const DATA_BASE = '../data'; // if dashboard lives in /dashboard. Change to 'data' if served at repo root.
+const DATA_BASE = 'data'; // if dashboard lives in /dashboard. Change to 'data' if served at repo root.
 
 const state = {
   index: null,
