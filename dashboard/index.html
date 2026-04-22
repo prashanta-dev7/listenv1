@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Aza Fashions — Social Listening</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js"></script>
+</head>
+<body>
+<header>
+  <h1>Aza Fashions — Social Listening</h1>
+  <nav class="filters">
+    <label>Range:
+      <select id="rangePreset">
+        <option value="7">Last 7 days</option>
+        <option value="30" selected>Last 30 days</option>
+        <option value="90">Last 90 days</option>
+        <option value="all">All time</option>
+        <option value="custom">Custom…</option>
+      </select>
+    </label>
+    <span id="customRange" hidden>
+      <input type="date" id="fromDate" />
+      <input type="date" id="toDate" />
+      <button id="applyRange">Apply</button>
+    </span>
+    <span id="generatedAt" class="muted"></span>
+  </nav>
+</header>
+
+<main>
+  <section><h2>Volume over time</h2><canvas id="volumeChart" height="110"></canvas></section>
+  <section><h2>Sentiment by platform</h2><canvas id="sentimentChart" height="110"></canvas></section>
+
+  <section class="two-col">
+    <div>
+      <h2>Top negative comments</h2>
+      <table id="topNegative" class="comment-table"><thead><tr><th>Date</th><th>Platform</th><th>Comment</th><th></th></tr></thead><tbody></tbody></table>
+    </div>
+    <div>
+      <h2>Top positive comments</h2>
+      <table id="topPositive" class="comment-table"><thead><tr><th>Date</th><th>Platform</th><th>Comment</th><th></th></tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section><h2>Predefined topic buckets</h2><canvas id="topicChart" height="110"></canvas></section>
+
+  <section>
+    <h2>Auto-discovered themes</h2>
+    <table id="autoThemes"><thead><tr><th>Theme</th><th>Count</th><th>Example</th></tr></thead><tbody></tbody></table>
+  </section>
+
+  <section>
+    <h2>Word clouds</h2>
+    <div class="cloud-row">
+      <div><h3>Positive</h3><canvas id="wcPositive" width="380" height="260"></canvas></div>
+      <div><h3>Negative</h3><canvas id="wcNegative" width="380" height="260"></canvas></div>
+      <div><h3>Neutral</h3><canvas id="wcNeutral" width="380" height="260"></canvas></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Top commenters</h2>
+    <table id="topCommenters"><thead><tr><th>Username</th><th>Platform</th><th>Count</th></tr></thead><tbody></tbody></table>
+  </section>
+</main>
+
+<footer class="muted">
+  Data scraped from public brand posts. See README for disclaimer and removal requests.
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
