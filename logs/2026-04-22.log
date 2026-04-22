@@ -10,3 +10,10 @@
 [2026-04-22T11:00:03.100052+00:00] instagram: scraped 0 items
 [2026-04-22T11:00:03.100162+00:00] facebook: missing FB_SESSION_COOKIE; skipping
 [2026-04-22T11:00:03.100506+00:00] aggregate: index.json written
+[2026-04-22T11:48:48.408459+00:00] instagram: scraping https://www.instagram.com/azafashions/ via Apify
+[2026-04-22T11:49:37.284351+00:00] instagram: scraped 23 items
+[2026-04-22T11:49:37.284664+00:00] instagram: classifying 23 new/changed items
+[2026-04-22T11:49:54.791343+00:00] facebook: scraping https://www.facebook.com/AzaFashions/ via Apify
+[2026-04-22T11:50:56.629857+00:00] facebook: scraped 2 items
+[2026-04-22T11:50:56.630140+00:00] facebook: classifying 2 new/changed items
+[2026-04-22T11:50:58.476361+00:00] aggregate: index.json written
