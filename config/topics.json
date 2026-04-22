@@ -1,0 +1,11 @@
+{
+  "buckets": [
+    { "id": "pricing",          "description": "Comments about price, discounts, affordability, value for money." },
+    { "id": "quality",          "description": "Comments about material, stitching, durability, defects, finish." },
+    { "id": "shipping",         "description": "Comments about delivery, shipping time, packaging, courier issues." },
+    { "id": "customer-service", "description": "Comments about support, returns, exchanges, responsiveness." },
+    { "id": "sizing",           "description": "Comments about fit, size chart, measurements, size availability." },
+    { "id": "style",            "description": "Comments about design, aesthetics, trends, colors, styling." },
+    { "id": "authenticity",     "description": "Comments about genuineness, counterfeits, designer authenticity." }
+  ]
+}
