@@ -2,3 +2,7 @@
 [2026-04-22T10:00:08.135144+00:00] instagram: scraped 0 items
 [2026-04-22T10:00:08.135234+00:00] facebook: missing FB_SESSION_COOKIE; skipping
 [2026-04-22T10:00:08.135575+00:00] aggregate: index.json written
+[2026-04-22T10:17:53.574960+00:00] instagram: scraping https://www.instagram.com/azafashions/
+[2026-04-22T10:18:37.971373+00:00] instagram: scraped 0 items
+[2026-04-22T10:18:37.971478+00:00] facebook: missing FB_SESSION_COOKIE; skipping
+[2026-04-22T10:18:37.971822+00:00] aggregate: index.json written
