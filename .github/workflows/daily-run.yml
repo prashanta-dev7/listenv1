@@ -38,7 +38,7 @@ jobs:
         env:
           IG_SESSION_COOKIE: ${{ secrets.IG_SESSION_COOKIE }}
           FB_SESSION_COOKIE: ${{ secrets.FB_SESSION_COOKIE }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python run.py
 
       - name: Commit and push data
