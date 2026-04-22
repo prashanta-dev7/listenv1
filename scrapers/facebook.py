@@ -1,102 +1,81 @@
-import asyncio
-from playwright.async_api import async_playwright
-from .common import parse_cookie_blob, now_iso
+import os
+from apify_client import ApifyClient
+from .common import now_iso
 
-FB_DOMAIN = ".facebook.com"
+FB_COMMENT_ACTOR = "apify/facebook-comments-scraper"
+FB_POST_ACTOR    = "apify/facebook-posts-scraper"
+
+TIMEOUT_SECS = 600
+MAX_COMMENTS = 500
 
 
-async def _get_recent_post_urls(page, profile_url, limit=10):
-    await page.goto(profile_url, wait_until="domcontentloaded")
-    await page.wait_for_timeout(3500)
-    # Scroll a bit to load recent posts
-    for _ in range(4):
-        await page.mouse.wheel(0, 2500)
-        await page.wait_for_timeout(1200)
-    hrefs = await page.eval_on_selector_all(
-        "a[href*='/posts/'], a[href*='/videos/'], a[href*='/reel/']",
-        "els => Array.from(new Set(els.map(e => e.href.split('?')[0])))"
+def _client():
+    return ApifyClient(os.environ["APIFY_TOKEN"])
+
+
+def _recent_post_urls(client, profile_url, limit=10):
+    run_input = {
+        "startUrls": [{"url": profile_url}],
+        "resultsLimit": limit,
+        "onlyPostsNewerThan": "24 hours",
+    }
+    run = client.actor(FB_POST_ACTOR).call(
+        run_input=run_input, timeout_secs=TIMEOUT_SECS
     )
-    return hrefs[:limit]
+    if not run or not run.get("defaultDatasetId"):
+        return []
+    urls = []
+    for item in client.dataset(run["defaultDatasetId"]).iterate_items():
+        url = item.get("url") or item.get("postUrl") or item.get("topLevelUrl")
+        if url:
+            urls.append(url.split("?")[0])
+    return urls[:limit]
 
 
-async def _scrape_post_comments(page, post_url):
-    await page.goto(post_url, wait_until="domcontentloaded")
-    await page.wait_for_timeout(3000)
-
-    # Try to expand "View more comments" / "All comments"
-    for _ in range(10):
-        try:
-            btn = await page.query_selector(
-                "div[role='button']:has-text('View more comments'), "
-                "div[role='button']:has-text('All comments'), "
-                "div[role='button']:has-text('Most relevant')"
-            )
-            if not btn:
-                break
-            await btn.click()
-            await page.wait_for_timeout(1500)
-        except Exception:
-            break
-
-    items = await page.evaluate("""
-        () => {
-            const out = [];
-            document.querySelectorAll("div[aria-label^='Comment by']").forEach(node => {
-                const label = node.getAttribute('aria-label') || '';
-                const author = (label.replace(/^Comment by /,'').split(':')[0] || '').trim();
-                const text = (node.innerText || '').trim();
-                if (text) out.push({ author, text });
-            });
-            return out;
-        }
-    """)
+def _scrape_comments_for_posts(client, post_urls, handle):
+    if not post_urls:
+        return []
+    run_input = {
+        "startUrls": [{"url": u} for u in post_urls],
+        "resultsLimit": MAX_COMMENTS,
+        "includeNestedComments": True,
+    }
+    run = client.actor(FB_COMMENT_ACTOR).call(
+        run_input=run_input, timeout_secs=TIMEOUT_SECS
+    )
+    if not run or not run.get("defaultDatasetId"):
+        return []
 
     out = []
-    for it in items:
+    for it in client.dataset(run["defaultDatasetId"]).iterate_items():
+        native_id = str(it.get("id") or it.get("commentId") or "")
+        text = (it.get("text") or it.get("commentText") or "").strip()
+        if not text or not native_id:
+            continue
         out.append({
-            "id": f"fb_{abs(hash(post_url+it['author']+it['text']))}",
+            "id": f"fb_{native_id}",
             "platform": "facebook",
-            "handle": "@AzaFashions",
-            "post_url": post_url,
-            "parent_comment_id": None,
-            "author": it["author"],
-            "text": it["text"],
+            "handle": handle,
+            "post_url": it.get("postUrl") or it.get("facebookUrl") or "",
+            "parent_comment_id": it.get("parentId") or it.get("replyToId") or None,
+            "author": it.get("profileName") or it.get("author") or "unknown",
+            "text": text,
             "language": "unknown",
-            "like_count": 0,
-            "reply_count": 0,
+            "like_count": int(it.get("likesCount") or 0),
+            "reply_count": int(it.get("repliesCount") or 0),
             "captured_at": now_iso(),
-            "posted_at": now_iso(),
+            "posted_at": it.get("date") or it.get("createdAt") or now_iso(),
         })
+        if len(out) >= MAX_COMMENTS:
+            break
     return out
 
 
-async def scrape(profile_url: str, cookie_blob: str):
-    cookies = parse_cookie_blob(cookie_blob, FB_DOMAIN)
-    async with async_playwright() as pw:
-        browser = await pw.chromium.launch(headless=True, args=["--disable-blink-features=AutomationControlled"])
-        ctx = await browser.new_context(
-            user_agent=("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                        "AppleWebKit/537.36 (KHTML, like Gecko) "
-                        "Chrome/124.0.0.0 Safari/537.36"),
-            locale="en-US",
-            viewport={"width": 1280, "height": 900},
-        )
-        if cookies:
-            await ctx.add_cookies(cookies)
-        page = await ctx.new_page()
-        all_items = []
-        try:
-            posts = await _get_recent_post_urls(page, profile_url)
-            for url in posts:
-                try:
-                    items = await _scrape_post_comments(page, url)
-                    all_items.extend(items)
-                except Exception as e:
-                    print(f"[fb] post failed {url}: {e}")
-        finally:
-            await browser.close()
-        return all_items
-
-
-def run_sync(profile_url: str, cookie_blob: str):
-    return asyncio.run(scrape(profile_url, cookie_blob))
+def run_sync(profile_url: str, _unused_cookie=None):
+    client = _client()
+    handle = "@" + profile_url.rstrip("/").split("/")[-1]
+    urls = _recent_post_urls(client, profile_url)
+    print(f"[fb] recent posts last 24h: {len(urls)}")
+    if not urls:
+        return []
+    return _scrape_comments_for_posts(client, urls, handle)
