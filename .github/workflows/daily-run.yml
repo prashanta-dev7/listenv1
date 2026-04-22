@@ -15,7 +15,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -31,13 +31,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Playwright browsers
-        run: python -m playwright install --with-deps chromium
-
       - name: Run pipeline
         env:
-          IG_SESSION_COOKIE: ${{ secrets.IG_SESSION_COOKIE }}
-          FB_SESSION_COOKIE: ${{ secrets.FB_SESSION_COOKIE }}
+          APIFY_TOKEN:    ${{ secrets.APIFY_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python run.py
 
