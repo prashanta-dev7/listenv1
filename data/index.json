@@ -1,0 +1,19 @@
+{
+  "generated_at": "2026-04-22T10:00:08Z",
+  "platforms": [
+    "instagram",
+    "facebook"
+  ],
+  "days_by_platform": {
+    "instagram": [],
+    "facebook": []
+  },
+  "volume_by_day": [],
+  "sentiment_by_platform": {
+    "instagram": {},
+    "facebook": {}
+  },
+  "predefined_topics": {},
+  "auto_themes": [],
+  "top_commenters": []
+}
