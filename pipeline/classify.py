@@ -26,11 +26,19 @@ ITEM_SCHEMA = {
 
 RESPONSE_SCHEMA = {"type": "array", "items": ITEM_SCHEMA}
 
-
 def _build_prompt(items, buckets):
     bucket_lines = "\n".join(f"- {b['id']}: {b['description']}" for b in buckets)
     bucket_ids = [b["id"] for b in buckets]
-    item_lines = "\n".join(f"{i}. {json.dumps(it['text'])}" for i, it in enumerate(items))
+
+    def _fmt(i, it):
+        extra = ""
+        if it.get("platform") == "reddit":
+            sub = it.get("reddit_subreddit") or "unknown"
+            kind = it.get("reddit_item_type") or "post"
+            extra = f" [reddit {kind} in r/{sub}]"
+        return f"{i}. {json.dumps(it['text'])}{extra}"
+
+    item_lines = "\n".join(_fmt(i, it) for i, it in enumerate(items))
     return f"""You are classifying social media comments for a fashion brand (Aza Fashions).
 
 For EACH numbered comment, return an object with:
