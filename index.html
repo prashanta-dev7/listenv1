@@ -1,83 +1,208 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<title>Aza Fashions — Social Listening</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="styles.css" />
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aza Fashions — Social Listening</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/wordcloud@1.2.2/src/wordcloud2.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --card: #ffffff;
+      --ink: #1a1d29;
+      --muted: #6a7280;
+      --line: #e6e8ef;
+      --accent: #4a6fa5;
+      --ig: #E1306C;
+      --fb: #1877F2;
+      --rd: #FF4500;
+      --pos: #2e9e5f;
+      --neu: #888888;
+      --neg: #d64545;
+      --shadow: 0 2px 10px rgba(20,25,45,0.06);
+      --radius: 12px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1117; --card: #171a24; --ink: #eef0f6; --muted: #8d93a6;
+        --line: #242837; --shadow: 0 2px 10px rgba(0,0,0,0.35);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.5;
+    }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: var(--card); border-bottom: 1px solid var(--line);
+      padding: 14px 24px; display: flex; align-items: center; gap: 16px;
+      box-shadow: var(--shadow);
+    }
+    header h1 { margin: 0; font-size: 18px; font-weight: 600; }
+    header .grow { flex: 1; }
+    header .meta { color: var(--muted); font-size: 13px; }
+    select {
+      background: var(--bg); color: var(--ink); border: 1px solid var(--line);
+      border-radius: 8px; padding: 6px 10px; font-size: 14px;
+    }
+
+    main { max-width: 1320px; margin: 0 auto; padding: 24px; }
+    .grid { display: grid; gap: 20px; grid-template-columns: repeat(12, 1fr); }
+    .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow);
+    }
+    .card h2 { margin: 0 0 14px; font-size: 15px; font-weight: 600; letter-spacing: 0.2px; }
+    .col-12 { grid-column: span 12; }
+    .col-8  { grid-column: span 8; }
+    .col-6  { grid-column: span 6; }
+    .col-4  { grid-column: span 4; }
+    @media (max-width: 900px) {
+      .col-8, .col-6, .col-4 { grid-column: span 12; }
+    }
+
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+    .kpi {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 14px 16px; box-shadow: var(--shadow);
+    }
+    .kpi .label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .kpi .value { font-size: 24px; font-weight: 600; margin-top: 4px; }
+    .kpi .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    @media (max-width: 700px) { .kpis { grid-template-columns: repeat(2, 1fr); } }
+
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { font-weight: 600; color: var(--muted); text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px; }
+    tr:last-child td { border-bottom: none; }
+
+    .pill {
+      display: inline-block; padding: 2px 8px; border-radius: 999px;
+      font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px;
+    }
+    .pill.instagram { background: color-mix(in srgb, var(--ig) 15%, transparent); color: var(--ig); }
+    .pill.facebook  { background: color-mix(in srgb, var(--fb) 15%, transparent); color: var(--fb); }
+    .pill.reddit    { background: color-mix(in srgb, var(--rd) 15%, transparent); color: var(--rd); }
+    .pill.positive  { background: color-mix(in srgb, var(--pos) 15%, transparent); color: var(--pos); }
+    .pill.neutral   { background: color-mix(in srgb, var(--neu) 15%, transparent); color: var(--neu); }
+    .pill.negative  { background: color-mix(in srgb, var(--neg) 15%, transparent); color: var(--neg); }
+
+    ul.clean { list-style: none; margin: 0; padding: 0; }
+    ul.clean li { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+    ul.clean li:last-child { border-bottom: none; }
+    ul.clean a { color: var(--accent); text-decoration: none; }
+    ul.clean a:hover { text-decoration: underline; }
+
+    .muted { color: var(--muted); font-size: 13px; }
+    .banner { background: color-mix(in srgb, #ffb020 20%, transparent); color: #b06e00;
+              padding: 8px 12px; border-radius: 8px; font-size: 13px; margin-bottom: 12px; }
+
+    .wordclouds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .wordcloud-tile { text-align: center; }
+    .wordcloud-tile h3 { margin: 0 0 8px; font-size: 13px; color: var(--muted);
+                         text-transform: uppercase; letter-spacing: 0.4px; }
+    .wordcloud-tile canvas { width: 100% !important; height: 260px !important;
+                             background: var(--card); border-radius: 8px; }
+    @media (max-width: 900px) { .wordclouds { grid-template-columns: 1fr; } }
+
+    canvas.chart { width: 100% !important; height: 320px !important; }
+  </style>
 </head>
 <body>
-<header>
-  <h1>Aza Fashions — Social Listening</h1>
-  <nav class="filters">
-    <label>Range:
-      <select id="rangePreset">
-        <option value="7">Last 7 days</option>
-        <option value="30" selected>Last 30 days</option>
-        <option value="90">Last 90 days</option>
-        <option value="all">All time</option>
-        <option value="custom">Custom…</option>
-      </select>
-    </label>
-    <span id="customRange" hidden>
-      <input type="date" id="fromDate" />
-      <input type="date" id="toDate" />
-      <button id="applyRange">Apply</button>
-    </span>
-    <span id="generatedAt" class="muted"></span>
-  </nav>
-</header>
+  <header>
+    <h1>Aza Fashions — Social Listening</h1>
+    <div class="grow"></div>
+    <label class="meta" for="rangePreset">Range</label>
+    <select id="rangePreset">
+      <option value="7">Last 7 days</option>
+      <option value="30" selected>Last 30 days</option>
+      <option value="90">Last 90 days</option>
+      <option value="all">All time</option>
+    </select>
+    <span class="meta" id="lastUpdated"></span>
+  </header>
 
-<main>
-  <section><h2>Volume over time</h2><canvas id="volumeChart" height="110"></canvas></section>
-  <section><h2>Sentiment by platform</h2><canvas id="sentimentChart" height="110"></canvas></section>
+  <main>
+    <div id="error"></div>
 
-  <section class="two-col">
-    <div>
-      <h2>Top negative comments</h2>
-      <table id="topNegative" class="comment-table"><thead><tr><th>Date</th><th>Platform</th><th>Comment</th><th></th></tr></thead><tbody></tbody></table>
+    <div class="kpis">
+      <div class="kpi"><div class="label">Total mentions</div><div class="value" id="kpiTotal">—</div><div class="sub" id="kpiTotalSub">in range</div></div>
+      <div class="kpi"><div class="label">Positive</div><div class="value" id="kpiPos" style="color:var(--pos)">—</div><div class="sub" id="kpiPosPct">—</div></div>
+      <div class="kpi"><div class="label">Negative</div><div class="value" id="kpiNeg" style="color:var(--neg)">—</div><div class="sub" id="kpiNegPct">—</div></div>
+      <div class="kpi"><div class="label">Platforms active</div><div class="value" id="kpiPlatforms">—</div><div class="sub">IG · FB · Reddit</div></div>
     </div>
-    <div>
-      <h2>Top positive comments</h2>
-      <table id="topPositive" class="comment-table"><thead><tr><th>Date</th><th>Platform</th><th>Comment</th><th></th></tr></thead><tbody></tbody></table>
+
+    <div class="grid">
+      <section class="card col-8">
+        <h2>Volume over time</h2>
+        <canvas id="volumeChart" class="chart"></canvas>
+      </section>
+
+      <section class="card col-4">
+        <h2>Sentiment by platform</h2>
+        <canvas id="sentimentChart" class="chart"></canvas>
+      </section>
+
+      <section class="card col-6">
+        <h2>Top negative comments</h2>
+        <ul id="topNegative" class="clean"></ul>
+      </section>
+
+      <section class="card col-6">
+        <h2>Top positive comments</h2>
+        <ul id="topPositive" class="clean"></ul>
+      </section>
+
+      <section class="card col-6">
+        <h2>Predefined topic buckets</h2>
+        <canvas id="topicChart" class="chart"></canvas>
+      </section>
+
+      <section class="card col-6">
+        <h2>Auto-discovered themes</h2>
+        <table id="autoThemes">
+          <thead><tr><th>Theme</th><th>Count</th><th>Example</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="card col-12">
+        <h2>Word clouds</h2>
+        <div class="wordclouds">
+          <div class="wordcloud-tile"><h3>Positive</h3><canvas id="wordCloudPositive"></canvas></div>
+          <div class="wordcloud-tile"><h3>Negative</h3><canvas id="wordCloudNegative"></canvas></div>
+          <div class="wordcloud-tile"><h3>Neutral</h3><canvas id="wordCloudNeutral"></canvas></div>
+        </div>
+      </section>
+
+      <section class="card col-6">
+        <h2>Reddit subreddits (top 10)</h2>
+        <div id="redditUncertain"></div>
+        <table id="subredditPanel">
+          <thead><tr><th>Subreddit</th><th>Mentions</th><th>Dominant sentiment</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="card col-6">
+        <h2>Top commenters</h2>
+        <table id="topCommenters">
+          <thead><tr><th>Username</th><th>Platform</th><th>Count</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
     </div>
-  </section>
 
-  <section><h2>Predefined topic buckets</h2><canvas id="topicChart" height="110"></canvas></section>
+    <p class="muted" style="text-align:center; margin-top: 32px;">
+      Data refreshed daily at 01:00 UTC · <a href="https://github.com/prashanta-dev7/listenv1" style="color:var(--accent)">source</a>
+    </p>
+  </main>
 
-  <section>
-    <h2>Auto-discovered themes</h2>
-    <table id="autoThemes"><thead><tr><th>Theme</th><th>Count</th><th>Example</th></tr></thead><tbody></tbody></table>
-  </section>
-
-  <section>
-    <h2>Word clouds</h2>
-    <div class="cloud-row">
-      <div><h3>Positive</h3><canvas id="wcPositive" width="380" height="260"></canvas></div>
-      <div><h3>Negative</h3><canvas id="wcNegative" width="380" height="260"></canvas></div>
-      <div><h3>Neutral</h3><canvas id="wcNeutral" width="380" height="260"></canvas></div>
-    </div>
-  </section>
-  <section>
-  <h2>Reddit subreddits (top 10)</h2>
-  <div id="redditUncertain" class="muted" style="margin-bottom:8px"></div>
-  <table id="subredditPanel">
-    <thead><tr><th>Subreddit</th><th>Mentions</th><th>Dominant sentiment</th></tr></thead>
-    <tbody></tbody>
-  </table>
-</section>
-  <section>
-    <h2>Top commenters</h2>
-    <table id="topCommenters"><thead><tr><th>Username</th><th>Platform</th><th>Count</th></tr></thead><tbody></tbody></table>
-  </section>
-</main>
-
-<footer class="muted">
-  Data scraped from public brand posts. See README for disclaimer and removal requests.
-</footer>
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
