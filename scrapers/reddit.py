@@ -33,44 +33,56 @@ def _stable_id(item):
 
 
 def _to_record(item, matched_term):
-    text = (item.get("body") or item.get("text") or item.get("selftext") or "").strip()
+    data_type = (item.get("dataType") or "").lower()
+    kind_is_comment = "comment" in data_type
+
     title = (item.get("title") or "").strip()
-    # For posts, combine title + body for classification context
-    kind_is_comment = "comment" in (item.get("dataType") or item.get("type") or "").lower()
-    full_text = text if kind_is_comment else (f"{title}\n\n{text}".strip() if text else title)
+    body = (item.get("body") or "").strip()
+    # Strip the "Thumbnail: https://..." boilerplate the lite actor
+    # sometimes puts in body for gallery posts
+    if body.startswith("Thumbnail:"):
+        body = ""
+    if kind_is_comment:
+        full_text = body
+    else:
+        full_text = f"{title}\n\n{body}".strip() if body else title
     if not full_text:
         return None
 
-    url = item.get("url") or item.get("permalink") or ""
+    url = item.get("url") or ""
     if url.startswith("/r/"):
         url = "https://www.reddit.com" + url
 
+    # parsedCommunityName is "BollywoodFashion" (no r/ prefix)
+    subreddit = item.get("parsedCommunityName") or (
+        (item.get("communityName") or "").lstrip("r/")
+    )
+
+    # The actor sets id like "t3_1sk7wno" for posts, "t1_xxx" for comments
+    stable_id = item.get("id") or ""
+    if stable_id and not stable_id.startswith("reddit_"):
+        stable_id = f"reddit_{stable_id}"
+    if not stable_id:
+        stable_id = f"reddit_t3_{item.get('parsedId') or abs(hash(url))}"
+
     return {
-        "id": _stable_id(item),
+        "id": stable_id,
         "platform": "reddit",
         "handle": None,
         "post_url": url,
-        "parent_comment_id": (
-            f"reddit_t3_{item['postId']}" if item.get("postId") and kind_is_comment else None
-        ),
-        "author": item.get("username") or item.get("author") or "[deleted]",
+        "parent_comment_id": None,          # lite actor doesn't expose comment parent IDs
+        "author": item.get("username") or "[deleted]",
         "text": full_text,
         "language": "unknown",
-        "like_count": int(item.get("score") or item.get("upVotes") or 0),
-        "reply_count": int(item.get("numberOfComments") or item.get("numReplies") or 0),
+        "like_count": int(item.get("upVotes") or 0),
+        "reply_count": int(item.get("numberOfComments") or 0),
         "captured_at": now_iso(),
-        "posted_at": (
-            item.get("createdAt")
-            or item.get("created")
-            or item.get("date")
-            or now_iso()
-        ),
-        "reddit_subreddit": (item.get("communityName") or item.get("subreddit") or "").lstrip("r/"),
+        "posted_at": item.get("createdAt") or now_iso(),
+        "reddit_subreddit": subreddit,
         "reddit_item_type": "comment" if kind_is_comment else "post",
         "reddit_matched_term": matched_term,
-        "reddit_filter_result": None,  # set later by filter pass if ambiguous
+        "reddit_filter_result": None,
     }
-
 
 def _is_recent(record, cutoff_iso):
     try:
@@ -89,8 +101,7 @@ def _match_strict(text, terms):
 
 
 def run_sync(brand_terms):
-    """brand_terms: dict with keys 'strict' and 'ambiguous' (lists of strings).
-    Returns list of records conforming to Section 5.2 schema."""
+    """brand_terms: dict with keys 'strict' and 'ambiguous'."""
     strict = brand_terms.get("strict", []) or []
     ambiguous = brand_terms.get("ambiguous", []) or []
     all_terms = strict + ambiguous
@@ -98,23 +109,23 @@ def run_sync(brand_terms):
         return []
 
     client = _client()
-run_input = {
-    "searches": all_terms,
-    "type": "posts",
-    "sort": "new",
-    "maxItems": MAX_ITEMS,
-    "maxPostCount": MAX_ITEMS,
-    "maxComments": 30,
-    "maxCommunitiesCount": 0,
-    "maxUserCount": 0,
-    "scrollTimeout": 60,
-    "proxy": {
-        "useApifyProxy": True,
-        "apifyProxyGroups": ["RESIDENTIAL"],   # <-- key change
-        "apifyProxyCountry": "US",
-    },
-}
-run = client.actor(REDDIT_ACTOR).call(
+    run_input = {
+        "searches": all_terms,
+        "type": "posts",
+        "sort": "new",
+        "maxItems": MAX_ITEMS,
+        "maxPostCount": MAX_ITEMS,
+        "maxComments": 30,
+        "maxCommunitiesCount": 0,
+        "maxUserCount": 0,
+        "scrollTimeout": 60,
+        "proxy": {
+            "useApifyProxy": True,
+            "apifyProxyGroups": ["RESIDENTIAL"],
+            "apifyProxyCountry": "US",
+        },
+    }
+    run = client.actor(REDDIT_ACTOR).call(
         run_input=run_input, timeout_secs=TIMEOUT_SECS
     )
     if not run or not run.get("defaultDatasetId"):
@@ -124,13 +135,11 @@ run = client.actor(REDDIT_ACTOR).call(
     seen = set()
     out = []
     for item in client.dataset(run["defaultDatasetId"]).iterate_items():
-        # Identify which term actually matched (actor doesn't echo it back)
         blob = " ".join([
             str(item.get("title") or ""),
             str(item.get("body") or ""),
-            str(item.get("text") or ""),
-            str(item.get("selftext") or ""),
             str(item.get("url") or ""),
+            str(item.get("communityName") or ""),
         ])
         matched = _match_strict(blob, all_terms)
         if not matched:
@@ -144,7 +153,6 @@ run = client.actor(REDDIT_ACTOR).call(
         if not _is_recent(rec, cutoff):
             continue
 
-        # Tag which class of term triggered the match
         rec["_term_class"] = "strict" if matched in strict else "ambiguous"
         seen.add(rec["id"])
         out.append(rec)
