@@ -1,4 +1,5 @@
-import os, re
+import os
+import re
 from datetime import datetime, timezone, timedelta
 from apify_client import ApifyClient
 from .common import now_iso
@@ -8,19 +9,22 @@ TIMEOUT_SECS = 600
 MAX_ITEMS = 200
 LOOKBACK_DAYS = 30
 
+
 def _client():
     return ApifyClient(os.environ["APIFY_TOKEN"])
+
 
 def _stable_id(tweet_id):
     tweet_id = re.sub(r"^twitter_", "", str(tweet_id or ""))
     return f"twitter_{tweet_id}"
+
 
 def _to_record(t, matched_term=None):
     text = (t.get("text") or t.get("full_text") or "").strip()
     if not text:
         return None
     tid = t.get("id") or t.get("id_str") or ""
-    author = (t.get("author") or {}).get("userName") or t.get("user", {}).get("screen_name") or "unknown"
+    author = (t.get("author") or {}).get("userName") or (t.get("user") or {}).get("screen_name") or "unknown"
     url = t.get("url") or f"https://x.com/{author}/status/{tid}"
     return {
         "id": _stable_id(tid),
@@ -39,12 +43,14 @@ def _to_record(t, matched_term=None):
         "twitter_is_reply": bool(t.get("inReplyToId")),
     }
 
+
 def _is_recent(rec, cutoff_iso):
     try:
         dt = datetime.fromisoformat(str(rec["posted_at"]).replace("Z", "+00:00"))
     except Exception:
         return True
     return dt >= datetime.fromisoformat(cutoff_iso)
+
 
 def run_sync(handle, brand_terms):
     client = _client()
@@ -60,27 +66,37 @@ def run_sync(handle, brand_terms):
         "sort": "Latest",
         "tweetLanguage": "en",
         "includeSearchTerms": True,
-        "onlyImage": False, "onlyVideo": False,
+        "onlyImage": False,
+        "onlyVideo": False,
     }
+
     run = client.actor(TWITTER_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
-    raw_items = list(client.dataset(run["defaultDatasetId"]).iterate_items())
-print(f"DEBUG twitter raw: {len(raw_items)} items")
-if raw_items:
-    print(f"DEBUG twitter first item keys: {list(raw_items[0].keys())}")
-    print(f"DEBUG twitter first item sample: {str(raw_items[0])[:500]}")
     if not run or not run.get("defaultDatasetId"):
+        print("DEBUG twitter: actor returned no dataset")
         return []
+
+    raw_items = list(client.dataset(run["defaultDatasetId"]).iterate_items())
+    print(f"DEBUG twitter: actor returned {len(raw_items)} raw items")
+    if raw_items:
+        print(f"DEBUG twitter: first item keys: {list(raw_items[0].keys())}")
+        sample = str(raw_items[0])[:500]
+        print(f"DEBUG twitter: first item sample: {sample}")
 
     cutoff = (datetime.now(timezone.utc) - timedelta(days=LOOKBACK_DAYS)).isoformat()
     seen, out = set(), []
-    for item in client.dataset(run["defaultDatasetId"]).iterate_items():
+    for item in raw_items:
         blob = ((item.get("text") or "") + " " + (item.get("url") or "")).lower()
         matched = next((t for t in all_terms if t.lower() in blob), None)
         rec = _to_record(item, matched)
-        if not rec: continue
-        if rec["id"] in seen: continue
-        if not _is_recent(rec, cutoff): continue
+        if not rec:
+            continue
+        if rec["id"] in seen:
+            continue
+        if not _is_recent(rec, cutoff):
+            continue
         seen.add(rec["id"])
         out.append(rec)
-        if len(out) >= MAX_ITEMS: break
+        if len(out) >= MAX_ITEMS:
+            break
+    print(f"DEBUG twitter: {len(out)} items kept after filter")
     return out
