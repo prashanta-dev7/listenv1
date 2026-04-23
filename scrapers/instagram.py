@@ -15,7 +15,7 @@ def _client():
 
 from datetime import datetime, timezone, timedelta
 
-LOOKBACK_DAYS = 7  # widen from 24h until steady-state dataset accumulates
+LOOKBACK_DAYS = 1  # widen from 24h until steady-state dataset accumulates
 
 def _recent_post_urls(client, profile_url, limit=20):
     username = profile_url.rstrip("/").split("/")[-1]
