@@ -35,7 +35,7 @@ def _recent_post_urls(client, profile_url, limit=10):
 def _scrape_comments_for_posts(client, post_urls, handle):
     if not post_urls:
         return []
-   run_input = {
+        run_input = {
     "startUrls": [{"url": u} for u in post_urls],
     "resultsLimit": MAX_COMMENTS,
     "maxCommentsPerPost": 200,
