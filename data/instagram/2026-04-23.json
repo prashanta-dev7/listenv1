@@ -1698,5 +1698,22 @@
     "sentiment": "neutral",
     "topic_predefined": null,
     "topic_auto": "request link"
+  },
+  {
+    "id": "ig_18123070189527507",
+    "platform": "instagram",
+    "handle": "@azafashions",
+    "post_url": "https://www.instagram.com/p/DXd2WHuDFOC/",
+    "parent_comment_id": null,
+    "author": "meena_ji1506",
+    "text": "Lovely",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-04-23T14:24:37Z",
+    "posted_at": "2026-04-23T12:41:36.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "beautiful design"
   }
 ]

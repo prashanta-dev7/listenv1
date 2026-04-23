@@ -49,5 +49,22 @@
     "sentiment": "positive",
     "topic_predefined": "style",
     "topic_auto": "wow reaction"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNDEyOTQ2NTM0MTkzOTg5Xzk5MDA2Nzk4NjcwNTk1NA==",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1507505204359235/",
+    "parent_comment_id": null,
+    "author": "Nozrul Islam",
+    "text": "Khub sundor lagche video",
+    "language": "non-english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-04-23T14:25:42Z",
+    "posted_at": "2026-04-23T09:33:47.000Z",
+    "sentiment": null,
+    "topic_predefined": null,
+    "topic_auto": null
   }
 ]

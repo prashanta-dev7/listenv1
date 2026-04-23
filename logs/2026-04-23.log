@@ -109,3 +109,16 @@ UnboundLocalError: cannot access local variable 'run_input' where it is not asso
 [2026-04-23T14:01:14.554334+00:00] reddit: scraped 0 raw items
 [2026-04-23T14:01:14.554494+00:00] reddit: 0 items after filter
 [2026-04-23T14:01:14.556995+00:00] aggregate: index.json written
+[2026-04-23T14:23:33.511256+00:00] instagram: scraping https://www.instagram.com/azafashions/ via Apify
+[2026-04-23T14:24:37.815130+00:00] instagram: scraped 1 items
+[2026-04-23T14:24:37.816084+00:00] instagram: classifying 1 new/changed items
+[2026-04-23T14:24:39.455568+00:00] facebook: scraping https://www.facebook.com/AzaFashions/ via Apify
+[2026-04-23T14:25:42.953533+00:00] facebook: scraped 1 items
+[2026-04-23T14:25:42.953873+00:00] facebook: classifying 1 new/changed items
+[2026-04-23T14:25:45.083141+00:00] reddit: scraping with terms=['Aza Fashions', 'AzaFashions', 'azafashions.com'] via Apify
+[2026-04-23T14:26:41.011340+00:00] reddit: scraped 0 raw items
+[2026-04-23T14:26:41.011466+00:00] reddit: 0 items after filter
+[2026-04-23T14:26:41.011876+00:00] tiktok: scraping https://www.tiktok.com/@azafashions via Apify
+[2026-04-23T14:27:51.729003+00:00] tiktok: scraped 17 items
+[2026-04-23T14:27:51.729252+00:00] tiktok: classifying 17 new/changed items
+[2026-04-23T14:28:07.073779+00:00] aggregate: index.json written

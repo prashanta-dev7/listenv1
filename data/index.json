@@ -1,9 +1,10 @@
 {
-  "generated_at": "2026-04-23T14:01:14Z",
+  "generated_at": "2026-04-23T14:28:07Z",
   "platforms": [
     "instagram",
     "facebook",
-    "reddit"
+    "reddit",
+    "tiktok"
   ],
   "days_by_platform": {
     "instagram": [
@@ -16,6 +17,9 @@
     ],
     "reddit": [
       "2026-04-23"
+    ],
+    "tiktok": [
+      "2026-04-23"
     ]
   },
   "volume_by_day": [
@@ -23,19 +27,21 @@
       "date": "2026-04-22",
       "instagram": 23,
       "facebook": 2,
-      "reddit": 0
+      "reddit": 0,
+      "tiktok": 0
     },
     {
       "date": "2026-04-23",
-      "instagram": 100,
-      "facebook": 3,
-      "reddit": 5
+      "instagram": 101,
+      "facebook": 4,
+      "reddit": 5,
+      "tiktok": 17
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
       "neutral": 41,
-      "positive": 69
+      "positive": 70
     },
     "facebook": {
       "positive": 5
@@ -43,17 +49,21 @@
     "reddit": {
       "neutral": 3,
       "negative": 2
+    },
+    "tiktok": {
+      "neutral": 5,
+      "positive": 2
     }
   },
   "predefined_topics": {
-    "pricing": 25,
-    "style": 40,
+    "pricing": 27,
+    "style": 43,
     "authenticity": 1
   },
   "auto_themes": [
     {
       "theme": "price inquiry",
-      "count": 15,
+      "count": 17,
       "example": "Pp"
     },
     {
@@ -130,6 +140,11 @@
       "theme": "request link",
       "count": 2,
       "example": "Link"
+    },
+    {
+      "theme": "beautiful design",
+      "count": 2,
+      "example": "Beautiful"
     },
     {
       "theme": "sublime beauty",
@@ -295,18 +310,13 @@
       "theme": "price, designer inquiry",
       "count": 1,
       "example": "Pp which designer"
-    },
-    {
-      "theme": "amazing style",
-      "count": 1,
-      "example": "Wow...amazing"
     }
   ],
   "top_commenters": [
     {
       "author": "meena_ji1506",
       "platform": "instagram",
-      "count": 12
+      "count": 13
     },
     {
       "author": "foram_mehta143",
@@ -381,6 +391,11 @@
     {
       "author": "AutoModerator",
       "platform": "reddit",
+      "count": 2
+    },
+    {
+      "author": "azafashions",
+      "platform": "tiktok",
       "count": 2
     },
     {
@@ -545,11 +560,6 @@
     },
     {
       "author": "yashas_raghavendra",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "prasadbenegal",
       "platform": "instagram",
       "count": 1
     }
