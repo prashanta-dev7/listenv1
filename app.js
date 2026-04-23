@@ -4,7 +4,7 @@ const PLATFORM_COLORS = {
   reddit:    { border: '#FF4500', bg: '#FF450033' },
 };
 
-const DATA_BASE = 'data'; // if dashboard lives in /dashboard. Change to 'data' if served at repo root.
+const DATA_BASE = 'data';
 
 const state = {
   index: null,
@@ -25,9 +25,14 @@ function ymd(d) { return d.toISOString().slice(0, 10); }
 function applyPreset(val) {
   const today = new Date();
   let from;
-  if (val === 'all') { from = new Date('2000-01-01'); }
-  else { from = new Date(today); from.setDate(from.getDate() - parseInt(val, 10)); }
-  state.from = ymd(from); state.to = ymd(today);
+  if (val === 'all') {
+    from = new Date('2000-01-01');
+  } else {
+    from = new Date(today);
+    from.setDate(from.getDate() - parseInt(val, 10));
+  }
+  state.from = ymd(from);
+  state.to = ymd(today);
 }
 
 function inRange(day) { return day >= state.from && day <= state.to; }
@@ -58,6 +63,12 @@ async function loadRange() {
   return out;
 }
 
+function escapeHtml(s) {
+  return String(s ?? '').replace(/[&<>"']/g, m => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[m]));
+}
+
 function drawVolume() {
   const rows = state.index.volume_by_day.filter(r => inRange(r.date));
   const labels = rows.map(r => r.date);
@@ -66,22 +77,28 @@ function drawVolume() {
     data: rows.map(r => r[p] || 0),
     borderColor: PLATFORM_COLORS[p]?.border || '#666',
     backgroundColor: PLATFORM_COLORS[p]?.bg || '#66666633',
-    fill: true, tension: 0.2,
+    fill: true,
+    tension: 0.2,
   }));
   state.charts.volume?.destroy();
   state.charts.volume = new Chart(document.getElementById('volumeChart'), {
-    type: 'line', data: { labels, datasets },
-    options: { responsive: true, interaction: { mode: 'index', intersect: false },
-               scales: { y: { stacked: true, beginAtZero: true }, x: { stacked: true } } }
+    type: 'line',
+    data: { labels, datasets },
+    options: {
+      responsive: true,
+      interaction: { mode: 'index', intersect: false },
+      scales: { y: { stacked: true, beginAtZero: true }, x: { stacked: true } }
+    }
   });
 }
 
 function drawSentiment() {
-  const sbp = state.index.sentiment_by_platform;
+  const sbp = state.index.sentiment_by_platform || {};
   const classes = ['positive', 'neutral', 'negative'];
   const colors = { positive: '#2e9e5f', neutral: '#888', negative: '#d64545' };
   const datasets = classes.map(c => ({
-    label: c, backgroundColor: colors[c],
+    label: c,
+    backgroundColor: colors[c],
     data: state.index.platforms.map(p => (sbp[p] || {})[c] || 0),
   }));
   state.charts.sent?.destroy();
@@ -104,6 +121,34 @@ function drawTopics() {
   });
 }
 
+function fillAutoThemes() {
+  const tb = document.querySelector('#autoThemes tbody');
+  if (!tb) return;
+  tb.innerHTML = '';
+  (state.index.auto_themes || []).slice(0, 25).forEach(t => {
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td>' + escapeHtml(t.theme) + '</td>' +
+      '<td>' + t.count + '</td>' +
+      '<td>' + escapeHtml((t.example || '').slice(0, 140)) + '</td>';
+    tb.appendChild(tr);
+  });
+}
+
+function fillCommenters() {
+  const tb = document.querySelector('#topCommenters tbody');
+  if (!tb) return;
+  tb.innerHTML = '';
+  (state.index.top_commenters || []).slice(0, 25).forEach(c => {
+    const tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td>' + escapeHtml(c.author) + '</td>' +
+      '<td>' + escapeHtml(c.platform) + '</td>' +
+      '<td>' + c.count + '</td>';
+    tb.appendChild(tr);
+  });
+}
+
 function fillSubredditPanel() {
   const tb = document.querySelector('#subredditPanel tbody');
   if (!tb) return;
@@ -111,17 +156,16 @@ function fillSubredditPanel() {
   const rows = (state.index && state.index.reddit_subreddits) || [];
   if (rows.length === 0) {
     tb.innerHTML = '<tr><td colspan="3" class="muted">No Reddit mentions yet</td></tr>';
-    return;
+  } else {
+    rows.forEach(r => {
+      const tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td>r/' + escapeHtml(r.subreddit) + '</td>' +
+        '<td>' + r.count + '</td>' +
+        '<td>' + escapeHtml(r.dominant_sentiment || '—') + '</td>';
+      tb.appendChild(tr);
+    });
   }
-  rows.forEach(r => {
-    const tr = document.createElement('tr');
-    tr.innerHTML =
-      '<td>r/' + escapeHtml(r.subreddit) + '</td>' +
-      '<td>' + r.count + '</td>' +
-      '<td>' + (r.dominant_sentiment || '—') + '</td>';
-    tb.appendChild(tr);
-  });
-
   const banner = document.getElementById('redditUncertain');
   if (banner) {
     const n = (state.index && state.index.reddit_uncertain_count) || 0;
@@ -131,107 +175,62 @@ function fillSubredditPanel() {
   }
 }
 
-function fillAutoThemes() {
-  const tb = document.querySelector('#autoThemes tbody');
-  tb.innerHTML = '';
-  (state.index.auto_themes || []).forEach(t => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${escapeHtml(t.theme)}</td><td>${t.count}</td><td>${escapeHtml(t.example)}</td>`;
-    tb.appendChild(tr);
-  });
-}
-
-function fillTopCommenters() {
-  const tb = document.querySelector('#topCommenters tbody');
-  tb.innerHTML = '';
-  (state.index.top_commenters || []).forEach(c => {
-  const tr = document.createElement('tr');
-  const platformLabel = c.platform === 'reddit' ? 'reddit' : c.platform;
-  tr.innerHTML = `<td>${escapeHtml(c.author)}</td><td>${platformLabel}</td><td>${c.count}</td>`;
-  tb.appendChild(tr);
-});
-
-function escapeHtml(s) {
-  return String(s || '').replace(/[&<>"']/g, m => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  }[m]));
-}
-
-async function fillCommentTables(all) {
-  const neg = all.filter(x => x.sentiment === 'negative')
-                 .sort((a,b) => b._day.localeCompare(a._day)).slice(0, 50);
-  const pos = all.filter(x => x.sentiment === 'positive')
-                 .sort((a,b) => b._day.localeCompare(a._day)).slice(0, 50);
-  const render = (sel, rows) => {
-    const tb = document.querySelector(sel + ' tbody');
-    tb.innerHTML = '';
-    rows.forEach(r => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${r._day}</td>
-        <td>${r.platform}</td>
-        <td>${escapeHtml(r.text)}</td>
-        <td><a href="${r.post_url}" target="_blank" rel="noopener">open</a></td>`;
-      tb.appendChild(tr);
+async function fillTopComments() {
+  const items = await loadRange();
+  const english = items.filter(i => i.language === 'english' && i.sentiment);
+  const renderList = (selector, list) => {
+    const ul = document.querySelector(selector);
+    if (!ul) return;
+    ul.innerHTML = '';
+    list.slice(0, 10).forEach(it => {
+      const li = document.createElement('li');
+      const sub = it.platform === 'reddit' && it.reddit_subreddit
+        ? ' (r/' + escapeHtml(it.reddit_subreddit) + ')' : '';
+      const link = it.post_url
+        ? '<a href="' + it.post_url + '" target="_blank" rel="noopener">link</a>' : '';
+      li.innerHTML =
+        '<strong>' + escapeHtml(it.platform) + sub + '</strong> — ' +
+        escapeHtml((it.text || '').slice(0, 240)) + ' ' + link;
+      ul.appendChild(li);
     });
   };
-  render('#topNegative', neg);
-  render('#topPositive', pos);
-}
-
-function drawWordClouds(all) {
-  const stop = new Set(('the a an and or but if then is are was were be been being of to in on for with at by from this that these those it its i you we they he she me my your our their not no yes so very really just').split(' '));
-  const buckets = { positive: [], negative: [], neutral: [] };
-  all.forEach(x => {
-    if (x.language !== 'english' || !x.sentiment) return;
-    const words = (x.text || '').toLowerCase().replace(/[^a-z\s']/g, ' ').split(/\s+/)
-      .filter(w => w.length > 2 && !stop.has(w));
-    words.forEach(w => buckets[x.sentiment] && buckets[x.sentiment].push(w));
-  });
-  const render = (id, words) => {
-    const freq = {};
-    words.forEach(w => freq[w] = (freq[w] || 0) + 1);
-    const list = Object.entries(freq).sort((a,b) => b-a).slice(0, 120);[1]
-    WordCloud(document.getElementById(id), {
-      list, gridSize: 6, weightFactor: (s) => 6 + s * 2, rotateRatio: 0.2
-    });
-  };
-  render('wcPositive', buckets.positive);
-  render('wcNegative', buckets.negative);
-  render('wcNeutral',  buckets.neutral);
+  renderList('#topPositive', english.filter(i => i.sentiment === 'positive')
+    .sort((a, b) => (b.like_count || 0) - (a.like_count || 0)));
+  renderList('#topNegative', english.filter(i => i.sentiment === 'negative')
+    .sort((a, b) => (b.like_count || 0) - (a.like_count || 0)));
 }
 
 async function redraw() {
-  drawVolume(); drawSentiment(); drawTopics();
-  fillAutoThemes(); fillTopCommenters();
-  const all = await loadRange();
-  await fillCommentTables(all);
-  drawWordClouds(all);
+  drawVolume();
+  drawSentiment();
+  drawTopics();
+  fillAutoThemes();
+  fillCommenters();
+  fillSubredditPanel();
+  await fillTopComments();
 }
 
 async function init() {
-  state.index = await fetchJSON(`${DATA_BASE}/index.json`);
-  document.getElementById('generatedAt').textContent = 'Updated ' + state.index.generated_at;
-  applyPreset('30');
-
-  const preset = document.getElementById('rangePreset');
-  const custom = document.getElementById('customRange');
-  preset.addEventListener('change', async () => {
-    if (preset.value === 'custom') { custom.hidden = false; return; }
-    custom.hidden = true;
-    applyPreset(preset.value);
+  try {
+    state.index = await fetchJSON(`${DATA_BASE}/index.json`);
+    applyPreset('30');
+    const picker = document.getElementById('rangePreset');
+    if (picker) {
+      picker.addEventListener('change', e => {
+        applyPreset(e.target.value);
+        redraw();
+      });
+    }
     await redraw();
-  });
-  document.getElementById('applyRange').addEventListener('click', async () => {
-    state.from = document.getElementById('fromDate').value;
-    state.to   = document.getElementById('toDate').value;
-    if (state.from && state.to) await redraw();
-  });
-
-  await redraw();
+  } catch (err) {
+    const root = document.getElementById('error') || document.body;
+    root.insertAdjacentHTML(
+      'beforeend',
+      '<div style="padding:16px;color:#b00">Failed to load data: ' +
+        escapeHtml(err.message) +
+        '. If this is a brand-new repo, wait for the first daily run to finish.</div>'
+    );
+  }
 }
 
-init().catch(err => {
-  document.body.insertAdjacentHTML('afterbegin',
-    `<pre style="color:#c00;padding:16px">Failed to load data: ${err.message}. If this is a brand-new repo, wait for the first daily run to finish.</pre>`);
-});
+document.addEventListener('DOMContentLoaded', init);
