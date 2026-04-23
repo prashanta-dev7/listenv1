@@ -13,12 +13,6 @@ LOOKBACK_DAYS = 7            # initial wider window; tighten to 1 later
 def _client():
     return ApifyClient(os.environ["APIFY_TOKEN"])
 
-
-def _build_searches(terms):
-    """trudax/reddit-scraper accepts searchQueries for Reddit-wide search."""
-    return [{"query": t, "sort": "new"} for t in terms]
-
-
 def _stable_id(item):
     """Produce a reddit_tX_id style stable ID per spec §2.6."""
     kind = None
@@ -105,10 +99,14 @@ def run_sync(brand_terms):
 
     client = _client()
     run_input = {
-        "searches": _build_searches(all_terms),
+        "searches": all_terms,            # flat array of strings (not objects)
+        "type": "posts",                  # lite actor wants type: posts|comments|communities
+        "sort": "new",
         "maxItems": MAX_ITEMS,
+        "maxPostCount": MAX_ITEMS,
         "maxComments": 30,
         "maxCommunitiesCount": 0,
+        "maxUserCount": 0,
         "scrollTimeout": 40,
         "proxy": {"useApifyProxy": True},
     }
