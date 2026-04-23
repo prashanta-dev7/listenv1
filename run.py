@@ -2,7 +2,7 @@ import os, json, traceback
 from pathlib import Path
 from datetime import datetime, timezone
 
-from scrapers import instagram, facebook, reddit
+from scrapers import instagram, facebook, reddit, tiktok
 from pipeline import classify, filter as reddit_filter, store, aggregate
 
 LOGS = Path("logs")
