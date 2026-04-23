@@ -2,7 +2,7 @@
   "strict": ["Aza Fashions", "AzaFashions", "azafashions.com"],
   "ambiguous": ["Aza"],
   "platform_extras": {
-    "twitter": ["#AzaFashions", "@Aza_Fashions"],
+    "twitter": [],
     "quora": [],
     "tiktok": []
   }
