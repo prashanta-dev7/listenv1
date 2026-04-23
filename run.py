@@ -50,33 +50,9 @@ def run_platform(name, runner, url_or_terms, buckets, is_reddit=False):
     except Exception as e:
         log(f"{name}: FAILED — {e}\n{traceback.format_exc()}")
 
-from scrapers import twitter, quora, tiktok
+from scrapers import tiktok   # plus existing imports
 
 # ... existing IG, FB, Reddit calls ...
-
-try:
-    log("twitter: scraping via Apify")
-    items = twitter.run_sync(handles["twitter"], terms)
-    log(f"twitter: scraped {len(items)} items")
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    prev_by_id = {it["id"]: it for it in store.load_day("twitter", today)}
-    needs_class = [it for it in items if prev_by_id.get(it["id"], {}).get("text") != it["text"]]
-    classify.classify(needs_class, buckets)
-    store.merge("twitter", items)
-except Exception as e:
-    log(f"twitter: FAILED — {e}")
-
-try:
-    log("quora: scraping via Apify")
-    items = quora.run_sync(terms)
-    log(f"quora: scraped {len(items)} items")
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    prev_by_id = {it["id"]: it for it in store.load_day("quora", today)}
-    needs_class = [it for it in items if prev_by_id.get(it["id"], {}).get("text") != it["text"]]
-    classify.classify(needs_class, buckets)
-    store.merge("quora", items)
-except Exception as e:
-    log(f"quora: FAILED — {e}")
 
 try:
     log("tiktok: scraping via Apify")
@@ -90,6 +66,13 @@ try:
 except Exception as e:
     log(f"tiktok: FAILED — {e}")
 
+# Twitter + Quora wiring parked for v2.1 — leave commented out for easy re-enable:
+# try:
+#     log("twitter: scraping via Apify")
+#     items = twitter.run_sync(handles["twitter"], terms)
+#     ...
+# except Exception as e:
+#     log(f"twitter: FAILED — {e}")
 
 def main():
     if not os.environ.get("APIFY_TOKEN"):
