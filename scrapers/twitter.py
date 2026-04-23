@@ -74,7 +74,7 @@ all_terms = (
     + [f"from:{handle}"]   # X search operator for "tweets from this account"
 )
 
-    run = client.actor(TWITTER_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
+run = client.actor(TWITTER_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
     if not run or not run.get("defaultDatasetId"):
         print("DEBUG twitter: actor returned no dataset")
         return []
