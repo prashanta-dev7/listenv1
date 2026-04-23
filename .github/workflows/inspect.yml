@@ -1,0 +1,30 @@
+name: Inspect Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date to inspect (YYYY-MM-DD)"
+        required: true
+        default: "2026-04-23"
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Language mix (Instagram)
+        run: |
+          jq '[.[] | .language] | group_by(.) | map({key: .[0], count: length})' \
+            data/instagram/${{ inputs.date }}.json
+
+      - name: Sentiment mix (Instagram)
+        run: |
+          jq '[.[] | .sentiment] | group_by(.) | map({key: .[0], count: length})' \
+            data/instagram/${{ inputs.date }}.json
+
+      - name: Grep for likely-negative keywords
+        run: |
+          jq -r '.[] | select(.text | test("refund|cancel|worst|fraud|fake|cheat|waste|damaged|return|poor|disappointed|rude|scam|missing|wrong"; "i")) | {id, sentiment, text}' \
+            data/instagram/${{ inputs.date }}.json || echo "No hits."
