@@ -6,7 +6,8 @@ FB_COMMENT_ACTOR = "apify/facebook-comments-scraper"
 FB_POST_ACTOR    = "apify/facebook-posts-scraper"
 
 TIMEOUT_SECS = 600
-MAX_COMMENTS = 1500
+MAX_COMMENTS = 500
+LOOKBACK_DAYS = 1
 
 
 def _client():
