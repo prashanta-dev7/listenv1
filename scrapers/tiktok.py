@@ -51,11 +51,9 @@ def _recent_video_urls(client, handle, limit=MAX_VIDEOS):
     }
     run = client.actor(TIKTOK_PROFILE_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
     if not run or not run.get("defaultDatasetId"):
-        print("DEBUG tiktok: profile actor returned no dataset")
         return []
 
     items = list(client.dataset(run["defaultDatasetId"]).iterate_items())
-    print(f"DEBUG tiktok: profile scraper returned {len(items)} raw videos")
     if items:
         print(f"DEBUG tiktok: first video createTime={items[0].get('createTimeISO') or items[0].get('createTime')}")
 
@@ -70,7 +68,7 @@ def _recent_video_urls(client, handle, limit=MAX_VIDEOS):
             posted = None
         if url and (posted is None or posted >= cutoff):
             urls.append(url)
-    print(f"DEBUG tiktok: {len(urls)} videos passed lookback filter")
+    
     return urls[:limit]
 
 
