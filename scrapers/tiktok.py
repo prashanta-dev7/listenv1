@@ -10,15 +10,19 @@ MAX_VIDEOS = 20
 MAX_COMMENTS = 500
 LOOKBACK_DAYS = 30
 
+
 def _client():
     return ApifyClient(os.environ["APIFY_TOKEN"])
+
 
 def _stable_id(prefix, native):
     return f"tiktok_{prefix}_{native}"
 
+
 def _to_comment_record(c, video_url, handle):
     text = (c.get("text") or "").strip()
-    if not text: return None
+    if not text:
+        return None
     cid = c.get("cid") or c.get("id") or ""
     return {
         "id": _stable_id("c", cid),
@@ -36,19 +40,28 @@ def _to_comment_record(c, video_url, handle):
         "tiktok_item_type": "comment",
     }
 
+
 def _recent_video_urls(client, handle, limit=MAX_VIDEOS):
-    run_input = { ... }   # unchanged
+    run_input = {
+        "profiles": [handle],
+        "resultsPerPage": limit,
+        "shouldDownloadVideos": False,
+        "shouldDownloadCovers": False,
+        "proxyCountryCode": "None",
+    }
     run = client.actor(TIKTOK_PROFILE_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
     if not run or not run.get("defaultDatasetId"):
         print("DEBUG tiktok: profile actor returned no dataset")
         return []
+
     items = list(client.dataset(run["defaultDatasetId"]).iterate_items())
     print(f"DEBUG tiktok: profile scraper returned {len(items)} raw videos")
     if items:
-    print(f"DEBUG tiktok: first video createTime={items[0].get('createTimeISO') or items[0].get('createTime')}")
+        print(f"DEBUG tiktok: first video createTime={items[0].get('createTimeISO') or items[0].get('createTime')}")
+
     cutoff = datetime.now(timezone.utc) - timedelta(days=LOOKBACK_DAYS)
     urls = []
-    for v in client.dataset(run["defaultDatasetId"]).iterate_items():
+    for v in items:
         url = v.get("webVideoUrl") or v.get("url")
         ts = v.get("createTimeISO") or v.get("createTime")
         try:
@@ -57,27 +70,37 @@ def _recent_video_urls(client, handle, limit=MAX_VIDEOS):
             posted = None
         if url and (posted is None or posted >= cutoff):
             urls.append(url)
+    print(f"DEBUG tiktok: {len(urls)} videos passed lookback filter")
     return urls[:limit]
+
 
 def run_sync(handle):
     client = _client()
     video_urls = _recent_video_urls(client, handle)
-    if not video_urls: return []
+    if not video_urls:
+        return []
+
     run_input = {
         "postURLs": video_urls,
         "commentsPerPost": 200,
         "maxRepliesPerComment": 10,
     }
     run = client.actor(TIKTOK_COMMENT_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
-    if not run or not run.get("defaultDatasetId"): return []
+    if not run or not run.get("defaultDatasetId"):
+        print("DEBUG tiktok: comment actor returned no dataset")
+        return []
 
     seen, out = set(), []
     for item in client.dataset(run["defaultDatasetId"]).iterate_items():
         vurl = item.get("videoWebUrl") or (video_urls[0] if video_urls else "")
         rec = _to_comment_record(item, vurl, handle)
-        if not rec: continue
-        if rec["id"] in seen: continue
+        if not rec:
+            continue
+        if rec["id"] in seen:
+            continue
         seen.add(rec["id"])
         out.append(rec)
-        if len(out) >= MAX_COMMENTS: break
+        if len(out) >= MAX_COMMENTS:
+            break
+    print(f"DEBUG tiktok: {len(out)} comments kept after dedup")
     return out
