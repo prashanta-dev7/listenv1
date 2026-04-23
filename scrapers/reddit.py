@@ -7,7 +7,7 @@ from .common import now_iso
 REDDIT_ACTOR = "trudax/reddit-scraper-lite"
 TIMEOUT_SECS = 600
 MAX_ITEMS = 200              # Section 12 hard daily cap
-LOOKBACK_DAYS = 7            # initial wider window; tighten to 1 later
+LOOKBACK_DAYS = 30            # initial wider window; tighten to 1 later
 
 
 def _client():
