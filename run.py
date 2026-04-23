@@ -72,7 +72,7 @@ def main():
     run_platform("instagram", instagram.run_sync, handles["instagram"], buckets)
     run_platform("facebook",  facebook.run_sync,  handles["facebook"],  buckets)
     run_platform("reddit",    reddit.run_sync,    terms,                buckets, is_reddit=True)
-    run_platform(tiktok.run_sync, "azafashions")
+    run_platform("tiktok", tiktok.run_sync, handles["tiktok"], buckets)
 
     try:
         aggregate.build()
