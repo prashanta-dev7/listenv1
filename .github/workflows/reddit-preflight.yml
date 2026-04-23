@@ -1,0 +1,39 @@
+name: Reddit Preflight
+
+on:
+  workflow_dispatch:
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11', cache: 'pip' }
+      - run: pip install -r requirements.txt
+
+      - name: Run Reddit scraper only
+        env:
+          APIFY_TOKEN:    ${{ secrets.APIFY_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          from scrapers import reddit
+          from pipeline import filter as rf
+          terms = json.loads(pathlib.Path("config/brand-terms.json").read_text())
+          items = reddit.run_sync(terms)
+          items = rf.filter_ambiguous(items, log_dir="logs")
+          pathlib.Path("preflight-reddit.json").write_text(
+              json.dumps(items, ensure_ascii=False, indent=2)
+          )
+          print(f"Scraped+filtered {len(items)} Reddit items")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reddit-preflight
+          path: |
+            preflight-reddit.json
+            logs/
+          retention-days: 7
