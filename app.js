@@ -106,15 +106,29 @@ function drawTopics() {
 
 function fillSubredditPanel() {
   const tb = document.querySelector('#subredditPanel tbody');
+  if (!tb) return;
   tb.innerHTML = '';
-  (state.index.reddit_subreddits || []).forEach(r => {
+  const rows = (state.index && state.index.reddit_subreddits) || [];
+  if (rows.length === 0) {
+    tb.innerHTML = '<tr><td colspan="3" class="muted">No Reddit mentions yet</td></tr>';
+    return;
+  }
+  rows.forEach(r => {
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td>r/${escapeHtml(r.subreddit)}</td><td>${r.count}</td><td>${r.dominant_sentiment || '—'}</td>`;
+    tr.innerHTML =
+      '<td>r/' + escapeHtml(r.subreddit) + '</td>' +
+      '<td>' + r.count + '</td>' +
+      '<td>' + (r.dominant_sentiment || '—') + '</td>';
     tb.appendChild(tr);
   });
+
   const banner = document.getElementById('redditUncertain');
-  const n = state.index.reddit_uncertain_count || 0;
-  banner.textContent = n ? `⚠ ${n} Reddit match(es) flagged as uncertain by the filter — review logs/.` : '';
+  if (banner) {
+    const n = (state.index && state.index.reddit_uncertain_count) || 0;
+    banner.textContent = n
+      ? '⚠ ' + n + ' Reddit match(es) flagged as uncertain by the filter.'
+      : '';
+  }
 }
 
 function fillAutoThemes() {
