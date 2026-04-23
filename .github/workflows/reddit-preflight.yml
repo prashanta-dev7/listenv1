@@ -18,10 +18,44 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           python - <<'PY'
-          import json, pathlib
+          import json, pathlib, os
+          from apify_client import ApifyClient
+
+          client = ApifyClient(os.environ["APIFY_TOKEN"])
+          terms = json.loads(pathlib.Path("config/brand-terms.json").read_text())
+          all_terms = terms["strict"] + terms["ambiguous"]
+
+          run_input = {
+              "searches": all_terms,
+              "type": "posts",
+              "sort": "new",
+              "maxItems": 50,
+              "maxPostCount": 50,
+              "maxComments": 30,
+              "maxCommunitiesCount": 0,
+              "maxUserCount": 0,
+              "scrollTimeout": 60,
+              "proxy": {
+                  "useApifyProxy": True,
+                  "apifyProxyGroups": ["RESIDENTIAL"],
+                  "apifyProxyCountry": "US",
+              },
+          }
+          run = client.actor("trudax/reddit-scraper-lite").call(
+              run_input=run_input, timeout_secs=900
+          )
+          raw = list(client.dataset(run["defaultDatasetId"]).iterate_items())
+          pathlib.Path("preflight-raw.json").write_text(
+              json.dumps(raw, ensure_ascii=False, indent=2)[:200_000]
+          )
+          print(f"Raw dataset items: {len(raw)}")
+          if raw:
+              print("First item keys:", sorted(raw[0].keys()))
+              print("First item sample:", json.dumps(raw[0], ensure_ascii=False)[:1500])
+
+          # Now run through our pipeline
           from scrapers import reddit
           from pipeline import filter as rf
-          terms = json.loads(pathlib.Path("config/brand-terms.json").read_text())
           items = reddit.run_sync(terms)
           items = rf.filter_ambiguous(items, log_dir="logs")
           pathlib.Path("preflight-reddit.json").write_text(
@@ -31,9 +65,11 @@ jobs:
           PY
 
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: reddit-preflight
           path: |
+            preflight-raw.json
             preflight-reddit.json
             logs/
           retention-days: 7
