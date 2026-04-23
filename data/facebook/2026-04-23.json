@@ -1,0 +1,53 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNDExOTk2MzMwOTU1Njc2XzI0Nzk5ODYwMTU4MjI4NzY=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1852636155421593/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Gorgeous",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-04-23T04:14:00Z",
+    "posted_at": "2026-04-22T09:07:53.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "gorgeous style"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNDEyMTcwMjY3NjA0OTQ5XzI2MzU1NDI4OTk0MTEzNzUw",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1688698372140760/",
+    "parent_comment_id": null,
+    "author": "Gursharn Sekhon",
+    "text": "Sublime beauty..\nGod bless",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-04-23T04:14:00Z",
+    "posted_at": "2026-04-22T10:47:50.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "sublime beauty"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNDEyMTcwMjY3NjA0OTQ5XzIwNDMzOTcwODMyNTQyNDM=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1688698372140760/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Wow",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-04-23T04:14:00Z",
+    "posted_at": "2026-04-22T22:14:43.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "wow reaction"
+  }
+]

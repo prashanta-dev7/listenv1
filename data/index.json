@@ -1,15 +1,17 @@
 {
-  "generated_at": "2026-04-22T11:50:58Z",
+  "generated_at": "2026-04-23T04:14:03Z",
   "platforms": [
     "instagram",
     "facebook"
   ],
   "days_by_platform": {
     "instagram": [
-      "2026-04-22"
+      "2026-04-22",
+      "2026-04-23"
     ],
     "facebook": [
-      "2026-04-22"
+      "2026-04-22",
+      "2026-04-23"
     ]
   },
   "volume_by_day": [
@@ -17,20 +19,25 @@
       "date": "2026-04-22",
       "instagram": 23,
       "facebook": 2
+    },
+    {
+      "date": "2026-04-23",
+      "instagram": 9,
+      "facebook": 3
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 4,
-      "positive": 17
+      "neutral": 9,
+      "positive": 20
     },
     "facebook": {
-      "positive": 2
+      "positive": 5
     }
   },
   "predefined_topics": {
-    "pricing": 2,
-    "style": 3
+    "pricing": 5,
+    "style": 7
   },
   "auto_themes": [
     {
@@ -39,9 +46,29 @@
       "example": "💯"
     },
     {
+      "theme": "Price query",
+      "count": 3,
+      "example": "Pp"
+    },
+    {
       "theme": "price inquiry",
       "count": 2,
       "example": "Pp"
+    },
+    {
+      "theme": "General positive reaction",
+      "count": 2,
+      "example": "💯"
+    },
+    {
+      "theme": "gorgeous style",
+      "count": 2,
+      "example": "Gorgeous"
+    },
+    {
+      "theme": "sublime beauty",
+      "count": 2,
+      "example": "Sublime beauty..\nGod bless"
     },
     {
       "theme": "location inquiry",
@@ -64,51 +91,76 @@
       "example": "Wow...amazing"
     },
     {
-      "theme": "gorgeous style",
+      "theme": "Impressive design",
       "count": 1,
-      "example": "Gorgeous"
+      "example": "Mind blowing"
     },
     {
-      "theme": "sublime beauty",
+      "theme": "Request link",
       "count": 1,
-      "example": "Sublime beauty..\nGod bless"
+      "example": "Link"
+    },
+    {
+      "theme": "Store location query",
+      "count": 1,
+      "example": "Location"
+    },
+    {
+      "theme": "wow reaction",
+      "count": 1,
+      "example": "Wow"
     }
   ],
   "top_commenters": [
+    {
+      "author": "meena_ji1506",
+      "platform": "instagram",
+      "count": 3
+    },
+    {
+      "author": "Meena Shah",
+      "platform": "facebook",
+      "count": 3
+    },
+    {
+      "author": "meenatalwar",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
+      "author": "kapadiyadiyora",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
+      "author": "prafula_kabaria",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
+      "author": "dralisha14",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
+      "author": "riturajeshsodhi",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
+      "author": "starsandsaffron",
+      "platform": "instagram",
+      "count": 2
+    },
     {
       "author": "farhapakis",
       "platform": "instagram",
       "count": 2
     },
     {
-      "author": "meenatalwar",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "kapadiyadiyora",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "prafula_kabaria",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "dralisha14",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "riturajeshsodhi",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "starsandsaffron",
-      "platform": "instagram",
-      "count": 1
+      "author": "Gursharn Sekhon",
+      "platform": "facebook",
+      "count": 2
     },
     {
       "author": "shivaliseth_fashion",
@@ -176,23 +228,13 @@
       "count": 1
     },
     {
-      "author": "meena_ji1506",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
       "author": "viralyatri",
       "platform": "instagram",
       "count": 1
     },
     {
-      "author": "Meena Shah",
-      "platform": "facebook",
-      "count": 1
-    },
-    {
-      "author": "Gursharn Sekhon",
-      "platform": "facebook",
+      "author": "priti1111d",
+      "platform": "instagram",
       "count": 1
     }
   ]

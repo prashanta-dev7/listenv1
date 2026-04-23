@@ -1,0 +1,7 @@
+[2026-04-23T04:12:39.944487+00:00] instagram: scraping https://www.instagram.com/azafashions/ via Apify
+[2026-04-23T04:13:10.609909+00:00] instagram: scraped 9 items
+[2026-04-23T04:13:10.610186+00:00] instagram: classifying 9 new/changed items
+[2026-04-23T04:13:17.866518+00:00] facebook: scraping https://www.facebook.com/AzaFashions/ via Apify
+[2026-04-23T04:14:00.594455+00:00] facebook: scraped 3 items
+[2026-04-23T04:14:00.594743+00:00] facebook: classifying 3 new/changed items
+[2026-04-23T04:14:03.264277+00:00] aggregate: index.json written
