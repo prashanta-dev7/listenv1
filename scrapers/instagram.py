@@ -13,9 +13,11 @@ def _client():
     return ApifyClient(os.environ["APIFY_TOKEN"])
 
 
-def _recent_post_urls(client, profile_url, limit=12):
-    """Use the post scraper to list recent posts for the profile, then
-    filter to last 24h. Returns list of post URLs."""
+from datetime import datetime, timezone, timedelta
+
+LOOKBACK_DAYS = 7  # widen from 24h until steady-state dataset accumulates
+
+def _recent_post_urls(client, profile_url, limit=20):
     username = profile_url.rstrip("/").split("/")[-1]
     run_input = {
         "username": [username],
@@ -27,14 +29,19 @@ def _recent_post_urls(client, profile_url, limit=12):
     )
     if not run or not run.get("defaultDatasetId"):
         return []
+
+    cutoff = datetime.now(timezone.utc) - timedelta(days=LOOKBACK_DAYS)
     urls = []
     for item in client.dataset(run["defaultDatasetId"]).iterate_items():
         ts = item.get("timestamp") or item.get("taken_at") or ""
         url = item.get("url") or item.get("postUrl")
-        if url and within_last_24h(ts):
+        try:
+            posted = datetime.fromisoformat(str(ts).replace("Z", "+00:00"))
+        except Exception:
+            posted = None
+        if url and (posted is None or posted >= cutoff):
             urls.append(url)
     return urls[:limit]
-
 
 def _scrape_comments_for_posts(client, post_urls, handle):
     if not post_urls:
@@ -42,6 +49,9 @@ def _scrape_comments_for_posts(client, post_urls, handle):
     run_input = {
         "directUrls": post_urls,
         "resultsLimit": MAX_COMMENTS,
+         "resultsPerPage": 200, 
+        "isNewestComments": True,
+        "includeReplies": True,
     }
     run = client.actor(IG_COMMENT_ACTOR).call(
         run_input=run_input, timeout_secs=TIMEOUT_SECS
