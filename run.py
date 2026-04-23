@@ -54,18 +54,6 @@ from scrapers import tiktok   # plus existing imports
 
 # ... existing IG, FB, Reddit calls ...
 
-try:
-    log("tiktok: scraping via Apify")
-    items = tiktok.run_sync(handles["tiktok"])
-    log(f"tiktok: scraped {len(items)} items")
-    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-    prev_by_id = {it["id"]: it for it in store.load_day("tiktok", today)}
-    needs_class = [it for it in items if prev_by_id.get(it["id"], {}).get("text") != it["text"]]
-    classify.classify(needs_class, buckets)
-    store.merge("tiktok", items)
-except Exception as e:
-    log(f"tiktok: FAILED — {e}")
-
 # Twitter + Quora wiring parked for v2.1 — leave commented out for easy re-enable:
 # try:
 #     log("twitter: scraping via Apify")
@@ -84,6 +72,7 @@ def main():
     run_platform("instagram", instagram.run_sync, handles["instagram"], buckets)
     run_platform("facebook",  facebook.run_sync,  handles["facebook"],  buckets)
     run_platform("reddit",    reddit.run_sync,    terms,                buckets, is_reddit=True)
+    run_platform(tiktok.run_sync, "azafashions")
 
     try:
         aggregate.build()
