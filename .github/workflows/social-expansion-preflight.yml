@@ -1,0 +1,47 @@
+name: Social Expansion Preflight
+
+on: workflow_dispatch
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11', cache: 'pip' }
+      - run: pip install -r requirements.txt
+
+      - name: Run Twitter + Quora + TikTok scrapers only
+        env:
+          APIFY_TOKEN:    ${{ secrets.APIFY_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          from scrapers import twitter, quora, tiktok
+          handles = json.loads(pathlib.Path("config/handles.json").read_text())
+          terms   = json.loads(pathlib.Path("config/brand-terms.json").read_text())
+          results = {}
+          for name, fn, args in [
+              ("twitter", twitter.run_sync, (handles["twitter"], terms)),
+              ("quora",   quora.run_sync,   (terms,)),
+              ("tiktok",  tiktok.run_sync,  (handles["tiktok"],)),
+          ]:
+              try:
+                  items = fn(*args)
+                  results[name] = items
+                  print(f"{name}: {len(items)} items")
+              except Exception as e:
+                  print(f"{name}: FAILED — {e}")
+                  results[name] = {"error": str(e)}
+          pathlib.Path("preflight-expansion.json").write_text(
+              json.dumps(results, ensure_ascii=False, indent=2)
+          )
+          PY
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: expansion-preflight
+          path: preflight-expansion.json
+          retention-days: 7
