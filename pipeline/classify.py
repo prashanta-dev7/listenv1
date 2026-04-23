@@ -31,12 +31,17 @@ def _build_prompt(items, buckets):
     bucket_ids = [b["id"] for b in buckets]
 
     def _fmt(i, it):
-        extra = ""
-        if it.get("platform") == "reddit":
-            sub = it.get("reddit_subreddit") or "unknown"
-            kind = it.get("reddit_item_type") or "post"
-            extra = f" [reddit {kind} in r/{sub}]"
-        return f"{i}. {json.dumps(it['text'])}{extra}"
+    p = it.get("platform")
+    extra = ""
+    if p == "reddit":
+        extra = f" [reddit {it.get('reddit_item_type','post')} in r/{it.get('reddit_subreddit','')}]"
+    elif p == "twitter":
+        extra = f" [tweet{' (reply)' if it.get('twitter_is_reply') else ''}]"
+    elif p == "quora":
+        extra = f" [quora {it.get('quora_item_type','answer')}]"
+    elif p == "tiktok":
+        extra = f" [tiktok comment on @{it.get('handle','azafashions')}]"
+    return f"{i}. {json.dumps(it['text'])}{extra}"
 
     item_lines = "\n".join(_fmt(i, it) for i, it in enumerate(items))
     return f"""You are classifying social media comments for a fashion brand (Aza Fashions).
