@@ -8,7 +8,7 @@ TIKTOK_COMMENT_ACTOR = "clockworks/tiktok-comments-scraper"
 TIMEOUT_SECS = 900
 MAX_VIDEOS = 20
 MAX_COMMENTS = 500
-LOOKBACK_DAYS = 7
+LOOKBACK_DAYS = 30
 
 def _client():
     return ApifyClient(os.environ["APIFY_TOKEN"])
