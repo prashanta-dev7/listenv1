@@ -59,16 +59,19 @@ def run_sync(handle, brand_terms):
         f"https://x.com/{handle}",
         f"https://x.com/{handle}/with_replies",
     ]
-    run_input = {
-        "startUrls": start_urls,
-        "searchTerms": all_terms,
-        "maxItems": MAX_ITEMS,
-        "sort": "Latest",
-        "tweetLanguage": "en",
-        "includeSearchTerms": True,
-        "onlyImage": False,
-        "onlyVideo": False,
-    }
+   run_input = {
+    "searchTerms": all_terms,
+    "maxItems": MAX_ITEMS,
+    "sort": "Latest",
+    "tweetLanguage": "en",
+    "includeSearchTerms": True,
+}
+
+all_terms = (
+    brand_terms.get("strict", [])
+    + brand_terms.get("platform_extras", {}).get("twitter", [])
+    + [f"from:{handle}"]   # X search operator for "tweets from this account"
+)
 
     run = client.actor(TWITTER_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
     if not run or not run.get("defaultDatasetId"):
