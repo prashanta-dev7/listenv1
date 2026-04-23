@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-23T04:14:03Z",
+  "generated_at": "2026-04-23T07:26:07Z",
   "platforms": [
     "instagram",
     "facebook"
@@ -22,28 +22,49 @@
     },
     {
       "date": "2026-04-23",
-      "instagram": 9,
+      "instagram": 100,
       "facebook": 3
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 9,
-      "positive": 20
+      "neutral": 41,
+      "positive": 69
     },
     "facebook": {
       "positive": 5
     }
   },
   "predefined_topics": {
-    "pricing": 5,
-    "style": 7
+    "pricing": 25,
+    "style": 39,
+    "authenticity": 1
   },
   "auto_themes": [
+    {
+      "theme": "price inquiry",
+      "count": 15,
+      "example": "Pp"
+    },
     {
       "theme": "general appreciation",
       "count": 15,
       "example": "💯"
+    },
+    {
+      "theme": "Positive emoji reaction",
+      "count": 7,
+      "example": "😍😍😍"
+    },
+    {
+      "theme": "positive reaction",
+      "count": 5,
+      "example": "❤️❤️"
+    },
+    {
+      "theme": "product link request",
+      "count": 3,
+      "example": "Link"
     },
     {
       "theme": "Price query",
@@ -51,9 +72,19 @@
       "example": "Pp"
     },
     {
-      "theme": "price inquiry",
-      "count": 2,
+      "theme": "Ambiguous comment",
+      "count": 3,
       "example": "Pp"
+    },
+    {
+      "theme": "celebrity mention",
+      "count": 3,
+      "example": "Krithi shetty 😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍"
+    },
+    {
+      "theme": "gorgeous style",
+      "count": 3,
+      "example": "Gorgeous"
     },
     {
       "theme": "General positive reaction",
@@ -61,9 +92,34 @@
       "example": "💯"
     },
     {
-      "theme": "gorgeous style",
+      "theme": "Price inquiry",
       "count": 2,
-      "example": "Gorgeous"
+      "example": "Hello.. price please?"
+    },
+    {
+      "theme": "smart look",
+      "count": 2,
+      "example": "Smart"
+    },
+    {
+      "theme": "personal compliment",
+      "count": 2,
+      "example": "@krithi.shetty_official krithi wow you hottttt 🔥🔥🔥🔥🔥🔥😍😍"
+    },
+    {
+      "theme": "wow style",
+      "count": 2,
+      "example": "Wowwww ❤️🔥"
+    },
+    {
+      "theme": "excited reaction",
+      "count": 2,
+      "example": "Omgggg❤️🔥❤️🔥❤️"
+    },
+    {
+      "theme": "request link",
+      "count": 2,
+      "example": "Link"
     },
     {
       "theme": "sublime beauty",
@@ -74,11 +130,6 @@
       "theme": "location inquiry",
       "count": 1,
       "example": "Location"
-    },
-    {
-      "theme": "product link request",
-      "count": 1,
-      "example": "Link"
     },
     {
       "theme": "lovely style",
@@ -106,14 +157,149 @@
       "example": "Location"
     },
     {
-      "theme": "wow reaction",
+      "theme": "Gorgeous red style",
+      "count": 1,
+      "example": "Gorgeous Red ♥️"
+    },
+    {
+      "theme": "Nice appearance",
+      "count": 1,
+      "example": "Nice 👌🏻"
+    },
+    {
+      "theme": "Link request",
+      "count": 1,
+      "example": "Link please"
+    },
+    {
+      "theme": "Positive reaction",
       "count": 1,
       "example": "Wow"
+    },
+    {
+      "theme": "Outstanding style",
+      "count": 1,
+      "example": "Outstanding 👍"
+    },
+    {
+      "theme": "Very nice",
+      "count": 1,
+      "example": "Very nice"
+    },
+    {
+      "theme": "Gorgeous style",
+      "count": 1,
+      "example": "GORGEOUS ❤️🤎💜"
+    },
+    {
+      "theme": "Off-topic song",
+      "count": 1,
+      "example": "Wow Thats my favourite song 😍"
+    },
+    {
+      "theme": "Love the outfits",
+      "count": 1,
+      "example": "love the fits 🫦"
+    },
+    {
+      "theme": "Off-topic group",
+      "count": 1,
+      "example": "My favorite group ❤️❤️❤️"
+    },
+    {
+      "theme": "Creative magic",
+      "count": 1,
+      "example": "You all create magic every time 😍"
+    },
+    {
+      "theme": "Beautiful models",
+      "count": 1,
+      "example": "Beautiful girls in one frame 😍😍😍"
+    },
+    {
+      "theme": "Nice style",
+      "count": 1,
+      "example": "Nice 👏👏"
+    },
+    {
+      "theme": "general compliment",
+      "count": 1,
+      "example": "You are too good 😍🔥🔥🔥🔥"
+    },
+    {
+      "theme": "price first saree",
+      "count": 1,
+      "example": "Pp of first saree"
+    },
+    {
+      "theme": "shimmering aesthetic",
+      "count": 1,
+      "example": "Shimmering"
+    },
+    {
+      "theme": "cute style",
+      "count": 1,
+      "example": "Cute"
+    },
+    {
+      "theme": "stylish design",
+      "count": 1,
+      "example": "Stylish"
+    },
+    {
+      "theme": "structured drapes look",
+      "count": 1,
+      "example": "Structured drapes like this instantly elevate the whole look 🔥"
+    },
+    {
+      "theme": "price first pink",
+      "count": 1,
+      "example": "Would love to own one.  What is the price of the first pink one"
+    },
+    {
+      "theme": "exceptional clothes",
+      "count": 1,
+      "example": "These clothes are another level ❤️"
+    },
+    {
+      "theme": "very beautiful",
+      "count": 1,
+      "example": "So Beautiful 🥰😍💕"
+    },
+    {
+      "theme": "celebrity appreciation",
+      "count": 1,
+      "example": "Our Krithi is in PRIME FORM right now. And I'm loving it 🤍🤌🏻"
+    },
+    {
+      "theme": "general assessment",
+      "count": 1,
+      "example": "Average🙌🙌"
+    },
+    {
+      "theme": "personal admiration",
+      "count": 1,
+      "example": "Oh wow krithi"
+    },
+    {
+      "theme": "price, designer inquiry",
+      "count": 1,
+      "example": "Pp which designer"
+    },
+    {
+      "theme": "amazing style",
+      "count": 1,
+      "example": "Wow...amazing"
     }
   ],
   "top_commenters": [
     {
       "author": "meena_ji1506",
+      "platform": "instagram",
+      "count": 12
+    },
+    {
+      "author": "foram_mehta143",
       "platform": "instagram",
       "count": 3
     },
@@ -154,6 +340,26 @@
     },
     {
       "author": "farhapakis",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
+      "author": "lacasadesigning",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
+      "author": "nagalakshmimoduguvarapu",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
+      "author": "annu_bollywood_sinha_official",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
+      "author": "ksy.rolexroyce_official",
       "platform": "instagram",
       "count": 2
     },
@@ -234,6 +440,106 @@
     },
     {
       "author": "priti1111d",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "omnakultraders_surat",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "meenu.ag700",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "farhanaaz.k",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "nagpalkamaldeep",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "padaaprna",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "misthi_12334",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "farahdeeba.farah",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "indianbestdancer",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "suchi.naachi",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "tannu_hairandbeauty",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "notthatdhruv",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "prathessha",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "ashubatra_official",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "deepali_vatsal_kapadiya",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "najim_hussain_",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "sayed_tarannumm",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "arpi.d",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "yashas_raghavendra",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "prasadbenegal",
+      "platform": "instagram",
+      "count": 1
+    },
+    {
+      "author": "sonarj2511",
       "platform": "instagram",
       "count": 1
     }
