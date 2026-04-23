@@ -3,7 +3,7 @@ from apify_client import ApifyClient
 from .common import now_iso
 
 FB_COMMENT_ACTOR = "apify/facebook-comments-scraper"
-FB_POST_ACTOR    = "apify/facebook-posts-scraper"
+FB_POST_ACTOR = "apify/facebook-posts-scraper"
 
 TIMEOUT_SECS = 600
 MAX_COMMENTS = 500
@@ -36,12 +36,12 @@ def _recent_post_urls(client, profile_url, limit=10):
 def _scrape_comments_for_posts(client, post_urls, handle):
     if not post_urls:
         return []
-        run_input = {
-    "startUrls": [{"url": u} for u in post_urls],
-    "resultsLimit": MAX_COMMENTS,
-    "maxCommentsPerPost": 200,
-    "includeNestedComments": True,
-}
+    run_input = {
+        "startUrls": [{"url": u} for u in post_urls],
+        "resultsLimit": MAX_COMMENTS,
+        "maxCommentsPerPost": 200,
+        "includeNestedComments": True,
+    }
     run = client.actor(FB_COMMENT_ACTOR).call(
         run_input=run_input, timeout_secs=TIMEOUT_SECS
     )
