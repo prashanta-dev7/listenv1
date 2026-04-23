@@ -4,7 +4,7 @@ from collections import Counter, defaultdict
 
 DATA_ROOT = Path("data")
 INDEX_PATH = DATA_ROOT / "index.json"
-PLATFORMS_ALL = ["instagram", "facebook", "reddit"]
+PLATFORMS_ALL = ["instagram", "facebook", "reddit", "twitter", "quora", "tiktok"]
 
 def build():
     from collections import Counter, defaultdict
