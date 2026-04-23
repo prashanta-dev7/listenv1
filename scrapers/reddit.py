@@ -114,7 +114,7 @@ run_input = {
         "apifyProxyCountry": "US",
     },
 }
-    run = client.actor(REDDIT_ACTOR).call(
+run = client.actor(REDDIT_ACTOR).call(
         run_input=run_input, timeout_secs=TIMEOUT_SECS
     )
     if not run or not run.get("defaultDatasetId"):
