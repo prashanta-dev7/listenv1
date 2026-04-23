@@ -1,3 +1,9 @@
+const PLATFORM_COLORS = {
+  instagram: { border: '#E1306C', bg: '#E1306C33' },
+  facebook:  { border: '#1877F2', bg: '#1877F233' },
+  reddit:    { border: '#FF4500', bg: '#FF450033' },
+};
+
 const DATA_BASE = 'data'; // if dashboard lives in /dashboard. Change to 'data' if served at repo root.
 
 const state = {
@@ -55,16 +61,16 @@ async function loadRange() {
 function drawVolume() {
   const rows = state.index.volume_by_day.filter(r => inRange(r.date));
   const labels = rows.map(r => r.date);
-  const ig = rows.map(r => r.instagram || 0);
-  const fb = rows.map(r => r.facebook || 0);
-  const ctx = document.getElementById('volumeChart');
+  const datasets = state.index.platforms.map(p => ({
+    label: p.charAt(0).toUpperCase() + p.slice(1),
+    data: rows.map(r => r[p] || 0),
+    borderColor: PLATFORM_COLORS[p]?.border || '#666',
+    backgroundColor: PLATFORM_COLORS[p]?.bg || '#66666633',
+    fill: true, tension: 0.2,
+  }));
   state.charts.volume?.destroy();
-  state.charts.volume = new Chart(ctx, {
-    type: 'line',
-    data: { labels, datasets: [
-      { label: 'Instagram', data: ig, borderColor: '#E1306C', backgroundColor: '#E1306C33', fill: true, tension: 0.2 },
-      { label: 'Facebook',  data: fb, borderColor: '#1877F2', backgroundColor: '#1877F233', fill: true, tension: 0.2 },
-    ]},
+  state.charts.volume = new Chart(document.getElementById('volumeChart'), {
+    type: 'line', data: { labels, datasets },
     options: { responsive: true, interaction: { mode: 'index', intersect: false },
                scales: { y: { stacked: true, beginAtZero: true }, x: { stacked: true } } }
   });
@@ -98,6 +104,19 @@ function drawTopics() {
   });
 }
 
+function fillSubredditPanel() {
+  const tb = document.querySelector('#subredditPanel tbody');
+  tb.innerHTML = '';
+  (state.index.reddit_subreddits || []).forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>r/${escapeHtml(r.subreddit)}</td><td>${r.count}</td><td>${r.dominant_sentiment || '—'}</td>`;
+    tb.appendChild(tr);
+  });
+  const banner = document.getElementById('redditUncertain');
+  const n = state.index.reddit_uncertain_count || 0;
+  banner.textContent = n ? `⚠ ${n} Reddit match(es) flagged as uncertain by the filter — review logs/.` : '';
+}
+
 function fillAutoThemes() {
   const tb = document.querySelector('#autoThemes tbody');
   tb.innerHTML = '';
@@ -112,11 +131,11 @@ function fillTopCommenters() {
   const tb = document.querySelector('#topCommenters tbody');
   tb.innerHTML = '';
   (state.index.top_commenters || []).forEach(c => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${escapeHtml(c.author)}</td><td>${c.platform}</td><td>${c.count}</td>`;
-    tb.appendChild(tr);
-  });
-}
+  const tr = document.createElement('tr');
+  const platformLabel = c.platform === 'reddit' ? 'reddit' : c.platform;
+  tr.innerHTML = `<td>${escapeHtml(c.author)}</td><td>${platformLabel}</td><td>${c.count}</td>`;
+  tb.appendChild(tr);
+});
 
 function escapeHtml(s) {
   return String(s || '').replace(/[&<>"']/g, m => ({
