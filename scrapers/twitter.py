@@ -6,7 +6,7 @@ from .common import now_iso
 TWITTER_ACTOR = "apidojo/tweet-scraper"
 TIMEOUT_SECS = 600
 MAX_ITEMS = 200
-LOOKBACK_DAYS = 7
+LOOKBACK_DAYS = 30
 
 def _client():
     return ApifyClient(os.environ["APIFY_TOKEN"])
@@ -63,6 +63,11 @@ def run_sync(handle, brand_terms):
         "onlyImage": False, "onlyVideo": False,
     }
     run = client.actor(TWITTER_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
+    raw_items = list(client.dataset(run["defaultDatasetId"]).iterate_items())
+print(f"DEBUG twitter raw: {len(raw_items)} items")
+if raw_items:
+    print(f"DEBUG twitter first item keys: {list(raw_items[0].keys())}")
+    print(f"DEBUG twitter first item sample: {str(raw_items[0])[:500]}")
     if not run or not run.get("defaultDatasetId"):
         return []
 
