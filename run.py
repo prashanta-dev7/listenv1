@@ -1,11 +1,9 @@
-import os
-import json
-import traceback
+import os, json, traceback
 from pathlib import Path
 from datetime import datetime, timezone
 
-from scrapers import instagram, facebook
-from pipeline import classify, store, aggregate
+from scrapers import instagram, facebook, reddit
+from pipeline import classify, filter as reddit_filter, store, aggregate
 
 LOGS = Path("logs")
 LOGS.mkdir(exist_ok=True)
@@ -21,23 +19,31 @@ def log(msg):
 
 def load_config():
     handles = json.loads(Path("config/handles.json").read_text())
-    topics = json.loads(Path("config/topics.json").read_text())
-    return handles, topics["buckets"]
+    topics  = json.loads(Path("config/topics.json").read_text())
+    terms_path = Path("config/brand-terms.json")
+    terms = json.loads(terms_path.read_text()) if terms_path.exists() else {"strict": [], "ambiguous": []}
+    return handles, topics["buckets"], terms
 
 
-def run_platform(name, runner, url, buckets):
+def run_platform(name, runner, url_or_terms, buckets, is_reddit=False):
     try:
-        log(f"{name}: scraping {url} via Apify")
-        items = runner(url)
-        log(f"{name}: scraped {len(items)} items")
+        if is_reddit:
+            log(f"{name}: scraping with terms={url_or_terms.get('strict', [])} via Apify")
+            items = runner(url_or_terms)
+            log(f"{name}: scraped {len(items)} raw items")
+            items = reddit_filter.filter_ambiguous(items, log_dir="logs")
+            log(f"{name}: {len(items)} items after filter")
+        else:
+            log(f"{name}: scraping {url_or_terms} via Apify")
+            items = runner(url_or_terms)
+            log(f"{name}: scraped {len(items)} items")
+
         if not items:
             return
-        merged_preview = store.load_day(name, datetime.now(timezone.utc).strftime("%Y-%m-%d"))
-        prev_by_id = {it["id"]: it for it in merged_preview}
-        needs_class = [
-            it for it in items
-            if prev_by_id.get(it["id"], {}).get("text") != it["text"]
-        ]
+
+        today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+        prev_by_id = {it["id"]: it for it in store.load_day(name, today)}
+        needs_class = [it for it in items if prev_by_id.get(it["id"], {}).get("text") != it["text"]]
         log(f"{name}: classifying {len(needs_class)} new/changed items")
         classify.classify(needs_class, buckets)
         store.merge(name, items)
@@ -47,15 +53,15 @@ def run_platform(name, runner, url, buckets):
 
 def main():
     if not os.environ.get("APIFY_TOKEN"):
-        log("APIFY_TOKEN missing; aborting run")
-        return
+        log("APIFY_TOKEN missing; aborting run"); return
     if not os.environ.get("GEMINI_API_KEY"):
-        log("GEMINI_API_KEY missing; aborting run")
-        return
+        log("GEMINI_API_KEY missing; aborting run"); return
 
-    handles, buckets = load_config()
+    handles, buckets, terms = load_config()
     run_platform("instagram", instagram.run_sync, handles["instagram"], buckets)
     run_platform("facebook",  facebook.run_sync,  handles["facebook"],  buckets)
+    run_platform("reddit",    reddit.run_sync,    terms,                buckets, is_reddit=True)
+
     try:
         aggregate.build()
         log("aggregate: index.json written")
