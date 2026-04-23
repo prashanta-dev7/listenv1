@@ -2,7 +2,11 @@ const PLATFORM_COLORS = {
   instagram: { border: '#E1306C', bg: '#E1306C33' },
   facebook:  { border: '#1877F2', bg: '#1877F233' },
   reddit:    { border: '#FF4500', bg: '#FF450033' },
+  twitter:   { border: '#1DA1F2', bg: '#1DA1F233' },
+  quora:     { border: '#B92B27', bg: '#B92B2733' },
+  tiktok:    { border: '#000000', bg: '#00000033' },
 };
+
 const SENTIMENT_COLORS = { positive: '#2e9e5f', neutral: '#888888', negative: '#d64545' };
 const DATA_BASE = 'data';
 
