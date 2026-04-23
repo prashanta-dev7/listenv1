@@ -37,15 +37,15 @@ def _to_comment_record(c, video_url, handle):
     }
 
 def _recent_video_urls(client, handle, limit=MAX_VIDEOS):
-    run_input = {
-        "profiles": [handle],
-        "resultsPerPage": limit,
-        "shouldDownloadVideos": False,
-        "shouldDownloadCovers": False,
-        "proxyCountryCode": "None",
-    }
+    run_input = { ... }   # unchanged
     run = client.actor(TIKTOK_PROFILE_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
-    if not run or not run.get("defaultDatasetId"): return []
+    if not run or not run.get("defaultDatasetId"):
+        print("DEBUG tiktok: profile actor returned no dataset")
+        return []
+    items = list(client.dataset(run["defaultDatasetId"]).iterate_items())
+    print(f"DEBUG tiktok: profile scraper returned {len(items)} raw videos")
+    if items:
+    print(f"DEBUG tiktok: first video createTime={items[0].get('createTimeISO') or items[0].get('createTime')}")
     cutoff = datetime.now(timezone.utc) - timedelta(days=LOOKBACK_DAYS)
     urls = []
     for v in client.dataset(run["defaultDatasetId"]).iterate_items():
