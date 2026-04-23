@@ -98,18 +98,22 @@ def run_sync(brand_terms):
         return []
 
     client = _client()
-    run_input = {
-        "searches": all_terms,            # flat array of strings (not objects)
-        "type": "posts",                  # lite actor wants type: posts|comments|communities
-        "sort": "new",
-        "maxItems": MAX_ITEMS,
-        "maxPostCount": MAX_ITEMS,
-        "maxComments": 30,
-        "maxCommunitiesCount": 0,
-        "maxUserCount": 0,
-        "scrollTimeout": 40,
-        "proxy": {"useApifyProxy": True},
-    }
+run_input = {
+    "searches": all_terms,
+    "type": "posts",
+    "sort": "new",
+    "maxItems": MAX_ITEMS,
+    "maxPostCount": MAX_ITEMS,
+    "maxComments": 30,
+    "maxCommunitiesCount": 0,
+    "maxUserCount": 0,
+    "scrollTimeout": 60,
+    "proxy": {
+        "useApifyProxy": True,
+        "apifyProxyGroups": ["RESIDENTIAL"],   # <-- key change
+        "apifyProxyCountry": "US",
+    },
+}
     run = client.actor(REDDIT_ACTOR).call(
         run_input=run_input, timeout_secs=TIMEOUT_SECS
     )
