@@ -54,27 +54,22 @@ def _is_recent(rec, cutoff_iso):
 
 def run_sync(handle, brand_terms):
     client = _client()
-    all_terms = brand_terms.get("strict", []) + brand_terms.get("platform_extras", {}).get("twitter", [])
-    start_urls = [
-        f"https://x.com/{handle}",
-        f"https://x.com/{handle}/with_replies",
-    ]
 
-run_input = {
-    "searchTerms": all_terms,
-    "maxItems": MAX_ITEMS,
-    "sort": "Latest",
-    "tweetLanguage": "en",
-    "includeSearchTerms": True,
-}
+    all_terms = (
+        brand_terms.get("strict", [])
+        + brand_terms.get("platform_extras", {}).get("twitter", [])
+        + [f"from:{handle}"]
+    )
 
-all_terms = (
-    brand_terms.get("strict", [])
-    + brand_terms.get("platform_extras", {}).get("twitter", [])
-    + [f"from:{handle}"]   # X search operator for "tweets from this account"
-)
+    run_input = {
+        "searchTerms": all_terms,
+        "maxItems": MAX_ITEMS,
+        "sort": "Latest",
+        "tweetLanguage": "en",
+        "includeSearchTerms": True,
+    }
 
-run = client.actor(TWITTER_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
+    run = client.actor(TWITTER_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
     if not run or not run.get("defaultDatasetId"):
         print("DEBUG twitter: actor returned no dataset")
         return []
@@ -89,6 +84,8 @@ run = client.actor(TWITTER_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT
     cutoff = (datetime.now(timezone.utc) - timedelta(days=LOOKBACK_DAYS)).isoformat()
     seen, out = set(), []
     for item in raw_items:
+        if item.get("noResults"):
+            continue
         blob = ((item.get("text") or "") + " " + (item.get("url") or "")).lower()
         matched = next((t for t in all_terms if t.lower() in blob), None)
         rec = _to_record(item, matched)
