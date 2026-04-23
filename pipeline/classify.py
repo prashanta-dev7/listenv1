@@ -31,7 +31,8 @@ def _build_prompt(items, buckets):
     bucket_ids = [b["id"] for b in buckets]
 
     def _fmt(i, it):
-    p = it.get("platform")
+
+p = it.get("platform")
     extra = ""
     if p == "reddit":
         extra = f" [reddit {it.get('reddit_item_type','post')} in r/{it.get('reddit_subreddit','')}]"
