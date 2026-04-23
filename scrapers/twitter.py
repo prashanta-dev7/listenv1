@@ -59,7 +59,8 @@ def run_sync(handle, brand_terms):
         f"https://x.com/{handle}",
         f"https://x.com/{handle}/with_replies",
     ]
-   run_input = {
+
+run_input = {
     "searchTerms": all_terms,
     "maxItems": MAX_ITEMS,
     "sort": "Latest",
