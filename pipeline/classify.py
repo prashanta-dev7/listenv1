@@ -5,14 +5,13 @@ from google import genai
 from google.genai import types
 
 MODEL = "gemini-2.5-flash"
-BATCH_SIZE = 25  # Gemini Flash is cheap + fast; larger batches are fine
+BATCH_SIZE = 25
 
 
 def _client():
     return genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 
-# JSON schema returned by the model for each comment
 ITEM_SCHEMA = {
     "type": "object",
     "properties": {
@@ -26,23 +25,23 @@ ITEM_SCHEMA = {
 
 RESPONSE_SCHEMA = {"type": "array", "items": ITEM_SCHEMA}
 
+
 def _build_prompt(items, buckets):
     bucket_lines = "\n".join(f"- {b['id']}: {b['description']}" for b in buckets)
     bucket_ids = [b["id"] for b in buckets]
 
     def _fmt(i, it):
-
-p = it.get("platform")
-    extra = ""
-    if p == "reddit":
-        extra = f" [reddit {it.get('reddit_item_type','post')} in r/{it.get('reddit_subreddit','')}]"
-    elif p == "twitter":
-        extra = f" [tweet{' (reply)' if it.get('twitter_is_reply') else ''}]"
-    elif p == "quora":
-        extra = f" [quora {it.get('quora_item_type','answer')}]"
-    elif p == "tiktok":
-        extra = f" [tiktok comment on @{it.get('handle','azafashions')}]"
-    return f"{i}. {json.dumps(it['text'])}{extra}"
+        p = it.get("platform")
+        extra = ""
+        if p == "reddit":
+            extra = f" [reddit {it.get('reddit_item_type','post')} in r/{it.get('reddit_subreddit','')}]"
+        elif p == "twitter":
+            extra = f" [tweet{' (reply)' if it.get('twitter_is_reply') else ''}]"
+        elif p == "quora":
+            extra = f" [quora {it.get('quora_item_type','answer')}]"
+        elif p == "tiktok":
+            extra = f" [tiktok comment on @{it.get('handle','azafashions')}]"
+        return f"{i}. {json.dumps(it['text'])}{extra}"
 
     item_lines = "\n".join(_fmt(i, it) for i, it in enumerate(items))
     return f"""You are classifying social media comments for a fashion brand (Aza Fashions).
@@ -64,7 +63,6 @@ Do not include any prose. Comments:
 
 
 def _normalize(p):
-    """Map 'none' strings to Python None and guard against missing fields."""
     out = {
         "language": p.get("language") or "unknown",
         "sentiment": p.get("sentiment"),
@@ -109,7 +107,6 @@ def classify(items, buckets):
                 parsed = json.loads(text)
                 if not isinstance(parsed, list):
                     raise ValueError("Model did not return a JSON array")
-                # Pad / truncate to batch length
                 parsed = (parsed + [{}] * len(batch))[:len(batch)]
                 break
             except Exception as e:
@@ -117,7 +114,6 @@ def classify(items, buckets):
                 time.sleep(2 ** attempt)
 
         if parsed is None:
-            # Give up for this batch; mark unknown but keep pipeline moving
             for it in batch:
                 it["language"] = "unknown"
                 it["sentiment"] = None
