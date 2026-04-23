@@ -23,3 +23,25 @@ Traceback (most recent call last):
 UnboundLocalError: cannot access local variable 'run_input' where it is not associated with a value
 
 [2026-04-23T07:26:07.675473+00:00] aggregate: index.json written
+[2026-04-23T10:15:40.652860+00:00] instagram: scraping https://www.instagram.com/azafashions/ via Apify
+[2026-04-23T10:16:52.657637+00:00] instagram: scraped 96 items
+[2026-04-23T10:16:52.658454+00:00] instagram: classifying 0 new/changed items
+[2026-04-23T10:16:52.660516+00:00] facebook: scraping https://www.facebook.com/AzaFashions/ via Apify
+[2026-04-23T10:17:11.638726+00:00] facebook: FAILED — cannot access local variable 'run_input' where it is not associated with a value
+Traceback (most recent call last):
+  File "/home/runner/work/listenv1/listenv1/run.py", line 38, in run_platform
+    items = runner(url_or_terms)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/facebook.py", line 82, in run_sync
+    return _scrape_comments_for_posts(client, urls, handle)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/facebook.py", line 45, in _scrape_comments_for_posts
+    run_input=run_input, timeout_secs=TIMEOUT_SECS
+              ^^^^^^^^^
+UnboundLocalError: cannot access local variable 'run_input' where it is not associated with a value
+
+[2026-04-23T10:17:11.638855+00:00] reddit: scraping with terms=['Aza Fashions', 'AzaFashions', 'azafashions.com'] via Apify
+[2026-04-23T10:19:33.344586+00:00] reddit: scraped 6 raw items
+[2026-04-23T10:19:42.813766+00:00] reddit: 5 items after filter
+[2026-04-23T10:19:42.813849+00:00] reddit: classifying 5 new/changed items
+[2026-04-23T10:19:47.707422+00:00] aggregate: index.json written

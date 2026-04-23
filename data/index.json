@@ -1,8 +1,9 @@
 {
-  "generated_at": "2026-04-23T07:26:07Z",
+  "generated_at": "2026-04-23T10:19:47Z",
   "platforms": [
     "instagram",
-    "facebook"
+    "facebook",
+    "reddit"
   ],
   "days_by_platform": {
     "instagram": [
@@ -12,18 +13,23 @@
     "facebook": [
       "2026-04-22",
       "2026-04-23"
+    ],
+    "reddit": [
+      "2026-04-23"
     ]
   },
   "volume_by_day": [
     {
       "date": "2026-04-22",
       "instagram": 23,
-      "facebook": 2
+      "facebook": 2,
+      "reddit": 0
     },
     {
       "date": "2026-04-23",
       "instagram": 100,
-      "facebook": 3
+      "facebook": 3,
+      "reddit": 5
     }
   ],
   "sentiment_by_platform": {
@@ -33,11 +39,15 @@
     },
     "facebook": {
       "positive": 5
+    },
+    "reddit": {
+      "neutral": 3,
+      "negative": 2
     }
   },
   "predefined_topics": {
     "pricing": 25,
-    "style": 39,
+    "style": 40,
     "authenticity": 1
   },
   "auto_themes": [
@@ -62,6 +72,11 @@
       "example": "❤️❤️"
     },
     {
+      "theme": "celebrity mention",
+      "count": 4,
+      "example": "Krithi shetty 😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍"
+    },
+    {
       "theme": "product link request",
       "count": 3,
       "example": "Link"
@@ -75,11 +90,6 @@
       "theme": "Ambiguous comment",
       "count": 3,
       "example": "Pp"
-    },
-    {
-      "theme": "celebrity mention",
-      "count": 3,
-      "example": "Krithi shetty 😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍"
     },
     {
       "theme": "gorgeous style",
@@ -369,6 +379,11 @@
       "count": 2
     },
     {
+      "author": "AutoModerator",
+      "platform": "reddit",
+      "count": 2
+    },
+    {
       "author": "shivaliseth_fashion",
       "platform": "instagram",
       "count": 1
@@ -537,11 +552,14 @@
       "author": "prasadbenegal",
       "platform": "instagram",
       "count": 1
-    },
-    {
-      "author": "sonarj2511",
-      "platform": "instagram",
-      "count": 1
     }
-  ]
+  ],
+  "reddit_subreddits": [
+    {
+      "subreddit": "BollywoodFashion",
+      "count": 5,
+      "dominant_sentiment": "neutral"
+    }
+  ],
+  "reddit_uncertain_count": 2
 }
