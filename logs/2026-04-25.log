@@ -1,0 +1,44 @@
+[2026-04-25T03:51:50.944277+00:00] instagram: scraping https://www.instagram.com/azafashions/ via Apify
+[2026-04-25T03:52:55.291818+00:00] instagram: scraped 2 items
+[2026-04-25T03:52:55.292119+00:00] instagram: classifying 2 new/changed items
+[2026-04-25T03:52:58.353108+00:00] facebook: scraping https://www.facebook.com/AzaFashions/ via Apify
+[2026-04-25T03:53:36.038815+00:00] facebook: scraped 3 items
+[2026-04-25T03:53:36.039201+00:00] facebook: classifying 3 new/changed items
+[2026-04-25T03:53:38.550277+00:00] reddit: scraping with terms=['Aza Fashions', 'AzaFashions', 'azafashions.com'] via Apify
+[2026-04-25T03:54:04.500644+00:00] reddit: scraped 0 raw items
+[2026-04-25T03:54:04.500822+00:00] reddit: 0 items after filter
+[2026-04-25T03:54:04.500918+00:00] tiktok: scraping https://www.tiktok.com/@azafashions via Apify
+[2026-04-25T03:54:04.658367+00:00] tiktok: FAILED — By launching this job you will exceed your remaining usage of $0.082213.  Please consider upgrading to a paid plan at https://console.apify.com/billing/subscription
+Traceback (most recent call last):
+  File "/home/runner/work/listenv1/listenv1/run.py", line 38, in run_platform
+    items = runner(url_or_terms)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/tiktok.py", line 77, in run_sync
+    video_urls = _recent_video_urls(client, handle)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/tiktok.py", line 52, in _recent_video_urls
+    run = client.actor(TIKTOK_PROFILE_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 367, in call
+    started_run = self.start(
+                  ^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 306, in start
+    response = self.http_client.call(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 213, in call
+    return retry_with_exp_backoff(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_utils.py", line 175, in retry_with_exp_backoff
+    return func(stop_retrying, attempt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 211, in _make_request
+    raise ApifyApiError(response, attempt, method=method)
+apify_client.errors.ApifyApiError: By launching this job you will exceed your remaining usage of $0.082213.  Please consider upgrading to a paid plan at https://console.apify.com/billing/subscription
+
+[2026-04-25T03:54:04.661803+00:00] aggregate: index.json written

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNDEzODA5MDcwNzc0NDAyXzE2NTA1NTM1MTYxNjg0OTY=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1587312392370304/",
+    "parent_comment_id": null,
+    "author": "Dhiraj Jaiswal",
+    "text": "OMG.....\"DANGEROUS LEVELS OF GORGEOUS\"",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-04-25T03:53:36Z",
+    "posted_at": "2026-04-24T15:03:01.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "dangerous gorgeous style"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNDEzODA5MDcwNzc0NDAyXzE2NDQ1NTcxNTM1MDcxMjY=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1587312392370304/",
+    "parent_comment_id": null,
+    "author": "Kamini Patel",
+    "text": "Price",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-04-25T03:53:36Z",
+    "posted_at": "2026-04-24T14:22:53.000Z",
+    "sentiment": "neutral",
+    "topic_predefined": "pricing",
+    "topic_auto": "price mention"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNDEzODA5MDcwNzc0NDAyXzk0NTczMjU5ODA4Njg3MA==",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1587312392370304/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Magnificent",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-04-25T03:53:36Z",
+    "posted_at": "2026-04-24T11:21:41.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "magnificent style"
+  }
+]

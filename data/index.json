@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-24T04:21:56Z",
+  "generated_at": "2026-04-25T03:54:04Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -10,12 +10,14 @@
     "instagram": [
       "2026-04-22",
       "2026-04-23",
-      "2026-04-24"
+      "2026-04-24",
+      "2026-04-25"
     ],
     "facebook": [
       "2026-04-22",
       "2026-04-23",
-      "2026-04-24"
+      "2026-04-24",
+      "2026-04-25"
     ],
     "reddit": [
       "2026-04-23"
@@ -46,6 +48,13 @@
       "facebook": 3,
       "reddit": 0,
       "tiktok": 19
+    },
+    {
+      "date": "2026-04-25",
+      "instagram": 2,
+      "facebook": 3,
+      "reddit": 0,
+      "tiktok": 0
     }
   ],
   "sentiment_by_platform": {
@@ -54,8 +63,8 @@
       "positive": 71
     },
     "facebook": {
-      "positive": 6,
-      "neutral": 1
+      "positive": 8,
+      "neutral": 2
     },
     "reddit": {
       "neutral": 3,
@@ -67,8 +76,8 @@
     }
   },
   "predefined_topics": {
-    "pricing": 31,
-    "style": 48,
+    "pricing": 32,
+    "style": 50,
     "authenticity": 1,
     "customer-service": 3,
     "shipping": 1
@@ -334,7 +343,7 @@
     {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 4
+      "count": 5
     },
     {
       "author": "azafashions",
