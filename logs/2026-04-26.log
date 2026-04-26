@@ -1,0 +1,134 @@
+[2026-04-26T04:22:41.826422+00:00] instagram: scraping https://www.instagram.com/azafashions/ via Apify
+[2026-04-26T04:22:42.177775+00:00] instagram: FAILED — Monthly usage hard limit exceeded
+Traceback (most recent call last):
+  File "/home/runner/work/listenv1/listenv1/run.py", line 38, in run_platform
+    items = runner(url_or_terms)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/instagram.py", line 90, in run_sync
+    urls = _recent_post_urls(client, profile_url)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/instagram.py", line 27, in _recent_post_urls
+    run = client.actor(IG_POST_ACTOR).call(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 367, in call
+    started_run = self.start(
+                  ^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 306, in start
+    response = self.http_client.call(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 213, in call
+    return retry_with_exp_backoff(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_utils.py", line 175, in retry_with_exp_backoff
+    return func(stop_retrying, attempt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 211, in _make_request
+    raise ApifyApiError(response, attempt, method=method)
+apify_client.errors.ApifyApiError: Monthly usage hard limit exceeded
+
+[2026-04-26T04:22:42.177891+00:00] facebook: scraping https://www.facebook.com/AzaFashions/ via Apify
+[2026-04-26T04:22:42.450426+00:00] facebook: FAILED — Monthly usage hard limit exceeded
+Traceback (most recent call last):
+  File "/home/runner/work/listenv1/listenv1/run.py", line 38, in run_platform
+    items = runner(url_or_terms)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/facebook.py", line 79, in run_sync
+    urls = _recent_post_urls(client, profile_url)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/facebook.py", line 23, in _recent_post_urls
+    run = client.actor(FB_POST_ACTOR).call(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 367, in call
+    started_run = self.start(
+                  ^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 306, in start
+    response = self.http_client.call(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 213, in call
+    return retry_with_exp_backoff(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_utils.py", line 175, in retry_with_exp_backoff
+    return func(stop_retrying, attempt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 211, in _make_request
+    raise ApifyApiError(response, attempt, method=method)
+apify_client.errors.ApifyApiError: Monthly usage hard limit exceeded
+
+[2026-04-26T04:22:42.450567+00:00] reddit: scraping with terms=['Aza Fashions', 'AzaFashions', 'azafashions.com'] via Apify
+[2026-04-26T04:22:42.677568+00:00] reddit: FAILED — Monthly usage hard limit exceeded
+Traceback (most recent call last):
+  File "/home/runner/work/listenv1/listenv1/run.py", line 32, in run_platform
+    items = runner(url_or_terms)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/reddit.py", line 128, in run_sync
+    run = client.actor(REDDIT_ACTOR).call(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 367, in call
+    started_run = self.start(
+                  ^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 306, in start
+    response = self.http_client.call(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 213, in call
+    return retry_with_exp_backoff(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_utils.py", line 175, in retry_with_exp_backoff
+    return func(stop_retrying, attempt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 211, in _make_request
+    raise ApifyApiError(response, attempt, method=method)
+apify_client.errors.ApifyApiError: Monthly usage hard limit exceeded
+
+[2026-04-26T04:22:42.677687+00:00] tiktok: scraping https://www.tiktok.com/@azafashions via Apify
+[2026-04-26T04:22:42.911993+00:00] tiktok: FAILED — Monthly usage hard limit exceeded
+Traceback (most recent call last):
+  File "/home/runner/work/listenv1/listenv1/run.py", line 38, in run_platform
+    items = runner(url_or_terms)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/tiktok.py", line 77, in run_sync
+    video_urls = _recent_video_urls(client, handle)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/tiktok.py", line 52, in _recent_video_urls
+    run = client.actor(TIKTOK_PROFILE_ACTOR).call(run_input=run_input, timeout_secs=TIMEOUT_SECS)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 367, in call
+    started_run = self.start(
+                  ^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 306, in start
+    response = self.http_client.call(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 213, in call
+    return retry_with_exp_backoff(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_utils.py", line 175, in retry_with_exp_backoff
+    return func(stop_retrying, attempt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 211, in _make_request
+    raise ApifyApiError(response, attempt, method=method)
+apify_client.errors.ApifyApiError: Monthly usage hard limit exceeded
+
+[2026-04-26T04:22:42.916906+00:00] aggregate: index.json written
