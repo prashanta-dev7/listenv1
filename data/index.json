@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-22T04:59:54Z",
+  "generated_at": "2026-05-23T04:46:04Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -11,20 +11,23 @@
       "2026-04-22",
       "2026-04-23",
       "2026-04-24",
-      "2026-04-25"
+      "2026-04-25",
+      "2026-05-23"
     ],
     "facebook": [
       "2026-04-22",
       "2026-04-23",
       "2026-04-24",
-      "2026-04-25"
+      "2026-04-25",
+      "2026-05-23"
     ],
     "reddit": [
       "2026-04-23"
     ],
     "tiktok": [
       "2026-04-23",
-      "2026-04-24"
+      "2026-04-24",
+      "2026-05-23"
     ]
   },
   "volume_by_day": [
@@ -55,6 +58,13 @@
       "facebook": 3,
       "reddit": 0,
       "tiktok": 0
+    },
+    {
+      "date": "2026-05-23",
+      "instagram": 23,
+      "facebook": 5,
+      "reddit": 0,
+      "tiktok": 34
     }
   ],
   "sentiment_by_platform": {
@@ -63,24 +73,25 @@
       "positive": 71
     },
     "facebook": {
-      "positive": 8,
-      "neutral": 2
+      "positive": 10,
+      "neutral": 3,
+      "negative": 1
     },
     "reddit": {
       "neutral": 3,
       "negative": 2
     },
     "tiktok": {
-      "neutral": 10,
-      "positive": 5
+      "neutral": 19,
+      "positive": 17
     }
   },
   "predefined_topics": {
-    "pricing": 32,
-    "style": 50,
+    "pricing": 38,
+    "style": 63,
     "authenticity": 1,
     "customer-service": 3,
-    "shipping": 1
+    "shipping": 2
   },
   "auto_themes": [
     {
@@ -94,19 +105,29 @@
       "example": "💯"
     },
     {
+      "theme": "positive reaction",
+      "count": 8,
+      "example": "❤️❤️"
+    },
+    {
       "theme": "Positive emoji reaction",
       "count": 7,
       "example": "😍😍😍"
     },
     {
-      "theme": "positive reaction",
-      "count": 5,
-      "example": "❤️❤️"
-    },
-    {
       "theme": "celebrity mention",
       "count": 4,
       "example": "Krithi shetty 😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍"
+    },
+    {
+      "theme": "gorgeous style",
+      "count": 4,
+      "example": "Gorgeous"
+    },
+    {
+      "theme": "inquire price",
+      "count": 4,
+      "example": "Price ?"
     },
     {
       "theme": "product link request",
@@ -122,11 +143,6 @@
       "theme": "Ambiguous comment",
       "count": 3,
       "example": "Pp"
-    },
-    {
-      "theme": "gorgeous style",
-      "count": 3,
-      "example": "Gorgeous"
     },
     {
       "theme": "beautiful design",
@@ -187,6 +203,11 @@
       "theme": "order link provided",
       "count": 2,
       "example": "Yes, here’s the link to order this style online.\nhttps://www.azafashions.com/products/shloka-khialani-nila-fishtail-saree-gown-with-abstract-floral-embroidery/708405?utm_source=social+media&utm_medium"
+    },
+    {
+      "theme": "product price inquiry",
+      "count": 2,
+      "example": "Price please"
     },
     {
       "theme": "location inquiry",
@@ -322,37 +343,97 @@
       "theme": "exceptional clothes",
       "count": 1,
       "example": "These clothes are another level ❤️"
-    },
-    {
-      "theme": "very beautiful",
-      "count": 1,
-      "example": "So Beautiful 🥰😍💕"
-    },
-    {
-      "theme": "celebrity appreciation",
-      "count": 1,
-      "example": "Our Krithi is in PRIME FORM right now. And I'm loving it 🤍🤌🏻"
     }
   ],
   "top_commenters": [
     {
       "author": "meena_ji1506",
       "platform": "instagram",
-      "count": 14
-    },
-    {
-      "author": "Meena Shah",
-      "platform": "facebook",
-      "count": 5
+      "count": 16
     },
     {
       "author": "azafashions",
       "platform": "tiktok",
-      "count": 4
+      "count": 8
+    },
+    {
+      "author": "Meena Shah",
+      "platform": "facebook",
+      "count": 7
     },
     {
       "author": "foram_mehta143",
       "platform": "instagram",
+      "count": 3
+    },
+    {
+      "author": "nnajla3",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "bossbabed",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "jaybebe4890",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "sonarandhawa03",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "skdiduiej",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "boo47511",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "savitripersaud3",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "nitai309",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "fwoz1234gil3",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "arsha.ali52",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "fiasri16",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "azmama716",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "kalpana_631",
+      "platform": "tiktok",
+      "count": 3
+    },
+    {
+      "author": "wonderwoman0078",
+      "platform": "tiktok",
       "count": 3
     },
     {
@@ -426,67 +507,7 @@
       "count": 2
     },
     {
-      "author": "nnajla3",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "bossbabed",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "jaybebe4890",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "sonarandhawa03",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "skdiduiej",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "boo47511",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "savitripersaud3",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
       "author": "charitydolls",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "nitai309",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "fwoz1234gil3",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "arsha.ali52",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "fiasri16",
-      "platform": "tiktok",
-      "count": 2
-    },
-    {
-      "author": "azmama716",
       "platform": "tiktok",
       "count": 2
     },
@@ -496,7 +517,17 @@
       "count": 2
     },
     {
-      "author": "kalpana_631",
+      "author": "moniqueoc29",
+      "platform": "tiktok",
+      "count": 2
+    },
+    {
+      "author": "sunitatmodel",
+      "platform": "tiktok",
+      "count": 2
+    },
+    {
+      "author": "monaachari1",
       "platform": "tiktok",
       "count": 2
     },
@@ -562,26 +593,6 @@
     },
     {
       "author": "jessie_brar_jassi",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "viralyatri",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "priti1111d",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "omnakultraders_surat",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "meenu.ag700",
       "platform": "instagram",
       "count": 1
     }
