@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-23T04:46:04Z",
+  "generated_at": "2026-05-24T05:05:48Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -12,14 +12,16 @@
       "2026-04-23",
       "2026-04-24",
       "2026-04-25",
-      "2026-05-23"
+      "2026-05-23",
+      "2026-05-24"
     ],
     "facebook": [
       "2026-04-22",
       "2026-04-23",
       "2026-04-24",
       "2026-04-25",
-      "2026-05-23"
+      "2026-05-23",
+      "2026-05-24"
     ],
     "reddit": [
       "2026-04-23"
@@ -27,7 +29,8 @@
     "tiktok": [
       "2026-04-23",
       "2026-04-24",
-      "2026-05-23"
+      "2026-05-23",
+      "2026-05-24"
     ]
   },
   "volume_by_day": [
@@ -65,12 +68,20 @@
       "facebook": 5,
       "reddit": 0,
       "tiktok": 34
+    },
+    {
+      "date": "2026-05-24",
+      "instagram": 26,
+      "facebook": 1,
+      "reddit": 0,
+      "tiktok": 33
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 44,
-      "positive": 71
+      "neutral": 59,
+      "positive": 78,
+      "negative": 1
     },
     "facebook": {
       "positive": 10,
@@ -82,13 +93,13 @@
       "negative": 2
     },
     "tiktok": {
-      "neutral": 19,
-      "positive": 17
+      "neutral": 28,
+      "positive": 27
     }
   },
   "predefined_topics": {
-    "pricing": 38,
-    "style": 63,
+    "pricing": 55,
+    "style": 79,
     "authenticity": 1,
     "customer-service": 3,
     "shipping": 2
@@ -96,13 +107,18 @@
   "auto_themes": [
     {
       "theme": "price inquiry",
-      "count": 19,
+      "count": 33,
       "example": "Pp"
     },
     {
       "theme": "general appreciation",
       "count": 15,
       "example": "💯"
+    },
+    {
+      "theme": "product link request",
+      "count": 8,
+      "example": "Link"
     },
     {
       "theme": "positive reaction",
@@ -115,14 +131,14 @@
       "example": "😍😍😍"
     },
     {
+      "theme": "gorgeous style",
+      "count": 5,
+      "example": "Gorgeous"
+    },
+    {
       "theme": "celebrity mention",
       "count": 4,
       "example": "Krithi shetty 😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍"
-    },
-    {
-      "theme": "gorgeous style",
-      "count": 4,
-      "example": "Gorgeous"
     },
     {
       "theme": "inquire price",
@@ -130,9 +146,9 @@
       "example": "Price ?"
     },
     {
-      "theme": "product link request",
-      "count": 3,
-      "example": "Link"
+      "theme": "beautiful design",
+      "count": 4,
+      "example": "Beautiful"
     },
     {
       "theme": "Price query",
@@ -143,11 +159,6 @@
       "theme": "Ambiguous comment",
       "count": 3,
       "example": "Pp"
-    },
-    {
-      "theme": "beautiful design",
-      "count": 3,
-      "example": "Beautiful"
     },
     {
       "theme": "unclear comment",
@@ -168,6 +179,11 @@
       "theme": "smart look",
       "count": 2,
       "example": "Smart"
+    },
+    {
+      "theme": "very beautiful",
+      "count": 2,
+      "example": "So Beautiful 🥰😍💕"
     },
     {
       "theme": "personal compliment",
@@ -205,9 +221,29 @@
       "example": "Yes, here’s the link to order this style online.\nhttps://www.azafashions.com/products/shloka-khialani-nila-fishtail-saree-gown-with-abstract-floral-embroidery/708405?utm_source=social+media&utm_medium"
     },
     {
+      "theme": "beautiful color",
+      "count": 2,
+      "example": "[Sticker] 🔥🔥🔥 that color 🔥🔥🔥"
+    },
+    {
+      "theme": "cute, how to order",
+      "count": 2,
+      "example": "Wow that too cute. How can I order?"
+    },
+    {
+      "theme": "ravishing look",
+      "count": 2,
+      "example": "Wow so ravishing🥰 look"
+    },
+    {
       "theme": "product price inquiry",
       "count": 2,
       "example": "Price please"
+    },
+    {
+      "theme": "general admiration",
+      "count": 2,
+      "example": "Woww"
     },
     {
       "theme": "location inquiry",
@@ -318,43 +354,18 @@
       "theme": "shimmering aesthetic",
       "count": 1,
       "example": "Shimmering"
-    },
-    {
-      "theme": "cute style",
-      "count": 1,
-      "example": "Cute"
-    },
-    {
-      "theme": "stylish design",
-      "count": 1,
-      "example": "Stylish"
-    },
-    {
-      "theme": "structured drapes look",
-      "count": 1,
-      "example": "Structured drapes like this instantly elevate the whole look 🔥"
-    },
-    {
-      "theme": "price first pink",
-      "count": 1,
-      "example": "Would love to own one.  What is the price of the first pink one"
-    },
-    {
-      "theme": "exceptional clothes",
-      "count": 1,
-      "example": "These clothes are another level ❤️"
     }
   ],
   "top_commenters": [
     {
       "author": "meena_ji1506",
       "platform": "instagram",
-      "count": 16
+      "count": 18
     },
     {
       "author": "azafashions",
       "platform": "tiktok",
-      "count": 8
+      "count": 12
     },
     {
       "author": "Meena Shah",
@@ -362,43 +373,63 @@
       "count": 7
     },
     {
-      "author": "foram_mehta143",
-      "platform": "instagram",
-      "count": 3
-    },
-    {
       "author": "nnajla3",
       "platform": "tiktok",
-      "count": 3
+      "count": 4
     },
     {
       "author": "bossbabed",
       "platform": "tiktok",
-      "count": 3
+      "count": 4
     },
     {
       "author": "jaybebe4890",
       "platform": "tiktok",
-      "count": 3
+      "count": 4
     },
     {
       "author": "sonarandhawa03",
       "platform": "tiktok",
-      "count": 3
+      "count": 4
     },
     {
       "author": "skdiduiej",
       "platform": "tiktok",
-      "count": 3
+      "count": 4
     },
     {
       "author": "boo47511",
       "platform": "tiktok",
-      "count": 3
+      "count": 4
     },
     {
       "author": "savitripersaud3",
       "platform": "tiktok",
+      "count": 4
+    },
+    {
+      "author": "azmama716",
+      "platform": "tiktok",
+      "count": 4
+    },
+    {
+      "author": "kalpana_631",
+      "platform": "tiktok",
+      "count": 4
+    },
+    {
+      "author": "wonderwoman0078",
+      "platform": "tiktok",
+      "count": 4
+    },
+    {
+      "author": "monaachari1",
+      "platform": "tiktok",
+      "count": 4
+    },
+    {
+      "author": "foram_mehta143",
+      "platform": "instagram",
       "count": 3
     },
     {
@@ -422,17 +453,12 @@
       "count": 3
     },
     {
-      "author": "azmama716",
+      "author": "moniqueoc29",
       "platform": "tiktok",
       "count": 3
     },
     {
-      "author": "kalpana_631",
-      "platform": "tiktok",
-      "count": 3
-    },
-    {
-      "author": "wonderwoman0078",
+      "author": "sunitatmodel",
       "platform": "tiktok",
       "count": 3
     },
@@ -492,6 +518,16 @@
       "count": 2
     },
     {
+      "author": "vd_collection_in",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
+      "author": "mitisha_prajapati27",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
       "author": "Gursharn Sekhon",
       "platform": "facebook",
       "count": 2
@@ -517,82 +553,57 @@
       "count": 2
     },
     {
-      "author": "moniqueoc29",
+      "author": "katsircar",
       "platform": "tiktok",
       "count": 2
     },
     {
-      "author": "sunitatmodel",
+      "author": "glammbyizza",
       "platform": "tiktok",
       "count": 2
     },
     {
-      "author": "monaachari1",
+      "author": "paramjitkaur1594",
+      "platform": "tiktok",
+      "count": 2
+    },
+    {
+      "author": "seemahans6",
+      "platform": "tiktok",
+      "count": 2
+    },
+    {
+      "author": "shant402",
+      "platform": "tiktok",
+      "count": 2
+    },
+    {
+      "author": "prish382",
+      "platform": "tiktok",
+      "count": 2
+    },
+    {
+      "author": "devika1359",
+      "platform": "tiktok",
+      "count": 2
+    },
+    {
+      "author": "humanity1212_",
+      "platform": "tiktok",
+      "count": 2
+    },
+    {
+      "author": "nadia.shaikh28",
+      "platform": "tiktok",
+      "count": 2
+    },
+    {
+      "author": "shireenlado",
       "platform": "tiktok",
       "count": 2
     },
     {
       "author": "shivaliseth_fashion",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "beautybybarkha",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "buddhamittra",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "sapano_kee_udaan",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "yourgirlveen",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "sama_sana_16",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "jagu4528",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "cams_goan_dubaikar",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "pooja_julka1",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "mehakabrol",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "mandy_singh_0608",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "manyakatiyar",
-      "platform": "instagram",
-      "count": 1
-    },
-    {
-      "author": "jessie_brar_jassi",
       "platform": "instagram",
       "count": 1
     }
