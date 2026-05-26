@@ -1,0 +1,36 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNDQxMzU4Nzg0Njg2MDk3XzE1MjU5OTIwNzU3MjgwMDE=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/964969163009905/",
+    "parent_comment_id": null,
+    "author": "Sharmina Enam Saffron",
+    "text": "❤️",
+    "language": "non-english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-05-26T05:06:14Z",
+    "posted_at": "2026-05-26T04:08:44.000Z",
+    "sentiment": null,
+    "topic_predefined": null,
+    "topic_auto": null
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNDQxNzE3MDU0NjUwMjcwXzI1NTc1NDM5NDgwMTQ1ODE=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1537530621100270/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Fantastic",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-05-26T05:06:14Z",
+    "posted_at": "2026-05-26T04:24:47.000Z",
+    "sentiment": "positive",
+    "topic_predefined": null,
+    "topic_auto": "positive feedback"
+  }
+]
