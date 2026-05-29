@@ -1,0 +1,53 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNDQ0MzYwNTUxMDUyNTg3XzI1MzY5MTQ3NDM0MzM5NTc=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1435924518217603/",
+    "parent_comment_id": null,
+    "author": "Sinthiya Mimi",
+    "text": "https://whatsapp.com/channel/0029Vb8ET0xISTkGh8dAXo1A",
+    "language": "non-english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-05-29T05:14:33Z",
+    "posted_at": "2026-05-28T16:17:27.000Z",
+    "sentiment": null,
+    "topic_predefined": null,
+    "topic_auto": null
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNDQ0MTYyNDg3NzM5MDYwXzI1NTc4MjYxMjc5Njg1OTE=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1019117423928019/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Wow",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-05-29T05:14:33Z",
+    "posted_at": "2026-05-28T23:04:51.000Z",
+    "sentiment": "positive",
+    "topic_predefined": null,
+    "topic_auto": "positive reaction"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNDQ0NDY4NDAxMDQxODAyXzQ0NjkxODE0MzMyOTk5NTE=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/2140844313432753/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Wonderful",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-05-29T05:14:33Z",
+    "posted_at": "2026-05-28T22:54:50.000Z",
+    "sentiment": "positive",
+    "topic_predefined": null,
+    "topic_auto": "positive reaction"
+  }
+]
