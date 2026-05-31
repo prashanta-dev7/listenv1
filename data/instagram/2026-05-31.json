@@ -1,0 +1,53 @@
+[
+  {
+    "id": "ig_18071714585672195",
+    "platform": "instagram",
+    "handle": "@azafashions",
+    "post_url": "https://www.instagram.com/p/DY93tF6sGHV/",
+    "parent_comment_id": null,
+    "author": "aniljolly1",
+    "text": "Verygood ❤️",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-05-31T05:18:31Z",
+    "posted_at": "2026-05-31T04:22:37.000Z",
+    "sentiment": "positive",
+    "topic_predefined": null,
+    "topic_auto": "general positive feedback"
+  },
+  {
+    "id": "ig_17907648975240563",
+    "platform": "instagram",
+    "handle": "@azafashions",
+    "post_url": "https://www.instagram.com/p/DY93tF6sGHV/",
+    "parent_comment_id": null,
+    "author": "parrrneet",
+    "text": "Iink",
+    "language": "non-english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-05-31T05:18:31Z",
+    "posted_at": "2026-05-30T14:51:55.000Z",
+    "sentiment": null,
+    "topic_predefined": null,
+    "topic_auto": null
+  },
+  {
+    "id": "ig_18107335033945947",
+    "platform": "instagram",
+    "handle": "@azafashions",
+    "post_url": "https://www.instagram.com/p/DY9e2h5jFP0/",
+    "parent_comment_id": null,
+    "author": "meena_ji1506",
+    "text": "Smart",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-05-31T05:18:31Z",
+    "posted_at": "2026-05-30T11:55:08.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "stylish design"
+  }
+]

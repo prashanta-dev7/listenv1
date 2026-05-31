@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-30T04:55:52Z",
+  "generated_at": "2026-05-31T05:20:36Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -19,7 +19,8 @@
       "2026-05-27",
       "2026-05-28",
       "2026-05-29",
-      "2026-05-30"
+      "2026-05-30",
+      "2026-05-31"
     ],
     "facebook": [
       "2026-04-22",
@@ -33,7 +34,8 @@
       "2026-05-27",
       "2026-05-28",
       "2026-05-29",
-      "2026-05-30"
+      "2026-05-30",
+      "2026-05-31"
     ],
     "reddit": [
       "2026-04-23"
@@ -134,16 +136,23 @@
       "facebook": 3,
       "reddit": 0,
       "tiktok": 0
+    },
+    {
+      "date": "2026-05-31",
+      "instagram": 3,
+      "facebook": 1,
+      "reddit": 0,
+      "tiktok": 0
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
       "neutral": 79,
-      "positive": 87,
+      "positive": 89,
       "negative": 1
     },
     "facebook": {
-      "positive": 18,
+      "positive": 19,
       "neutral": 3,
       "negative": 1
     },
@@ -158,7 +167,7 @@
   },
   "predefined_topics": {
     "pricing": 93,
-    "style": 134,
+    "style": 136,
     "authenticity": 2,
     "customer-service": 3,
     "shipping": 2
@@ -225,6 +234,11 @@
       "example": "Pp"
     },
     {
+      "theme": "general positive feedback",
+      "count": 5,
+      "example": "Verygood ❤️"
+    },
+    {
       "theme": "purchase inquiry",
       "count": 5,
       "example": "Can I buy this outfit??"
@@ -238,11 +252,6 @@
       "theme": "beautiful design",
       "count": 4,
       "example": "Beautiful"
-    },
-    {
-      "theme": "general positive feedback",
-      "count": 4,
-      "example": "Verygood ❤️"
     },
     {
       "theme": "beautiful color",
@@ -313,6 +322,11 @@
       "theme": "Price inquiry",
       "count": 2,
       "example": "Hello.. price please?"
+    },
+    {
+      "theme": "stylish design",
+      "count": 2,
+      "example": "Stylish"
     },
     {
       "theme": "very beautiful",
@@ -408,11 +422,6 @@
       "theme": "cute item order",
       "count": 2,
       "example": "Wow that too cute. How can I order?"
-    },
-    {
-      "theme": "ambiguous comment",
-      "count": 2,
-      "example": "Pp"
     }
   ],
   "top_commenters": [
@@ -424,12 +433,12 @@
     {
       "author": "meena_ji1506",
       "platform": "instagram",
-      "count": 24
+      "count": 25
     },
     {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 15
+      "count": 16
     },
     {
       "author": "monaachari1",
@@ -567,14 +576,14 @@
       "count": 6
     },
     {
-      "author": "khalid.bhai588",
-      "platform": "tiktok",
+      "author": "aniljolly1",
+      "platform": "instagram",
       "count": 5
     },
     {
-      "author": "aniljolly1",
-      "platform": "instagram",
-      "count": 4
+      "author": "khalid.bhai588",
+      "platform": "tiktok",
+      "count": 5
     },
     {
       "author": "moniqueoc29",
