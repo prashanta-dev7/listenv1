@@ -1,0 +1,11 @@
+[2026-06-23T05:00:15.143308+00:00] instagram: scraping https://www.instagram.com/azafashions/ via Apify
+[2026-06-23T05:01:24.072322+00:00] instagram: scraped 1 items
+[2026-06-23T05:01:24.072648+00:00] instagram: classifying 1 new/changed items
+[2026-06-23T05:01:26.075250+00:00] facebook: scraping https://www.facebook.com/AzaFashions/ via Apify
+[2026-06-23T05:01:54.264275+00:00] facebook: scraped 0 items
+[2026-06-23T05:01:54.264505+00:00] reddit: scraping with terms=['Aza Fashions', 'AzaFashions', 'azafashions.com'] via Apify
+[2026-06-23T05:08:46.560595+00:00] reddit: scraped 0 raw items
+[2026-06-23T05:08:46.560784+00:00] reddit: 0 items after filter
+[2026-06-23T05:08:46.561143+00:00] tiktok: scraping https://www.tiktok.com/@azafashions via Apify
+[2026-06-23T05:09:37.749868+00:00] tiktok: scraped 0 items
+[2026-06-23T05:09:37.756698+00:00] aggregate: index.json written
