@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T05:09:37Z",
+  "generated_at": "2026-06-24T05:10:26Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -22,7 +22,8 @@
       "2026-05-30",
       "2026-05-31",
       "2026-06-01",
-      "2026-06-23"
+      "2026-06-23",
+      "2026-06-24"
     ],
     "facebook": [
       "2026-04-22",
@@ -37,7 +38,8 @@
       "2026-05-28",
       "2026-05-29",
       "2026-05-30",
-      "2026-05-31"
+      "2026-05-31",
+      "2026-06-24"
     ],
     "reddit": [
       "2026-04-23"
@@ -159,17 +161,24 @@
       "facebook": 0,
       "reddit": 0,
       "tiktok": 0
+    },
+    {
+      "date": "2026-06-24",
+      "instagram": 27,
+      "facebook": 2,
+      "reddit": 0,
+      "tiktok": 0
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 81,
-      "positive": 93,
+      "neutral": 97,
+      "positive": 97,
       "negative": 1
     },
     "facebook": {
       "positive": 19,
-      "neutral": 3,
+      "neutral": 4,
       "negative": 1
     },
     "reddit": {
@@ -182,8 +191,8 @@
     }
   },
   "predefined_topics": {
-    "pricing": 93,
-    "style": 140,
+    "pricing": 100,
+    "style": 143,
     "authenticity": 2,
     "customer-service": 3,
     "shipping": 2
@@ -191,13 +200,18 @@
   "auto_themes": [
     {
       "theme": "price inquiry",
-      "count": 51,
+      "count": 54,
       "example": "Pp"
     },
     {
       "theme": "general appreciation",
       "count": 19,
       "example": "💯"
+    },
+    {
+      "theme": "product link request",
+      "count": 15,
+      "example": "Link"
     },
     {
       "theme": "inquire price",
@@ -208,11 +222,6 @@
       "theme": "positive reaction",
       "count": 11,
       "example": "❤️❤️"
-    },
-    {
-      "theme": "product link request",
-      "count": 10,
-      "example": "Link"
     },
     {
       "theme": "Positive emoji reaction",
@@ -235,6 +244,11 @@
       "example": "Gorgeous"
     },
     {
+      "theme": "general positive feedback",
+      "count": 6,
+      "example": "Verygood ❤️"
+    },
+    {
       "theme": "outfit appreciation",
       "count": 6,
       "example": "Love your outfit"
@@ -248,11 +262,6 @@
       "theme": "unclear comment",
       "count": 5,
       "example": "Pp"
-    },
-    {
-      "theme": "general positive feedback",
-      "count": 5,
-      "example": "Verygood ❤️"
     },
     {
       "theme": "purchase inquiry",
@@ -308,6 +317,11 @@
       "theme": "request price",
       "count": 3,
       "example": "Pp"
+    },
+    {
+      "theme": "link and price",
+      "count": 3,
+      "example": "Link n pp"
     },
     {
       "theme": "color appreciation",
@@ -375,6 +389,11 @@
       "example": "Price"
     },
     {
+      "theme": "aesthetic appreciation",
+      "count": 2,
+      "example": "Beautiful"
+    },
+    {
       "theme": "sublime beauty",
       "count": 2,
       "example": "Sublime beauty..\nGod bless"
@@ -428,16 +447,6 @@
       "theme": "brand availability",
       "count": 2,
       "example": "You can get it for real at azafashions ♥️"
-    },
-    {
-      "theme": "gorgeous aesthetic",
-      "count": 2,
-      "example": "Gorgeous!!!!!"
-    },
-    {
-      "theme": "cute item order",
-      "count": 2,
-      "example": "Wow that too cute. How can I order?"
     }
   ],
   "top_commenters": [
@@ -449,12 +458,12 @@
     {
       "author": "meena_ji1506",
       "platform": "instagram",
-      "count": 29
+      "count": 31
     },
     {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 16
+      "count": 17
     },
     {
       "author": "monaachari1",
@@ -562,6 +571,11 @@
       "count": 7
     },
     {
+      "author": "aniljolly1",
+      "platform": "instagram",
+      "count": 6
+    },
+    {
       "author": "kalpana_kadel",
       "platform": "tiktok",
       "count": 6
@@ -590,11 +604,6 @@
       "author": "shaheedshama0",
       "platform": "tiktok",
       "count": 6
-    },
-    {
-      "author": "aniljolly1",
-      "platform": "instagram",
-      "count": 5
     },
     {
       "author": "khalid.bhai588",

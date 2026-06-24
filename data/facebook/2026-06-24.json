@@ -1,0 +1,36 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNDY4NzAxMjk4NjE4NTEyXzEzMzM2NTExOTgzMTg2OTc=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1932942517418011/",
+    "parent_comment_id": null,
+    "author": "Rukhsana Siddique",
+    "text": "Price and material?",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-06-24T05:04:35Z",
+    "posted_at": "2026-06-24T04:46:52.000Z",
+    "sentiment": "neutral",
+    "topic_predefined": "pricing",
+    "topic_auto": "price material query"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNDY4MzMwNDg4NjU1NTkzXzI0MjMyMDEwNzgxNTkwMTM=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1054729237511235/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Aflatoon",
+    "language": "non-english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-06-24T05:04:35Z",
+    "posted_at": "2026-06-23T09:20:47.000Z",
+    "sentiment": null,
+    "topic_predefined": null,
+    "topic_auto": null
+  }
+]
