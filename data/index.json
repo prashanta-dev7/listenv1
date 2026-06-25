@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-24T05:10:26Z",
+  "generated_at": "2026-06-25T05:15:02Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -23,7 +23,8 @@
       "2026-05-31",
       "2026-06-01",
       "2026-06-23",
-      "2026-06-24"
+      "2026-06-24",
+      "2026-06-25"
     ],
     "facebook": [
       "2026-04-22",
@@ -39,10 +40,12 @@
       "2026-05-29",
       "2026-05-30",
       "2026-05-31",
-      "2026-06-24"
+      "2026-06-24",
+      "2026-06-25"
     ],
     "reddit": [
-      "2026-04-23"
+      "2026-04-23",
+      "2026-06-25"
     ],
     "tiktok": [
       "2026-04-23",
@@ -168,21 +171,28 @@
       "facebook": 2,
       "reddit": 0,
       "tiktok": 0
+    },
+    {
+      "date": "2026-06-25",
+      "instagram": 1,
+      "facebook": 1,
+      "reddit": 1,
+      "tiktok": 0
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
       "neutral": 97,
-      "positive": 97,
+      "positive": 98,
       "negative": 1
     },
     "facebook": {
-      "positive": 19,
+      "positive": 20,
       "neutral": 4,
       "negative": 1
     },
     "reddit": {
-      "neutral": 3,
+      "neutral": 4,
       "negative": 2
     },
     "tiktok": {
@@ -192,7 +202,7 @@
   },
   "predefined_topics": {
     "pricing": 100,
-    "style": 143,
+    "style": 145,
     "authenticity": 2,
     "customer-service": 3,
     "shipping": 2
@@ -205,7 +215,7 @@
     },
     {
       "theme": "general appreciation",
-      "count": 19,
+      "count": 20,
       "example": "💯"
     },
     {
@@ -299,6 +309,11 @@
       "example": "Pp"
     },
     {
+      "theme": "stylish design",
+      "count": 3,
+      "example": "Stylish"
+    },
+    {
       "theme": "smart look",
       "count": 3,
       "example": "Smart"
@@ -357,11 +372,6 @@
       "theme": "Price inquiry",
       "count": 2,
       "example": "Hello.. price please?"
-    },
-    {
-      "theme": "stylish design",
-      "count": 2,
-      "example": "Stylish"
     },
     {
       "theme": "very beautiful",
@@ -451,19 +461,19 @@
   ],
   "top_commenters": [
     {
+      "author": "meena_ji1506",
+      "platform": "instagram",
+      "count": 32
+    },
+    {
       "author": "azafashions",
       "platform": "tiktok",
       "count": 32
     },
     {
-      "author": "meena_ji1506",
-      "platform": "instagram",
-      "count": 31
-    },
-    {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 17
+      "count": 18
     },
     {
       "author": "monaachari1",
@@ -705,6 +715,11 @@
     {
       "subreddit": "BollywoodFashion",
       "count": 5,
+      "dominant_sentiment": "neutral"
+    },
+    {
+      "subreddit": "HOT_RP_INDIA",
+      "count": 1,
       "dominant_sentiment": "neutral"
     }
   ],
