@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-25T05:15:02Z",
+  "generated_at": "2026-06-26T05:14:08Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -24,7 +24,8 @@
       "2026-06-01",
       "2026-06-23",
       "2026-06-24",
-      "2026-06-25"
+      "2026-06-25",
+      "2026-06-26"
     ],
     "facebook": [
       "2026-04-22",
@@ -41,7 +42,8 @@
       "2026-05-30",
       "2026-05-31",
       "2026-06-24",
-      "2026-06-25"
+      "2026-06-25",
+      "2026-06-26"
     ],
     "reddit": [
       "2026-04-23",
@@ -178,6 +180,13 @@
       "facebook": 1,
       "reddit": 1,
       "tiktok": 0
+    },
+    {
+      "date": "2026-06-26",
+      "instagram": 1,
+      "facebook": 5,
+      "reddit": 0,
+      "tiktok": 0
     }
   ],
   "sentiment_by_platform": {
@@ -187,7 +196,7 @@
       "negative": 1
     },
     "facebook": {
-      "positive": 20,
+      "positive": 23,
       "neutral": 4,
       "negative": 1
     },
@@ -202,7 +211,7 @@
   },
   "predefined_topics": {
     "pricing": 100,
-    "style": 145,
+    "style": 148,
     "authenticity": 2,
     "customer-service": 3,
     "shipping": 2
@@ -269,6 +278,11 @@
       "example": "Woww"
     },
     {
+      "theme": "beautiful design",
+      "count": 5,
+      "example": "Beautiful"
+    },
+    {
       "theme": "unclear comment",
       "count": 5,
       "example": "Pp"
@@ -282,11 +296,6 @@
       "theme": "celebrity mention",
       "count": 4,
       "example": "Krithi shetty 😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍"
-    },
-    {
-      "theme": "beautiful design",
-      "count": 4,
-      "example": "Beautiful"
     },
     {
       "theme": "beautiful color",
@@ -414,6 +423,11 @@
       "example": "Wow"
     },
     {
+      "theme": "great style",
+      "count": 2,
+      "example": "Awesome"
+    },
+    {
       "theme": "order link provided",
       "count": 2,
       "example": "Yes, here’s the link to order this style online.\nhttps://www.azafashions.com/products/shloka-khialani-nila-fishtail-saree-gown-with-abstract-floral-embroidery/708405?utm_source=social+media&utm_medium"
@@ -452,11 +466,6 @@
       "theme": "desire lehenga",
       "count": 2,
       "example": "I need this lehenga in my life asap 😍💚"
-    },
-    {
-      "theme": "brand availability",
-      "count": 2,
-      "example": "You can get it for real at azafashions ♥️"
     }
   ],
   "top_commenters": [
@@ -473,7 +482,7 @@
     {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 18
+      "count": 21
     },
     {
       "author": "monaachari1",
