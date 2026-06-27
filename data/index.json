@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T05:14:08Z",
+  "generated_at": "2026-06-27T04:59:05Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -25,7 +25,8 @@
       "2026-06-23",
       "2026-06-24",
       "2026-06-25",
-      "2026-06-26"
+      "2026-06-26",
+      "2026-06-27"
     ],
     "facebook": [
       "2026-04-22",
@@ -187,12 +188,19 @@
       "facebook": 5,
       "reddit": 0,
       "tiktok": 0
+    },
+    {
+      "date": "2026-06-27",
+      "instagram": 25,
+      "facebook": 0,
+      "reddit": 0,
+      "tiktok": 0
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 97,
-      "positive": 98,
+      "neutral": 117,
+      "positive": 99,
       "negative": 1
     },
     "facebook": {
@@ -210,7 +218,7 @@
     }
   },
   "predefined_topics": {
-    "pricing": 100,
+    "pricing": 115,
     "style": 148,
     "authenticity": 2,
     "customer-service": 3,
@@ -219,7 +227,7 @@
   "auto_themes": [
     {
       "theme": "price inquiry",
-      "count": 54,
+      "count": 69,
       "example": "Pp"
     },
     {
@@ -286,6 +294,11 @@
       "theme": "unclear comment",
       "count": 5,
       "example": "Pp"
+    },
+    {
+      "theme": "product link inquiry",
+      "count": 5,
+      "example": "Link"
     },
     {
       "theme": "purchase inquiry",
@@ -461,11 +474,6 @@
       "theme": "product price inquiry",
       "count": 2,
       "example": "Price please"
-    },
-    {
-      "theme": "desire lehenga",
-      "count": 2,
-      "example": "I need this lehenga in my life asap 😍💚"
     }
   ],
   "top_commenters": [
