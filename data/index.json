@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-27T04:59:05Z",
+  "generated_at": "2026-06-28T05:24:38Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -44,7 +44,8 @@
       "2026-05-31",
       "2026-06-24",
       "2026-06-25",
-      "2026-06-26"
+      "2026-06-26",
+      "2026-06-28"
     ],
     "reddit": [
       "2026-04-23",
@@ -59,7 +60,8 @@
       "2026-05-26",
       "2026-05-27",
       "2026-05-28",
-      "2026-05-29"
+      "2026-05-29",
+      "2026-06-28"
     ]
   },
   "volume_by_day": [
@@ -195,6 +197,13 @@
       "facebook": 0,
       "reddit": 0,
       "tiktok": 0
+    },
+    {
+      "date": "2026-06-28",
+      "instagram": 0,
+      "facebook": 1,
+      "reddit": 0,
+      "tiktok": 1
     }
   ],
   "sentiment_by_platform": {
@@ -490,7 +499,7 @@
     {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 21
+      "count": 22
     },
     {
       "author": "monaachari1",
