@@ -1,0 +1,44 @@
+[2026-06-29T05:50:05.169625+00:00] instagram: scraping https://www.instagram.com/azafashions/ via Apify
+[2026-06-29T05:51:50.187097+00:00] instagram: FAILED — Input is not valid: Field input.directUrls must NOT have duplicate items (items ## 18 and 19 are identical), Values in input.directUrls at positions [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19] must match regular expression "https?:\/\/(?:www\.)?instagram\.com\/(?!reels\/audio\/)(?:(?:[^!@#$%^&*(){},'"\/\s`\\=-]+\/)?(?:p|reel)|reels)\/[^\/]+"
+Traceback (most recent call last):
+  File "/home/runner/work/listenv1/listenv1/run.py", line 38, in run_platform
+    items = runner(url_or_terms)
+            ^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/instagram.py", line 94, in run_sync
+    return _scrape_comments_for_posts(client, urls, handle)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/listenv1/listenv1/scrapers/instagram.py", line 56, in _scrape_comments_for_posts
+    run = client.actor(IG_COMMENT_ACTOR).call(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 367, in call
+    started_run = self.start(
+                  ^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_logging.py", line 86, in wrapper
+    return fun(resource_client, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/clients/resource_clients/actor.py", line 306, in start
+    response = self.http_client.call(
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 213, in call
+    return retry_with_exp_backoff(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_utils.py", line 175, in retry_with_exp_backoff
+    return func(stop_retrying, attempt)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/apify_client/_http_client.py", line 211, in _make_request
+    raise ApifyApiError(response, attempt, method=method)
+apify_client.errors.ApifyApiError: Input is not valid: Field input.directUrls must NOT have duplicate items (items ## 18 and 19 are identical), Values in input.directUrls at positions [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19] must match regular expression "https?:\/\/(?:www\.)?instagram\.com\/(?!reels\/audio\/)(?:(?:[^!@#$%^&*(){},'"\/\s`\\=-]+\/)?(?:p|reel)|reels)\/[^\/]+"
+
+[2026-06-29T05:51:50.187218+00:00] facebook: scraping https://www.facebook.com/AzaFashions/ via Apify
+[2026-06-29T05:52:18.655947+00:00] facebook: scraped 1 items
+[2026-06-29T05:52:18.656240+00:00] facebook: classifying 1 new/changed items
+[2026-06-29T05:52:20.691639+00:00] reddit: scraping with terms=['Aza Fashions', 'AzaFashions', 'azafashions.com'] via Apify
+[2026-06-29T05:57:29.406376+00:00] reddit: scraped 0 raw items
+[2026-06-29T05:57:29.406515+00:00] reddit: 0 items after filter
+[2026-06-29T05:57:29.406730+00:00] tiktok: scraping https://www.tiktok.com/@azafashions via Apify
+[2026-06-29T05:58:37.637797+00:00] tiktok: scraped 1 items
+[2026-06-29T05:58:37.638269+00:00] tiktok: classifying 1 new/changed items
+[2026-06-29T05:58:40.299482+00:00] aggregate: index.json written
