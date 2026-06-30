@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T05:58:40Z",
+  "generated_at": "2026-06-30T05:08:34Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -26,7 +26,8 @@
       "2026-06-24",
       "2026-06-25",
       "2026-06-26",
-      "2026-06-27"
+      "2026-06-27",
+      "2026-06-30"
     ],
     "facebook": [
       "2026-04-22",
@@ -213,12 +214,19 @@
       "facebook": 1,
       "reddit": 0,
       "tiktok": 1
+    },
+    {
+      "date": "2026-06-30",
+      "instagram": 4,
+      "facebook": 0,
+      "reddit": 0,
+      "tiktok": 0
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
       "neutral": 117,
-      "positive": 99,
+      "positive": 101,
       "negative": 1
     },
     "facebook": {
@@ -237,7 +245,7 @@
   },
   "predefined_topics": {
     "pricing": 115,
-    "style": 148,
+    "style": 150,
     "authenticity": 2,
     "customer-service": 3,
     "shipping": 2
@@ -329,6 +337,11 @@
       "example": "Krithi shetty 😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍😍"
     },
     {
+      "theme": "pretty design",
+      "count": 4,
+      "example": "Pretty"
+    },
+    {
       "theme": "beautiful color",
       "count": 4,
       "example": "[Sticker] 🔥🔥🔥 that color 🔥🔥🔥"
@@ -357,11 +370,6 @@
       "theme": "smart look",
       "count": 3,
       "example": "Smart"
-    },
-    {
-      "theme": "pretty design",
-      "count": 3,
-      "example": "Pretty"
     },
     {
       "theme": "designer inquiry",
@@ -498,7 +506,7 @@
     {
       "author": "meena_ji1506",
       "platform": "instagram",
-      "count": 32
+      "count": 34
     },
     {
       "author": "azafashions",
@@ -731,17 +739,17 @@
       "count": 2
     },
     {
+      "author": "priti1111d",
+      "platform": "instagram",
+      "count": 2
+    },
+    {
       "author": "lacasadesigning",
       "platform": "instagram",
       "count": 2
     },
     {
       "author": "nagalakshmimoduguvarapu",
-      "platform": "instagram",
-      "count": 2
-    },
-    {
-      "author": "annu_bollywood_sinha_official",
       "platform": "instagram",
       "count": 2
     }
