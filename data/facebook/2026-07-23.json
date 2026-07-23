@@ -1,0 +1,36 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNDk1MDg2MzIyNjQ2Njc2XzE0OTYyODAyMTg5MjEwNDU=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1358384265667775/",
+    "parent_comment_id": null,
+    "author": "Beauty Balance",
+    "text": "You are the definition of elegance, both inside and out.❣️🧡",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-07-23T04:16:59Z",
+    "posted_at": "2026-07-23T04:06:58.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "definition elegance"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNDk0NzAxNTkyNjg1MTQ5XzEzMzU3NTM2NDgyMjM4OTk=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1345725114440795/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Wow",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-07-23T04:16:59Z",
+    "posted_at": "2026-07-22T10:24:07.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "expresses admiration"
+  }
+]
