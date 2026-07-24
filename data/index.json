@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T04:24:43Z",
+  "generated_at": "2026-07-24T04:23:30Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -50,7 +50,8 @@
       "2026-06-26",
       "2026-06-28",
       "2026-06-29",
-      "2026-07-23"
+      "2026-07-23",
+      "2026-07-24"
     ],
     "reddit": [
       "2026-04-23",
@@ -68,7 +69,8 @@
       "2026-05-29",
       "2026-06-28",
       "2026-06-29",
-      "2026-07-23"
+      "2026-07-23",
+      "2026-07-24"
     ]
   },
   "volume_by_day": [
@@ -239,6 +241,13 @@
       "facebook": 2,
       "reddit": 0,
       "tiktok": 9
+    },
+    {
+      "date": "2026-07-24",
+      "instagram": 0,
+      "facebook": 1,
+      "reddit": 0,
+      "tiktok": 9
     }
   ],
   "sentiment_by_platform": {
@@ -248,7 +257,7 @@
       "negative": 1
     },
     "facebook": {
-      "positive": 25,
+      "positive": 26,
       "neutral": 4,
       "negative": 1
     },
@@ -257,15 +266,15 @@
       "negative": 2
     },
     "tiktok": {
-      "neutral": 70,
-      "positive": 90
+      "neutral": 71,
+      "positive": 94
     }
   },
   "predefined_topics": {
     "pricing": 118,
-    "style": 161,
+    "style": 166,
     "authenticity": 2,
-    "customer-service": 3,
+    "customer-service": 4,
     "shipping": 2
   },
   "auto_themes": [
@@ -295,6 +304,11 @@
       "example": "❤️❤️"
     },
     {
+      "theme": "beautiful design",
+      "count": 9,
+      "example": "Beautiful"
+    },
+    {
       "theme": "Positive emoji reaction",
       "count": 7,
       "example": "😍😍😍"
@@ -303,11 +317,6 @@
       "theme": "request link",
       "count": 7,
       "example": "Link"
-    },
-    {
-      "theme": "beautiful design",
-      "count": 7,
-      "example": "Beautiful"
     },
     {
       "theme": "ravishing look",
@@ -534,7 +543,7 @@
     {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 23
+      "count": 24
     },
     {
       "author": "monaachari1",
@@ -697,6 +706,11 @@
       "count": 4
     },
     {
+      "author": "sultan_2893",
+      "platform": "tiktok",
+      "count": 4
+    },
+    {
       "author": "foram_mehta143",
       "platform": "instagram",
       "count": 3
@@ -718,11 +732,6 @@
     },
     {
       "author": "fiasri16",
-      "platform": "tiktok",
-      "count": 3
-    },
-    {
-      "author": "sultan_2893",
       "platform": "tiktok",
       "count": 3
     },
