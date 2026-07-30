@@ -1,0 +1,53 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNTAwODE1OTY1NDA3MDQ1XzE1NjM4NTE5MDIxMDU2MzE=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1558913875900627/",
+    "parent_comment_id": null,
+    "author": "Neveen Mahmood",
+    "text": "So adorable",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-07-30T03:57:35Z",
+    "posted_at": "2026-07-29T18:41:02.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "adorable style"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNTAwODE1OTY1NDA3MDQ1XzEzODExMzMwOTY2ODIxMTI=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1558913875900627/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Fascinating",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-07-30T03:57:35Z",
+    "posted_at": "2026-07-30T03:48:15.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "fascinating design"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNTAwNzgzNTYyMDc2OTUyXzE1Njc0MzAyNDE0MjQ1MjI=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1364592648456896/",
+    "parent_comment_id": null,
+    "author": "Rajesh Singh Jat",
+    "text": "So beautiful ❤️💕",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-07-30T03:57:35Z",
+    "posted_at": "2026-07-29T12:56:19.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "beautiful design"
+  }
+]

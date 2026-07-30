@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-29T04:16:58Z",
+  "generated_at": "2026-07-30T04:00:25Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -34,7 +34,8 @@
       "2026-07-26",
       "2026-07-27",
       "2026-07-28",
-      "2026-07-29"
+      "2026-07-29",
+      "2026-07-30"
     ],
     "facebook": [
       "2026-04-22",
@@ -59,7 +60,8 @@
       "2026-07-24",
       "2026-07-26",
       "2026-07-28",
-      "2026-07-29"
+      "2026-07-29",
+      "2026-07-30"
     ],
     "reddit": [
       "2026-04-23",
@@ -296,16 +298,23 @@
       "facebook": 9,
       "reddit": 0,
       "tiktok": 10
+    },
+    {
+      "date": "2026-07-30",
+      "instagram": 16,
+      "facebook": 3,
+      "reddit": 0,
+      "tiktok": 0
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 141,
-      "positive": 114,
-      "negative": 6
+      "neutral": 143,
+      "positive": 120,
+      "negative": 8
     },
     "facebook": {
-      "positive": 31,
+      "positive": 34,
       "neutral": 5,
       "negative": 9
     },
@@ -320,7 +329,7 @@
   },
   "predefined_topics": {
     "pricing": 121,
-    "style": 192,
+    "style": 197,
     "authenticity": 2,
     "customer-service": 17,
     "shipping": 5
@@ -338,7 +347,7 @@
     },
     {
       "theme": "beautiful design",
-      "count": 16,
+      "count": 17,
       "example": "Beautiful"
     },
     {
@@ -502,6 +511,11 @@
       "example": "Awesome"
     },
     {
+      "theme": "general praise",
+      "count": 3,
+      "example": "Lovely ❤️"
+    },
+    {
       "theme": "color appreciation",
       "count": 3,
       "example": "[Sticker] 🔥🔥🔥 that color 🔥🔥🔥"
@@ -570,18 +584,13 @@
       "theme": "general positive",
       "count": 2,
       "example": "Wow"
-    },
-    {
-      "theme": "order cancellation issues",
-      "count": 2,
-      "example": "Extreme scam. At time of ordering delivery date was showing in two weeks. After order was placed, delivery date changed to two months out. Asked to cancel the order since it was past the event timelin"
     }
   ],
   "top_commenters": [
     {
       "author": "meena_ji1506",
       "platform": "instagram",
-      "count": 43
+      "count": 44
     },
     {
       "author": "azafashions",
@@ -591,12 +600,17 @@
     {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 27
+      "count": 28
     },
     {
       "author": "monaachari1",
       "platform": "tiktok",
       "count": 10
+    },
+    {
+      "author": "aniljolly1",
+      "platform": "instagram",
+      "count": 9
     },
     {
       "author": "nnajla3",
@@ -747,11 +761,6 @@
       "author": "naturalsoul.co",
       "platform": "tiktok",
       "count": 7
-    },
-    {
-      "author": "aniljolly1",
-      "platform": "instagram",
-      "count": 6
     },
     {
       "author": "kalpana_kadel",
