@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-30T04:00:25Z",
+  "generated_at": "2026-07-31T04:22:51Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -35,7 +35,8 @@
       "2026-07-27",
       "2026-07-28",
       "2026-07-29",
-      "2026-07-30"
+      "2026-07-30",
+      "2026-07-31"
     ],
     "facebook": [
       "2026-04-22",
@@ -61,7 +62,8 @@
       "2026-07-26",
       "2026-07-28",
       "2026-07-29",
-      "2026-07-30"
+      "2026-07-30",
+      "2026-07-31"
     ],
     "reddit": [
       "2026-04-23",
@@ -305,16 +307,23 @@
       "facebook": 3,
       "reddit": 0,
       "tiktok": 0
+    },
+    {
+      "date": "2026-07-31",
+      "instagram": 6,
+      "facebook": 3,
+      "reddit": 0,
+      "tiktok": 0
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 143,
-      "positive": 120,
+      "neutral": 144,
+      "positive": 125,
       "negative": 8
     },
     "facebook": {
-      "positive": 34,
+      "positive": 36,
       "neutral": 5,
       "negative": 9
     },
@@ -329,7 +338,7 @@
   },
   "predefined_topics": {
     "pricing": 121,
-    "style": 197,
+    "style": 199,
     "authenticity": 2,
     "customer-service": 17,
     "shipping": 5
@@ -361,6 +370,11 @@
       "example": "Price ?"
     },
     {
+      "theme": "general positive feedback",
+      "count": 12,
+      "example": "Verygood ❤️"
+    },
+    {
       "theme": "positive reaction",
       "count": 11,
       "example": "❤️❤️"
@@ -384,11 +398,6 @@
       "theme": "request link",
       "count": 7,
       "example": "Link"
-    },
-    {
-      "theme": "general positive feedback",
-      "count": 7,
-      "example": "Verygood ❤️"
     },
     {
       "theme": "ravishing look",
@@ -590,7 +599,7 @@
     {
       "author": "meena_ji1506",
       "platform": "instagram",
-      "count": 44
+      "count": 46
     },
     {
       "author": "azafashions",
@@ -600,17 +609,17 @@
     {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 28
+      "count": 30
+    },
+    {
+      "author": "aniljolly1",
+      "platform": "instagram",
+      "count": 12
     },
     {
       "author": "monaachari1",
       "platform": "tiktok",
       "count": 10
-    },
-    {
-      "author": "aniljolly1",
-      "platform": "instagram",
-      "count": 9
     },
     {
       "author": "nnajla3",
@@ -793,6 +802,11 @@
       "count": 6
     },
     {
+      "author": "sujit_singh_rajput13",
+      "platform": "instagram",
+      "count": 5
+    },
+    {
       "author": "eksharmaa",
       "platform": "instagram",
       "count": 5
@@ -801,11 +815,6 @@
       "author": "khalid.bhai588",
       "platform": "tiktok",
       "count": 5
-    },
-    {
-      "author": "sujit_singh_rajput13",
-      "platform": "instagram",
-      "count": 4
     },
     {
       "author": "moniqueoc29",

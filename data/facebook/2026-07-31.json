@@ -1,0 +1,53 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNTAxNzM4MjExOTgxNDg3XzEyMDQzOTgyNDk0MzE0MTI=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1007024285462079/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Stunning",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-07-31T04:22:48Z",
+    "posted_at": "2026-07-30T09:29:57.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "stunning aesthetic"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNTAxNzM4MjExOTgxNDg3XzkxODQxMjQ1Nzk0NzY0Nw==",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1007024285462079/",
+    "parent_comment_id": null,
+    "author": "STICH LINE Fashion",
+    "text": "🥰🤝👌👍",
+    "language": "non-english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-07-31T04:22:48Z",
+    "posted_at": "2026-07-30T07:57:38.000Z",
+    "sentiment": null,
+    "topic_predefined": null,
+    "topic_auto": null
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNTAxNzM4MjExOTgxNDg3XzEwNTc5MzIzMzAwNDI5OTk=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1007024285462079/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Dazzling",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-07-31T04:22:48Z",
+    "posted_at": "2026-07-30T09:30:18.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "dazzling design"
+  }
+]
