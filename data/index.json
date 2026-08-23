@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T02:15:08Z",
+  "generated_at": "2026-08-23T02:35:32Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -36,7 +36,8 @@
       "2026-07-28",
       "2026-07-29",
       "2026-07-30",
-      "2026-07-31"
+      "2026-07-31",
+      "2026-08-23"
     ],
     "facebook": [
       "2026-04-22",
@@ -87,7 +88,8 @@
       "2026-07-26",
       "2026-07-27",
       "2026-07-28",
-      "2026-07-29"
+      "2026-07-29",
+      "2026-08-23"
     ]
   },
   "volume_by_day": [
@@ -314,6 +316,13 @@
       "facebook": 3,
       "reddit": 0,
       "tiktok": 0
+    },
+    {
+      "date": "2026-08-23",
+      "instagram": 1,
+      "facebook": 0,
+      "reddit": 0,
+      "tiktok": 11
     }
   ],
   "sentiment_by_platform": {
@@ -332,13 +341,13 @@
       "negative": 2
     },
     "tiktok": {
-      "neutral": 76,
-      "positive": 114
+      "neutral": 78,
+      "positive": 118
     }
   },
   "predefined_topics": {
     "pricing": 121,
-    "style": 199,
+    "style": 202,
     "authenticity": 2,
     "customer-service": 17,
     "shipping": 5
@@ -370,6 +379,11 @@
       "example": "Price ?"
     },
     {
+      "theme": "unclear comment",
+      "count": 12,
+      "example": "Pp"
+    },
+    {
       "theme": "general positive feedback",
       "count": 12,
       "example": "Verygood ❤️"
@@ -378,11 +392,6 @@
       "theme": "positive reaction",
       "count": 11,
       "example": "❤️❤️"
-    },
-    {
-      "theme": "unclear comment",
-      "count": 11,
-      "example": "Pp"
     },
     {
       "theme": "placeholder comment",
@@ -458,6 +467,11 @@
       "theme": "order and price",
       "count": 4,
       "example": "I want same saree . How I can order? How much?"
+    },
+    {
+      "theme": "general positive reaction",
+      "count": 4,
+      "example": "[Sticker] Love"
     },
     {
       "theme": "admiring style",
@@ -545,9 +559,9 @@
       "example": "Love the saree where did you get it from ?"
     },
     {
-      "theme": "general positive reaction",
+      "theme": "beautiful aesthetic",
       "count": 3,
-      "example": "[Sticker] Love"
+      "example": "Beautiful ❤️❤️!"
     },
     {
       "theme": "General positive reaction",
@@ -588,11 +602,6 @@
       "theme": "elegant design",
       "count": 2,
       "example": "Graceful"
-    },
-    {
-      "theme": "general positive",
-      "count": 2,
-      "example": "Wow"
     }
   ],
   "top_commenters": [
@@ -682,6 +691,26 @@
       "count": 8
     },
     {
+      "author": "itsshellyjee",
+      "platform": "tiktok",
+      "count": 8
+    },
+    {
+      "author": "vikram1157",
+      "platform": "tiktok",
+      "count": 8
+    },
+    {
+      "author": "deepbkhi0qc",
+      "platform": "tiktok",
+      "count": 8
+    },
+    {
+      "author": "reena.seeboruth1",
+      "platform": "tiktok",
+      "count": 8
+    },
+    {
       "author": "katsircar",
       "platform": "tiktok",
       "count": 7
@@ -732,21 +761,6 @@
       "count": 7
     },
     {
-      "author": "itsshellyjee",
-      "platform": "tiktok",
-      "count": 7
-    },
-    {
-      "author": "vikram1157",
-      "platform": "tiktok",
-      "count": 7
-    },
-    {
-      "author": "deepbkhi0qc",
-      "platform": "tiktok",
-      "count": 7
-    },
-    {
       "author": "itspujashaw",
       "platform": "tiktok",
       "count": 7
@@ -758,11 +772,6 @@
     },
     {
       "author": "phyllalove",
-      "platform": "tiktok",
-      "count": 7
-    },
-    {
-      "author": "reena.seeboruth1",
       "platform": "tiktok",
       "count": 7
     },
