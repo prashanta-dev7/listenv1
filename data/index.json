@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-24T02:34:48Z",
+  "generated_at": "2026-08-25T02:31:30Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -38,7 +38,8 @@
       "2026-07-30",
       "2026-07-31",
       "2026-08-23",
-      "2026-08-24"
+      "2026-08-24",
+      "2026-08-25"
     ],
     "facebook": [
       "2026-04-22",
@@ -66,7 +67,8 @@
       "2026-07-29",
       "2026-07-30",
       "2026-07-31",
-      "2026-08-24"
+      "2026-08-24",
+      "2026-08-25"
     ],
     "reddit": [
       "2026-04-23",
@@ -92,7 +94,8 @@
       "2026-07-28",
       "2026-07-29",
       "2026-08-23",
-      "2026-08-24"
+      "2026-08-24",
+      "2026-08-25"
     ]
   },
   "volume_by_day": [
@@ -333,16 +336,23 @@
       "facebook": 1,
       "reddit": 0,
       "tiktok": 11
+    },
+    {
+      "date": "2026-08-25",
+      "instagram": 15,
+      "facebook": 1,
+      "reddit": 0,
+      "tiktok": 11
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 145,
+      "neutral": 159,
       "positive": 126,
       "negative": 9
     },
     "facebook": {
-      "positive": 37,
+      "positive": 38,
       "neutral": 5,
       "negative": 9
     },
@@ -351,13 +361,13 @@
       "negative": 2
     },
     "tiktok": {
-      "neutral": 81,
-      "positive": 125
+      "neutral": 84,
+      "positive": 132
     }
   },
   "predefined_topics": {
     "pricing": 121,
-    "style": 208,
+    "style": 224,
     "authenticity": 2,
     "customer-service": 17,
     "shipping": 5
@@ -370,23 +380,23 @@
     },
     {
       "theme": "general appreciation",
-      "count": 20,
+      "count": 21,
       "example": "💯"
     },
     {
+      "theme": "positive reaction",
+      "count": 19,
+      "example": "❤️❤️"
+    },
+    {
       "theme": "beautiful design",
-      "count": 18,
+      "count": 19,
       "example": "Beautiful"
     },
     {
       "theme": "product link request",
       "count": 15,
       "example": "Link"
-    },
-    {
-      "theme": "positive reaction",
-      "count": 15,
-      "example": "❤️❤️"
     },
     {
       "theme": "inquire price",
@@ -402,6 +412,11 @@
       "theme": "general positive feedback",
       "count": 13,
       "example": "Verygood ❤️"
+    },
+    {
+      "theme": "Designer label",
+      "count": 13,
+      "example": "Designer"
     },
     {
       "theme": "placeholder comment",
@@ -607,11 +622,6 @@
       "theme": "product price",
       "count": 2,
       "example": "Price"
-    },
-    {
-      "theme": "elegant design",
-      "count": 2,
-      "example": "Graceful"
     }
   ],
   "top_commenters": [
@@ -621,14 +631,14 @@
       "count": 46
     },
     {
-      "author": "azafashions",
-      "platform": "tiktok",
+      "author": "Meena Shah",
+      "platform": "facebook",
       "count": 32
     },
     {
-      "author": "Meena Shah",
-      "platform": "facebook",
-      "count": 31
+      "author": "azafashions",
+      "platform": "tiktok",
+      "count": 32
     },
     {
       "author": "aniljolly1",
@@ -637,6 +647,26 @@
     },
     {
       "author": "monaachari1",
+      "platform": "tiktok",
+      "count": 10
+    },
+    {
+      "author": "itsshellyjee",
+      "platform": "tiktok",
+      "count": 10
+    },
+    {
+      "author": "vikram1157",
+      "platform": "tiktok",
+      "count": 10
+    },
+    {
+      "author": "deepbkhi0qc",
+      "platform": "tiktok",
+      "count": 10
+    },
+    {
+      "author": "reena.seeboruth1",
       "platform": "tiktok",
       "count": 10
     },
@@ -692,26 +722,6 @@
     },
     {
       "author": "sultan_2893",
-      "platform": "tiktok",
-      "count": 9
-    },
-    {
-      "author": "itsshellyjee",
-      "platform": "tiktok",
-      "count": 9
-    },
-    {
-      "author": "vikram1157",
-      "platform": "tiktok",
-      "count": 9
-    },
-    {
-      "author": "deepbkhi0qc",
-      "platform": "tiktok",
-      "count": 9
-    },
-    {
-      "author": "reena.seeboruth1",
       "platform": "tiktok",
       "count": 9
     },
@@ -821,6 +831,11 @@
       "count": 6
     },
     {
+      "author": "bhavinii.j",
+      "platform": "instagram",
+      "count": 5
+    },
+    {
       "author": "sujit_singh_rajput13",
       "platform": "instagram",
       "count": 5
@@ -832,6 +847,11 @@
     },
     {
       "author": "khalid.bhai588",
+      "platform": "tiktok",
+      "count": 5
+    },
+    {
+      "author": "azaylia66",
       "platform": "tiktok",
       "count": 5
     },
@@ -851,17 +871,7 @@
       "count": 4
     },
     {
-      "author": "azaylia66",
-      "platform": "tiktok",
-      "count": 4
-    },
-    {
       "author": "priti1111d",
-      "platform": "instagram",
-      "count": 3
-    },
-    {
-      "author": "foram_mehta143",
       "platform": "instagram",
       "count": 3
     }
