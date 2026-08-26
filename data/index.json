@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-25T02:31:30Z",
+  "generated_at": "2026-08-26T02:31:37Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -39,7 +39,8 @@
       "2026-07-31",
       "2026-08-23",
       "2026-08-24",
-      "2026-08-25"
+      "2026-08-25",
+      "2026-08-26"
     ],
     "facebook": [
       "2026-04-22",
@@ -95,7 +96,8 @@
       "2026-07-29",
       "2026-08-23",
       "2026-08-24",
-      "2026-08-25"
+      "2026-08-25",
+      "2026-08-26"
     ]
   },
   "volume_by_day": [
@@ -343,12 +345,19 @@
       "facebook": 1,
       "reddit": 0,
       "tiktok": 11
+    },
+    {
+      "date": "2026-08-26",
+      "instagram": 16,
+      "facebook": 0,
+      "reddit": 0,
+      "tiktok": 11
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 159,
-      "positive": 126,
+      "neutral": 164,
+      "positive": 133,
       "negative": 9
     },
     "facebook": {
@@ -361,13 +370,13 @@
       "negative": 2
     },
     "tiktok": {
-      "neutral": 84,
-      "positive": 132
+      "neutral": 89,
+      "positive": 137
     }
   },
   "predefined_topics": {
-    "pricing": 121,
-    "style": 224,
+    "pricing": 124,
+    "style": 233,
     "authenticity": 2,
     "customer-service": 17,
     "shipping": 5
@@ -375,7 +384,7 @@
   "auto_themes": [
     {
       "theme": "price inquiry",
-      "count": 75,
+      "count": 77,
       "example": "Pp"
     },
     {
@@ -385,12 +394,12 @@
     },
     {
       "theme": "positive reaction",
-      "count": 19,
+      "count": 20,
       "example": "❤️❤️"
     },
     {
       "theme": "beautiful design",
-      "count": 19,
+      "count": 20,
       "example": "Beautiful"
     },
     {
@@ -399,14 +408,14 @@
       "example": "Link"
     },
     {
+      "theme": "unclear comment",
+      "count": 14,
+      "example": "Pp"
+    },
+    {
       "theme": "inquire price",
       "count": 13,
       "example": "Price ?"
-    },
-    {
-      "theme": "unclear comment",
-      "count": 13,
-      "example": "Pp"
     },
     {
       "theme": "general positive feedback",
@@ -439,6 +448,11 @@
       "example": "Wow so ravishing🥰 look"
     },
     {
+      "theme": "general admiration",
+      "count": 7,
+      "example": "Woww"
+    },
+    {
       "theme": "gorgeous style",
       "count": 6,
       "example": "Gorgeous"
@@ -447,11 +461,6 @@
       "theme": "outfit appreciation",
       "count": 6,
       "example": "Love your outfit"
-    },
-    {
-      "theme": "general admiration",
-      "count": 6,
-      "example": "Woww"
     },
     {
       "theme": "product link inquiry",
@@ -509,6 +518,11 @@
       "example": "Who is designer ? How do we search the dress, no link"
     },
     {
+      "theme": "beautiful aesthetic",
+      "count": 4,
+      "example": "Beautiful ❤️❤️!"
+    },
+    {
       "theme": "Price query",
       "count": 3,
       "example": "Pp"
@@ -537,6 +551,11 @@
       "theme": "request price",
       "count": 3,
       "example": "Pp"
+    },
+    {
+      "theme": "general positive",
+      "count": 3,
+      "example": "Wow"
     },
     {
       "theme": "link and price",
@@ -584,11 +603,6 @@
       "example": "Love the saree where did you get it from ?"
     },
     {
-      "theme": "beautiful aesthetic",
-      "count": 3,
-      "example": "Beautiful ❤️❤️!"
-    },
-    {
       "theme": "General positive reaction",
       "count": 2,
       "example": "💯"
@@ -617,11 +631,6 @@
       "theme": "excited reaction",
       "count": 2,
       "example": "Omgggg❤️🔥❤️🔥❤️"
-    },
-    {
-      "theme": "product price",
-      "count": 2,
-      "example": "Price"
     }
   ],
   "top_commenters": [
@@ -643,30 +652,30 @@
     {
       "author": "aniljolly1",
       "platform": "instagram",
-      "count": 13
-    },
-    {
-      "author": "monaachari1",
-      "platform": "tiktok",
-      "count": 10
+      "count": 14
     },
     {
       "author": "itsshellyjee",
       "platform": "tiktok",
-      "count": 10
+      "count": 11
     },
     {
       "author": "vikram1157",
       "platform": "tiktok",
-      "count": 10
+      "count": 11
     },
     {
       "author": "deepbkhi0qc",
       "platform": "tiktok",
-      "count": 10
+      "count": 11
     },
     {
       "author": "reena.seeboruth1",
+      "platform": "tiktok",
+      "count": 11
+    },
+    {
+      "author": "monaachari1",
       "platform": "tiktok",
       "count": 10
     },
@@ -831,6 +840,11 @@
       "count": 6
     },
     {
+      "author": "azaylia66",
+      "platform": "tiktok",
+      "count": 6
+    },
+    {
       "author": "bhavinii.j",
       "platform": "instagram",
       "count": 5
@@ -851,11 +865,6 @@
       "count": 5
     },
     {
-      "author": "azaylia66",
-      "platform": "tiktok",
-      "count": 5
-    },
-    {
       "author": "moniqueoc29",
       "platform": "tiktok",
       "count": 4
@@ -871,9 +880,9 @@
       "count": 4
     },
     {
-      "author": "priti1111d",
-      "platform": "instagram",
-      "count": 3
+      "author": "rony10650",
+      "platform": "tiktok",
+      "count": 4
     }
   ],
   "reddit_subreddits": [
