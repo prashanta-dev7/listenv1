@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-26T02:31:37Z",
+  "generated_at": "2026-08-27T11:01:59Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -40,7 +40,8 @@
       "2026-08-23",
       "2026-08-24",
       "2026-08-25",
-      "2026-08-26"
+      "2026-08-26",
+      "2026-08-27"
     ],
     "facebook": [
       "2026-04-22",
@@ -69,7 +70,8 @@
       "2026-07-30",
       "2026-07-31",
       "2026-08-24",
-      "2026-08-25"
+      "2026-08-25",
+      "2026-08-27"
     ],
     "reddit": [
       "2026-04-23",
@@ -97,7 +99,8 @@
       "2026-08-23",
       "2026-08-24",
       "2026-08-25",
-      "2026-08-26"
+      "2026-08-26",
+      "2026-08-27"
     ]
   },
   "volume_by_day": [
@@ -352,16 +355,23 @@
       "facebook": 0,
       "reddit": 0,
       "tiktok": 11
+    },
+    {
+      "date": "2026-08-27",
+      "instagram": 13,
+      "facebook": 1,
+      "reddit": 0,
+      "tiktok": 9
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 164,
-      "positive": 133,
-      "negative": 9
+      "neutral": 172,
+      "positive": 137,
+      "negative": 10
     },
     "facebook": {
-      "positive": 38,
+      "positive": 39,
       "neutral": 5,
       "negative": 9
     },
@@ -376,10 +386,10 @@
   },
   "predefined_topics": {
     "pricing": 124,
-    "style": 233,
+    "style": 238,
     "authenticity": 2,
     "customer-service": 17,
-    "shipping": 5
+    "shipping": 6
   },
   "auto_themes": [
     {
@@ -394,7 +404,7 @@
     },
     {
       "theme": "positive reaction",
-      "count": 20,
+      "count": 21,
       "example": "❤️❤️"
     },
     {
@@ -456,6 +466,11 @@
       "theme": "gorgeous style",
       "count": 6,
       "example": "Gorgeous"
+    },
+    {
+      "theme": "designer mention",
+      "count": 6,
+      "example": "Designer"
     },
     {
       "theme": "outfit appreciation",
@@ -626,23 +641,18 @@
       "theme": "wow style",
       "count": 2,
       "example": "Wowwww ❤️🔥"
-    },
-    {
-      "theme": "excited reaction",
-      "count": 2,
-      "example": "Omgggg❤️🔥❤️🔥❤️"
     }
   ],
   "top_commenters": [
     {
       "author": "meena_ji1506",
       "platform": "instagram",
-      "count": 46
+      "count": 47
     },
     {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 32
+      "count": 33
     },
     {
       "author": "azafashions",
@@ -657,7 +667,12 @@
     {
       "author": "itsshellyjee",
       "platform": "tiktok",
-      "count": 11
+      "count": 12
+    },
+    {
+      "author": "reena.seeboruth1",
+      "platform": "tiktok",
+      "count": 12
     },
     {
       "author": "vikram1157",
@@ -666,11 +681,6 @@
     },
     {
       "author": "deepbkhi0qc",
-      "platform": "tiktok",
-      "count": 11
-    },
-    {
-      "author": "reena.seeboruth1",
       "platform": "tiktok",
       "count": 11
     },
@@ -810,6 +820,11 @@
       "count": 7
     },
     {
+      "author": "azaylia66",
+      "platform": "tiktok",
+      "count": 7
+    },
+    {
       "author": "kalpana_kadel",
       "platform": "tiktok",
       "count": 6
@@ -840,11 +855,6 @@
       "count": 6
     },
     {
-      "author": "azaylia66",
-      "platform": "tiktok",
-      "count": 6
-    },
-    {
       "author": "bhavinii.j",
       "platform": "instagram",
       "count": 5
@@ -865,24 +875,24 @@
       "count": 5
     },
     {
-      "author": "moniqueoc29",
-      "platform": "tiktok",
-      "count": 4
-    },
-    {
-      "author": "sunitatmodel",
-      "platform": "tiktok",
-      "count": 4
-    },
-    {
-      "author": "sherry298014910",
-      "platform": "tiktok",
-      "count": 4
-    },
-    {
       "author": "rony10650",
       "platform": "tiktok",
-      "count": 4
+      "count": 5
+    },
+    {
+      "author": "hr07haryana7",
+      "platform": "tiktok",
+      "count": 5
+    },
+    {
+      "author": "andidrums",
+      "platform": "tiktok",
+      "count": 5
+    },
+    {
+      "author": "kaurnavpreet1376",
+      "platform": "tiktok",
+      "count": 5
     }
   ],
   "reddit_subreddits": [
