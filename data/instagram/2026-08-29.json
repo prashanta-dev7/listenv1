@@ -1,0 +1,36 @@
+[
+  {
+    "id": "ig_17896559433664935",
+    "platform": "instagram",
+    "handle": "@azafashions",
+    "post_url": "https://www.instagram.com/p/DclY-6YDDl4/",
+    "parent_comment_id": null,
+    "author": "neetukaur_amitsingh",
+    "text": "😍",
+    "language": "non-english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-08-29T07:41:11Z",
+    "posted_at": "2026-08-28T15:12:59.000Z",
+    "sentiment": null,
+    "topic_predefined": null,
+    "topic_auto": null
+  },
+  {
+    "id": "ig_18092532737550354",
+    "platform": "instagram",
+    "handle": "@azafashions",
+    "post_url": "https://www.instagram.com/p/Dcl7WauMq_H/",
+    "parent_comment_id": null,
+    "author": "meena_ji1506",
+    "text": "Wow",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-08-29T07:41:11Z",
+    "posted_at": "2026-08-29T02:15:19.000Z",
+    "sentiment": "positive",
+    "topic_predefined": null,
+    "topic_auto": "positive exclamation"
+  }
+]

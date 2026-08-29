@@ -1,0 +1,36 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNTI5MDA4MDg5MjU0NDk5Xzk5NTU2MDE0Njg3MDgyOA==",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/AzaFashions/posts/pfbid02dwYc5HG9V5Zw5pe2oSxWuEPuQYvouqDHEoXtxysanrKrCAvp6ayd2cnV4fqaNHxHl",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Elegant",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-08-29T07:41:36Z",
+    "posted_at": "2026-08-28T13:07:30.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "elegant style"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNTI4ODE4MzM1OTQwMTQxXzEzNzY5Nzg0MjQ1NTczODA=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1336676615120720/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Amazing",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-08-29T07:41:36Z",
+    "posted_at": "2026-08-28T09:51:30.000Z",
+    "sentiment": "positive",
+    "topic_predefined": null,
+    "topic_auto": "general positive comment"
+  }
+]
