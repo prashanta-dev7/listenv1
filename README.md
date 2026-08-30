@@ -33,7 +33,7 @@ Filterable by time range (last 7 / 30 / 90 days or all time).
                                               └─────────────┘    └──────────┘
 ```
 
-1. **Scrape** — `scrapers/instagram.py`, `facebook.py`, `reddit.py`, `tiktok.py` each call an Apify actor and normalize the response.
+1. **Scrape** — `scrapers/instagram.py`, `facebook.py`, `reddit.py`, `tiktok.py` each call an Apify actor and normalize the response. `scrapers/xquik.py` can also import a Xquik JSON, JSONL, or CSV tweet export when `XQUIK_EXPORT_PATH` is set.
 2. **Filter** — Reddit hits go through `pipeline/filter.py`, which drops ambiguous brand-term matches (e.g. "aza" as a name vs. the brand) using the `strict` / `ambiguous` lists in `config/brand-terms.json`.
 3. **Classify** — `pipeline/classify.py` sends new or changed items to Gemini for sentiment + topic-bucket assignment. Previously-seen items are skipped to save tokens.
 4. **Store + merge** — `pipeline/store.py` writes per-day, per-platform JSON files under `data/` and merges with prior runs.
@@ -117,7 +117,15 @@ export GEMINI_API_KEY=your_gemini_key
 python run.py
 ```
 
-The script aborts early if either secret is missing. Output lands in `data/` and a timestamped log in `logs/`.
+The script aborts early if `GEMINI_API_KEY` is missing. If `APIFY_TOKEN` is not
+set, Apify-backed sources are skipped and export-backed sources can still run.
+Output lands in `data/` and a timestamped log in `logs/`.
+
+To import an Xquik tweet or search export alongside the scraped sources, point
+`XQUIK_EXPORT_PATH` at the downloaded `.json`, `.jsonl`, or `.csv` file before
+running the pipeline. The importer maps common Xquik export fields such as
+`text`, `created_at`, `username`, `like_count`, `reply_count`, and `url` into
+the same dashboard record shape used by the other platforms.
 
 ### Run automatically (GitHub Actions)
 

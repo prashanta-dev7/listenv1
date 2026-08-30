@@ -5,6 +5,7 @@ const PLATFORM_COLORS = {
   twitter:   { border: '#1DA1F2', bg: '#1DA1F233' },
   quora:     { border: '#B92B27', bg: '#B92B2733' },
   tiktok:    { border: '#000000', bg: '#00000033' },
+  xquik:     { border: '#2563EB', bg: '#2563EB33' },
 };
 
 const SENTIMENT_COLORS = { positive: '#2e9e5f', neutral: '#888888', negative: '#d64545' };

@@ -2,7 +2,7 @@ import os, json, traceback
 from pathlib import Path
 from datetime import datetime, timezone
 
-from scrapers import instagram, facebook, reddit, tiktok
+from scrapers import instagram, facebook, reddit, tiktok, xquik
 from pipeline import classify, filter as reddit_filter, store, aggregate
 
 LOGS = Path("logs")
@@ -50,29 +50,21 @@ def run_platform(name, runner, url_or_terms, buckets, is_reddit=False):
     except Exception as e:
         log(f"{name}: FAILED — {e}\n{traceback.format_exc()}")
 
-from scrapers import tiktok   # plus existing imports
-
-# ... existing IG, FB, Reddit calls ...
-
-# Twitter + Quora wiring parked for v2.1 — leave commented out for easy re-enable:
-# try:
-#     log("twitter: scraping via Apify")
-#     items = twitter.run_sync(handles["twitter"], terms)
-#     ...
-# except Exception as e:
-#     log(f"twitter: FAILED — {e}")
-
 def main():
-    if not os.environ.get("APIFY_TOKEN"):
-        log("APIFY_TOKEN missing; aborting run"); return
     if not os.environ.get("GEMINI_API_KEY"):
         log("GEMINI_API_KEY missing; aborting run"); return
 
     handles, buckets, terms = load_config()
-    run_platform("instagram", instagram.run_sync, handles["instagram"], buckets)
-    run_platform("facebook",  facebook.run_sync,  handles["facebook"],  buckets)
-    run_platform("reddit",    reddit.run_sync,    terms,                buckets, is_reddit=True)
-    run_platform("tiktok", tiktok.run_sync, handles["tiktok"], buckets)
+    if os.environ.get("APIFY_TOKEN"):
+        run_platform("instagram", instagram.run_sync, handles["instagram"], buckets)
+        run_platform("facebook",  facebook.run_sync,  handles["facebook"],  buckets)
+        run_platform("reddit",    reddit.run_sync,    terms,                buckets, is_reddit=True)
+        run_platform("tiktok",    tiktok.run_sync,    handles["tiktok"],    buckets)
+    else:
+        log("APIFY_TOKEN missing; skipping Apify-backed sources")
+
+    if os.environ.get("XQUIK_EXPORT_PATH"):
+        run_platform("xquik", xquik.run_sync, os.environ["XQUIK_EXPORT_PATH"], buckets)
 
     try:
         aggregate.build()
