@@ -1,0 +1,36 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNTMwNzI4MjM5MDgyNDg0XzEwOTE3NjM0MzAxODM4NTM=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/AzaFashions/posts/pfbid028YfhR91kE887Ha8vHYr2b4jn8q1eMysfac6ko9VKPmcjEXc6mZPja93VRxQd2BiDl",
+    "parent_comment_id": null,
+    "author": "Samir Chadha",
+    "text": "Very lovely pics",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-08-31T06:43:24Z",
+    "posted_at": "2026-08-30T18:34:43.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "lovely pictures"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNTMwNjI4NzUyNDI1NzY2XzkzNTQwNDY0NjI3MzgyOA==",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1017567571339602/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Attractive",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-08-31T06:43:24Z",
+    "posted_at": "2026-08-30T09:13:12.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "attractive design"
+  }
+]

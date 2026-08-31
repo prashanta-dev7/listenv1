@@ -1,0 +1,53 @@
+[
+  {
+    "id": "ig_18093244295431719",
+    "platform": "instagram",
+    "handle": "@azafashions",
+    "post_url": "https://www.instagram.com/p/DcqaDjVjE-A/",
+    "parent_comment_id": null,
+    "author": "thehouseofkundanjewellery",
+    "text": "❣️❣️❣️❣️",
+    "language": "non-english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-08-31T06:42:34Z",
+    "posted_at": "2026-08-30T18:45:45.000Z",
+    "sentiment": null,
+    "topic_predefined": null,
+    "topic_auto": null
+  },
+  {
+    "id": "ig_17899330596575396",
+    "platform": "instagram",
+    "handle": "@azafashions",
+    "post_url": "https://www.instagram.com/p/DcqaDjVjE-A/",
+    "parent_comment_id": null,
+    "author": "aniljolly1",
+    "text": "Very good ❤️",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-08-31T06:42:34Z",
+    "posted_at": "2026-08-30T11:35:33.000Z",
+    "sentiment": "positive",
+    "topic_predefined": null,
+    "topic_auto": "general positive feedback"
+  },
+  {
+    "id": "ig_17918984673225626",
+    "platform": "instagram",
+    "handle": "@azafashions",
+    "post_url": "https://www.instagram.com/p/DcqGU5zsIcj/",
+    "parent_comment_id": null,
+    "author": "aniljolly1",
+    "text": "Very good ❤️",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-08-31T06:42:34Z",
+    "posted_at": "2026-08-30T08:49:46.000Z",
+    "sentiment": "positive",
+    "topic_predefined": null,
+    "topic_auto": "general positive feedback"
+  }
+]
