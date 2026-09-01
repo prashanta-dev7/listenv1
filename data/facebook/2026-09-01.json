@@ -1,0 +1,36 @@
+[
+  {
+    "id": "fb_Y29tbWVudDoxNTMxNjAxMjE1NjYxODUzXzE3NTE2NTI5MzYwNDQ2OTU=",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/AzaFashions/posts/pfbid02wYmgRNM62az3MdPAnmJEC9e63aQt5CAu2ZGpWGvf2FHd74L4NSuheSx4gAY4D14Al",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Colorful collection",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-09-01T06:03:10Z",
+    "posted_at": "2026-08-31T10:37:12.000Z",
+    "sentiment": "positive",
+    "topic_predefined": "style",
+    "topic_auto": "colorful collection"
+  },
+  {
+    "id": "fb_Y29tbWVudDoxNTMxODk4MjU1NjMyMTQ5XzI4MTg0NDE2MTM0NTI2Njk2",
+    "platform": "facebook",
+    "handle": "@AzaFashions",
+    "post_url": "https://www.facebook.com/reel/1338288251711206/",
+    "parent_comment_id": null,
+    "author": "Meena Shah",
+    "text": "Fantastic",
+    "language": "english",
+    "like_count": 0,
+    "reply_count": 0,
+    "captured_at": "2026-09-01T06:03:10Z",
+    "posted_at": "2026-09-01T02:24:21.000Z",
+    "sentiment": "positive",
+    "topic_predefined": null,
+    "topic_auto": "general positive"
+  }
+]

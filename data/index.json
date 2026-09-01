@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T06:48:21Z",
+  "generated_at": "2026-09-01T06:03:12Z",
   "platforms": [
     "instagram",
     "facebook",
@@ -45,7 +45,8 @@
       "2026-08-28",
       "2026-08-29",
       "2026-08-30",
-      "2026-08-31"
+      "2026-08-31",
+      "2026-09-01"
     ],
     "facebook": [
       "2026-04-22",
@@ -78,7 +79,8 @@
       "2026-08-27",
       "2026-08-28",
       "2026-08-29",
-      "2026-08-31"
+      "2026-08-31",
+      "2026-09-01"
     ],
     "reddit": [
       "2026-04-23",
@@ -401,16 +403,23 @@
       "facebook": 2,
       "reddit": 1,
       "tiktok": 0
+    },
+    {
+      "date": "2026-09-01",
+      "instagram": 8,
+      "facebook": 2,
+      "reddit": 0,
+      "tiktok": 0
     }
   ],
   "sentiment_by_platform": {
     "instagram": {
-      "neutral": 174,
-      "positive": 149,
+      "neutral": 175,
+      "positive": 153,
       "negative": 10
     },
     "facebook": {
-      "positive": 44,
+      "positive": 46,
       "neutral": 5,
       "negative": 9
     },
@@ -426,7 +435,7 @@
   },
   "predefined_topics": {
     "pricing": 126,
-    "style": 251,
+    "style": 252,
     "authenticity": 2,
     "customer-service": 17,
     "shipping": 6
@@ -513,6 +522,11 @@
       "example": "Gorgeous"
     },
     {
+      "theme": "general positive",
+      "count": 6,
+      "example": "Wow"
+    },
+    {
       "theme": "designer mention",
       "count": 6,
       "example": "Designer"
@@ -521,11 +535,6 @@
       "theme": "outfit appreciation",
       "count": 6,
       "example": "Love your outfit"
-    },
-    {
-      "theme": "general positive",
-      "count": 5,
-      "example": "Wow"
     },
     {
       "theme": "product link inquiry",
@@ -692,7 +701,7 @@
     {
       "author": "Meena Shah",
       "platform": "facebook",
-      "count": 37
+      "count": 39
     },
     {
       "author": "azafashions",
@@ -702,7 +711,7 @@
     {
       "author": "aniljolly1",
       "platform": "instagram",
-      "count": 17
+      "count": 18
     },
     {
       "author": "itsshellyjee",
